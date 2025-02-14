@@ -337,3 +337,5 @@ exec --no-startup-id picom -c
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 exec_always --no-startup-id "setxkbmap -layout us -variant intl"
+
+exec_always --no-startup-id feh --no-fehbg --bg-center ~/Pictures/bg.jpg
