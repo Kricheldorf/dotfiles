@@ -1,0 +1,16 @@
+configuration{
+    modi:                       "combi,drun,window,filebrowser";
+    show-icons:                 true;
+    terminal:                   "warp-terminal";
+    drun-display-format:        "{icon} {name}";
+    combi-modes:                "window,drun";
+    display-combi:              "  All ";
+    display-drun:               "   Apps ";
+    display-run:                "   Run ";
+    display-window:             "   Window";
+    display-filebrowser:        "   Files";
+    window-format:              "{w} · {c} · {t}";
+}
+
+@theme "catppuccin-mocha"
+

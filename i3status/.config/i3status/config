@@ -1,0 +1,68 @@
+general {
+  colors = true
+  interval = 5
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "load"
+order += "cpu_temperature CPUtemp"
+order += "cpu_temperature GPUtemp"
+order += "disk /"
+order += "volume main"
+order += "time"
+order += "tztime amsterdam"
+
+cpu_temperature CPUtemp {
+  format = "CPU %degrees °C"
+  path = "/sys/class/hwmon/hwmon1/temp1_input"
+}
+
+cpu_temperature GPUtemp {
+  format = "GPU %degrees °C"
+  path = "/sys/class/hwmon/hwmon0/temp1_input"
+}
+
+load {
+  format = "%1min %5min %15min"
+}
+
+cpu_usage {
+  format = "CPU %usage"
+}
+
+disk "/" {
+  format = "Used / %percentage_used"
+}
+
+volume integ {
+  format = "♪I: %volume"
+  format_muted = "♪I: MD"
+  device = "pulse:alsa_output.pci-0000_24_00.3.analog-stereo"
+}
+
+volume headset {
+  format = "♪H: %volume"
+  format_muted = "♪H: MD"
+  device = "pulse:bluez_output.F8_4E_17_7D_27_31.1"
+}
+
+volume main {
+  format = "♪: %volume"
+  format_muted = "♪: MD"
+}
+
+memory {
+    format = "%used"
+    threshold_degraded = "10%"
+    format_degraded = "MEMORY: %free"
+}
+
+tztime amsterdam {
+    format = "%H:%M %Z"
+    timezone = "Europe/Amsterdam"
+}
+
+time {
+  format = "%A %d.%m.%Y %H:%M"
+}
