@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git fzf z zsh-autosuggestions)
-plugins=(git z zsh-autosuggestions)
+plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,7 +119,7 @@ function gotest() {
 # PATH updates
 
 export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
-export PATH="/home/kricheldorf/Installations/WebStorm-243.22562.222/bin:$PATH"
+export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
 

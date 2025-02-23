@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
 Name=Edge Work
-Exec=bash -c 'microsoft-edge --profile-directory="Profile 1"'
-Icon=/opt/microsoft/msedge/product_logo_32.png
+Exec=bash -c 'microsoft-edge-stable --profile-directory="Profile 1"'
+Icon=/opt/microsoft/msedge/product_logo_32.xpm
 Terminal=false 
 Type=Application
 Categories=Application;
