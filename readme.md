@@ -21,14 +21,9 @@ to have them there in their own context instead of here (also see the start of t
 
 1. Install preferred distro (the dotfiles are set to work with Arch based distros but can work with other if tweaked)
    1. Install i3wm (someday I'll move to hyprland or sway but wayland support is not really there for my use case)
-2. Install software
+2. Install softwares
    1. Browser (I currently use Edge, change configs accordingly if that's different)
    2. zsh and oh my zsh
    3. clone this repo and config (stow)
    4. read i3 config line by line and act accordingly with each config (some of them require actions before working properly)
       5. This step can take a long time xD
-
-### TODO
-
-mount lm partition
-get webstorm config from linux mint

@@ -425,7 +425,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/bg.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -435,7 +435,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
-exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
+#exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
@@ -629,3 +629,5 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
+bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -config ~/.config/rofi/roficalc.rasi

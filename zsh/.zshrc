@@ -118,7 +118,6 @@ function gotest() {
 
 # PATH updates
 
-export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
@@ -126,3 +125,5 @@ export PATH="$HOME/.config/rofi/scripts:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export BROWSER="microsoft-edge-stable"

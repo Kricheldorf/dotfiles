@@ -3,18 +3,12 @@
  * Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
  *******************************************************/
 configuration {
-    modi:                "combi,drun,window";
+    modi:                "calc";
     font:                "MonoLisa-Regular 10";
     show-icons:          true;
     icon-theme:          "Qogir";
-    combi-modes:         "window,drun";
-    display-combi:       "  ";
-    display-drun:        "  ";
-    drun-display-format: "{icon} {name}";
-    display-window:      "  ";
-    window-format:       "  {w} · {c} · {t}";
+    display-calc:        "  ";
     scroll-method:       0;
-    sidebar-mode:        false;
 }
 
 @import "~/.config/rofi/config.rasi"
