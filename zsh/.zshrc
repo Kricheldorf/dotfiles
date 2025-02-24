@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git fzf z zsh-autosuggestions)
-plugins=(git z)
+plugins=(git zoxide fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,6 +109,9 @@ alias zs="cd ~/Code/shipix/shipix-platform"
 alias migrate="npm install && npm run db:migration:run"
 alias ggpush='[ "$(git_current_branch)" != "main" ] && git push origin "$(git_current_branch)"'
 alias i3cc='grep "^bind" ~/.config/i3/config | cut -d " " -f 2- | column | less'
+alias icat='kitten icat'
+alias cat='bat'
+alias ls='eza'
 
 function gotest() {
   set -o xtrace

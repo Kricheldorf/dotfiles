@@ -174,7 +174,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id warp-terminal
+bindsym $mod+Return exec --no-startup-id ghostty
 
 # kill focused window
 bindsym $mod+q kill
@@ -477,6 +477,8 @@ exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-clipman
 exec --no-startup-id copyq
 
+#bindsym mod1+1 exec --no-startup-id ghostty --title="quick-terminal" --gtk-single-instance=true
+
 ##################
 # floating rules #
 ##################
@@ -515,6 +517,13 @@ for_window [instance=dev.warp.Warp-hotkey] resize set width 1920
 for_window [instance=dev.warp.Warp-hotkey] resize set height 1000
 for_window [instance=dev.warp.Warp-hotkey] move position 1920 0
 for_window [instance=dev.warp.Warp-hotkey] focus
+
+for_window [title=quick-terminal] floating enable
+for_window [title=quick-terminal] sticky enable
+for_window [title=quick-terminal] resize set width 1920
+for_window [title=quick-terminal] resize set height 1000
+for_window [title=quick-terminal] move position 1920 0
+for_window [title=quick-terminal] focus
 
 for_window [class="Bitwarden"] sticky enable
 for_window [class="Bitwarden"] floating enable
