@@ -1,13 +1,12 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 if true then return {
-
   {
-      "supermaven-inc/supermaven-nvim",
-      config = function()
-        require("supermaven-nvim").setup({})
-      end,
-    }
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  }
 } end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
