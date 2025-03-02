@@ -115,6 +115,11 @@ alias ls='eza'
 alias ncdu='ncdu -t8'
 alias lg='lazygit'
 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+# got from: https://github.com/kurealnum/dotfiles/blob/main/.bashrc
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n2|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 function gotest() {
   set -o xtrace
   git fetch origin $1:$1
