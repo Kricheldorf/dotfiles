@@ -113,6 +113,7 @@ alias icat='kitten icat'
 alias cat='bat'
 alias ls='eza'
 alias ncdu='ncdu -t8'
+alias lg='lazygit'
 
 function gotest() {
   set -o xtrace
