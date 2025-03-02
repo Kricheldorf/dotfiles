@@ -71,6 +71,11 @@ floating_modifier $mod
 #bindsym $mod+Tab workspace next
 #bindsym $mod+Shift+Tab workspace prev
 
+bindsym $mod+Shift+Ctrl+h move workspace to output left
+bindsym $mod+Shift+Ctrl+l move workspace to output right
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -82,6 +87,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+t workspace $wsT
+# bindsym $mod+t [instance="ghostty" title="shipix-platform"] focus, [instance="ghostty" title="quicargo"] focus, [instance="ghostty" title="^~$"] focus
 
 # switch to workspace with numpad keys
 bindcode $mod+87 workspace $ws1
@@ -118,7 +125,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-bindsym $mod+Shift+s move container to workspace number $ws99
+bindsym $mod+Shift+t move container to workspace $wsT
 
 # move focused container to workspace with numpad keys
 bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws1
@@ -186,7 +193,7 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # lock with a picture:
 #bindsym $mod+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
-bindsym Control+Mod1+l exec --no-startup-id i3-msg workspace $ws99 && ~/.config/i3/scripts/blur-lock
+bindsym Control+Mod1+l exec --no-startup-id i3-msg workspace $wsL && ~/.config/i3/scripts/blur-lock
 # lock in case after sleep
 exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
 
@@ -325,17 +332,18 @@ bindsym $mod+b bar mode toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:  "
+set $ws4 "4:"
+set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $ws99 "99:s"
+set $wsL ""
+set $wsT ""
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
@@ -356,12 +364,22 @@ workspace $ws0 output DP-2
 #assign [class="thunderbird"] $ws4
 #assign [class="TelegramDesktop"] $ws5
 
+assign [class="Microsoft-edge"] $ws1
+assign [class="jetbrains-webstorm"] $ws2
+assign [class="SourceGit"] $ws3
+assign [class="Postman"] $ws4
+
 # automatic set focus new window if it opens on another workspace than the current:
 #for_window [class=Xfce4-terminal] focus
 #for_window [class=(?i)firefox] focus
 #for_window [class=Thunar] focus
 #for_window [class=Thunderbird] focus
 #for_window [class=TelegramDesktop] focus
+
+for_window [class="Microsoft-edge"] focus
+for_window [class="jetbrains-webstorm"] focus
+for_window [class="SourceGit"] focus
+for_window [class="Postman"] focus
 
 ##############
 # compositor #
@@ -640,3 +658,4 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -config ~/.config/rofi/roficalc.rasi
+bindsym $mod+M exec --no-startup-id rofi -show emoji -modi emoji

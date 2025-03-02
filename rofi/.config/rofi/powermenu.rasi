@@ -19,7 +19,7 @@ window {
     border:           0;
     padding:          10;
     transparency:     "real";
-    width:            120px;
+    width:            160px;
     location:         east;
     /*y-offset:       18;*/
     /*x-offset:       850;*/
@@ -123,3 +123,5 @@ textbox-prompt-colon {
 mainbox {
   children: [listview];
 }
+
+@import "~/.config/rofi/dracula-theme.rasi"

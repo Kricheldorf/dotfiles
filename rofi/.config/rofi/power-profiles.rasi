@@ -111,9 +111,14 @@ prompt {
     spacing:    0;
     text-color: @normal-foreground;
 }
+
+
+@import "~/.config/rofi/dracula-theme.rasi"
+
 inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
+
 textbox-prompt-colon {
     expand:     false;
     str:        "Set Power Profile:";

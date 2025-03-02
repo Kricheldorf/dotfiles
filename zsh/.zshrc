@@ -112,6 +112,7 @@ alias i3cc='grep "^bind" ~/.config/i3/config | cut -d " " -f 2- | column | less'
 alias icat='kitten icat'
 alias cat='bat'
 alias ls='eza'
+alias ncdu='ncdu -t8'
 
 function gotest() {
   set -o xtrace
@@ -130,3 +131,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export BROWSER="microsoft-edge-stable"
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+# eval "$(oh-my-posh init zsh)"
+

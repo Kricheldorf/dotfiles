@@ -16,12 +16,10 @@ set encoding=utf8
 call plug#begin("~/.vim/plugged")
  Plug 'dracula/vim'
  Plug 'ryanoasis/vim-devicons'
- Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
- Plug 'scrooloose/nerdtree'
- Plug 'preservim/nerdcommenter'
- Plug 'mhinz/vim-startify'
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'scrooloo-startify'
+ Plug 'neoclide/se/nerdtree'
+                 Plug 'mhinz/vimcoc.nvim', {'branch': 'release'}
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""
@@ -33,6 +31,8 @@ set nowrap
 " OSX stupid backspace fix
 set backspace=indent,eol,start
 
+set number
+set relativenumber
 set nocompatible            " disable compatibility to old-time vi
 set showmatch               " show matching
 set ignorecase              " case insensitive

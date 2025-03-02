@@ -1,1 +1,3 @@
 @theme "~/.local/share/rofi/themes/arc_dark_transparent_colors.rasi"
+
+@import "~/.config/rofi/dracula-theme.rasi"
