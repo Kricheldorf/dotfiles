@@ -131,6 +131,7 @@ function gotest() {
 export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
