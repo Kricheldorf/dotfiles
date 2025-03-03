@@ -3,13 +3,14 @@ customCommands:
     context: "files"
     prompts:
       - type: "input"
-        title: "Add Commit Message"
+        title: "Add Commit Message with Jira prefix"
         key: "Message"
 
     command:
       git commit -m "$(git branch --contains | awk -v m="{{.Form.Message}}" '
       /\*/{split($2, n, /-/);
-      print (n[1] "-" n[2] ":" m)}')"
+      n[1] = toupper(n[1]);
+      print (n[1] "-" n[2] ":" " " m)}')"
 
     subprocess: true
 
