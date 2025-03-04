@@ -238,3 +238,5 @@ PROMPT='$('/sbin/starship' prompt --terminal-width="$COLUMNS" --keymap="${KEYMAP
 RPROMPT='$('/sbin/starship' prompt --right --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="$STARSHIP_CMD_STATUS" --pipestatus="${STARSHIP_PIPE_STATUS[*]}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")'
 PROMPT2="$(/sbin/starship prompt --continuation)"
 
+alias sk='screenkey -s small -M -p fixed -g '
+alias zz='z -'
