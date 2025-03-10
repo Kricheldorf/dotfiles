@@ -19,3 +19,7 @@ echo "Spaced saved: $home_cache_used"
 
 echo "Clearing system logs"
 journalctl --vacuum-time=7d
+
+rm -rf ~/Code/shipix/shipix-platform/apps/shipix-app/.next
+cd ~/Code/shipix/shipix-platform && npx nx reset
+
