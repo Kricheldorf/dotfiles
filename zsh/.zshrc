@@ -240,3 +240,4 @@ PROMPT2="$(/sbin/starship prompt --continuation)"
 
 alias sk='screenkey -s small -M -p fixed -g '
 alias zz='z -'
+alias vim='nvim'
