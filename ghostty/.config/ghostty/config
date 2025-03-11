@@ -50,4 +50,5 @@ font-family = "MonoLisa"
 
 window-decoration = server
 
-keybind = global:alt+1=toggle_quick_terminal
+# Currently, only available for MacOS. :(
+# keybind = global:alt+1=toggle_quick_terminal
