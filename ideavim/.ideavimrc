@@ -128,7 +128,7 @@ nmap <leader>ds <action>(FileStructurePopup)
 nmap <leader>iU <action>(ShowUmlDiagram)
 nmap <leader>ih <action>(CallHierarchy)
 nmap <leader>iu <action>(ShowUsages)
-nmap <leader>gu <action>(ShowUsages)
+nmap <leader>gr <action>(ShowUsages)
 nmap <leader>im <action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
 let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
