@@ -1,5 +1,6 @@
 " Original config from: https://github.com/dbilici/IdeaVim
 " I later changed a lot of the setting to make it more familiar to me
+" Other cool resource: https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b/
 
 "" ========================================================
 "" Base Settings
@@ -26,9 +27,11 @@ let mapleader=" "
 " iIdeaVim Specific Settings
 set ideajoin
 set ideamarks
-set idearefactormode=normal
+set idearefactormode=keep
 set ideastatusicon=gray
 
+" try
+" wrapscan
 
 "" ========================================================
 "" Plugin Settings
@@ -65,7 +68,13 @@ let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_ShowTypedSequence = "false"
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
 
+nnoremap <c-s-p> :action JumpToLastWindow<CR>
+nnoremap <c-x> :action HideAllWindows<CR>
 
 "" ========================================================
 "" Key Mappings
@@ -84,7 +93,7 @@ nnoremap <C-j> <C-w>j
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
 
-" Jump between methods
+" Jump between method
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
@@ -93,7 +102,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " IDE interaction
-nmap <C-m> <Action>(ShowPopupMenu)
+nmap <leader>ca <Action>(ShowPopupMenu)
 nmap <C-S-m> <Action>(ToolWindowsGroup)
 
 " Clear Search Highlighitng
@@ -110,13 +119,16 @@ let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
+nmap <C-w>d <action>(ShowErrorDescription)
 nmap <leader>it <action>(ExpressionTypeInfo)
 nmap <leader>ip <action>(ParameterInfo)
 nmap <leader>ij <action>(QuickJavaDoc)
 nmap <leader>if <action>(FileStructurePopup)
+nmap <leader>ds <action>(FileStructurePopup)
 nmap <leader>iU <action>(ShowUmlDiagram)
 nmap <leader>ih <action>(CallHierarchy)
 nmap <leader>iu <action>(ShowUsages)
+nmap <leader>gu <action>(ShowUsages)
 nmap <leader>im <action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
 let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
@@ -128,15 +140,16 @@ let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
 let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
 let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
-
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
 " Window splits
-nmap <leader>wv <action>(SplitVertically)
-nmap <leader>wh <action>(SplitHorizontally)
-nmap <leader>wu <action>(Unsplit)
-nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
-nmap <leader>wb <action>(Back)
-nmap <leader>wf <action>(Forward)
+nmap <C-w>v <action>(SplitVertically)
+nmap <C-w>h <action>(SplitHorizontally)
+nmap <C-w>u <action>(Unsplit)
+nmap <C-w>m <action>(MoveEditorToOppositeTabGroup)
+nmap <C-w>b <action>(Back)
+nmap <C-w>f <action>(Forward)
 let g:WhichKeyDesc_window = "<leader>w Window splits"
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
@@ -197,6 +210,7 @@ nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fl <Action>(RecentLocations)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
+nmap \\ :NERDTreeToggle<CR>
 nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
 nmap <leader>fp <Action>(ManageRecentProjects)
@@ -342,6 +356,7 @@ nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>st <Action>(TextSearchAction)
+nmap <leader>sg <Action>(FindInFiles)
 let g:WhichKeyDesc_search = "<leader>s Search"
 let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
 let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
