@@ -11,6 +11,7 @@ set number relativenumber
 set showmode
 set showcmd
 set smartcase
+set ignorecase
 set incsearch
 set hlsearch
 set visualbell
@@ -41,7 +42,7 @@ set commentary
 set ReplaceWithRegister
 set surround
 set nerdtree
-
+vmap s S
 " Searching Plugins
 set sneak
 set easymotion
@@ -57,6 +58,7 @@ set textobj-entire
 set indent-object
 set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
+set functiontextobj
 
 " Which-key settings
 set which-key
