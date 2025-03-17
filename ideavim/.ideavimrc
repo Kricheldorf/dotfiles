@@ -47,18 +47,26 @@ vmap s S
 set sneak
 set easymotion
 let g:EasyMotion_override_acejump = 0
+set matchit
+set peekaboo
+
 
 " Highlighting Plugins
+" highlightedyank: highlight yanked content
 set highlightedyank
+" quickscope: An always-on highlight for a unique character in every word on a line to help you use f, F and family.
+
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Object Plugins
 set textobj-entire
+" indent-object: add a new textobj to make operations based on indentation level (most useful for langs such as python)
 set indent-object
 set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
 set functiontextobj
+set mini-ai
 
 " Which-key settings
 set which-key
@@ -300,6 +308,7 @@ nmap <leader>la <Action>(ShowIntentionActions)
 nmap <leader>lR <Action>(ReformatCode)
 nmap <leader>lI <Action>(InspectCode)
 nmap <leader>lG <Action>(Generate)
+nmap <leader>loi <Action>(OptimizeImports)
 let g:WhichKeyDesc_language = "<leader>l Language"
 let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
 let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
@@ -315,6 +324,7 @@ let g:WhichKeyDesc_language_show_intention_actions = "<leader>la Show Intention 
 let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
 let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
 let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
+let g:WhichKeyDesc_language_optimize_imports = "<leader>loi Optimize Imports"
 
 
 """ Bookmarks

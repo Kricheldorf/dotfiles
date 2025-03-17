@@ -482,6 +482,9 @@ exec --no-startup-id /usr/bin/dunst
 
 exec_always --no-startup-id autotiling -w 99 98 -l 2
 
+# start alt-tab script
+# exec "python ~/.config/i3/scripts/alt-tab.py"
+
 ###############
 # system tray #
 ###############
@@ -651,8 +654,9 @@ bindsym $mod+space exec --no-startup-id rofi -show combi \
 
 ## rofi bindings for window menu
 
-bindsym $mod+Tab exec --no-startup-id rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+Tab [con_mark=:i3b:] focus
+# bindsym $mod+Tab exec --no-startup-id rofi -show window \
+		# -config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
 
