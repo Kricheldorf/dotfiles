@@ -55,7 +55,7 @@ set peekaboo
 " highlightedyank: highlight yanked content
 set highlightedyank
 " quickscope: An always-on highlight for a unique character in every word on a line to help you use f, F and family.
-
+" needs to be set after set sneak
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -77,7 +77,7 @@ let g:WhichKey_CommandColor = "#01ffff"
 let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
-let g:WhichKey_ShowTypedSequence = "false"
+let g:WhichKey_ShowTypedSequence = "true"
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 nnoremap <leader>zc :action CollapseAllRegions<CR>
@@ -202,7 +202,6 @@ let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>to Close All Tabs But Ac
 let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>ta Close All Unpinned Tabs"
 
 
-
 " Display options
 map <leader>Dd <action>(ToggleDistractionFreeMode)
 map <leader>Dz <action>(ToggleZenMode)
@@ -216,8 +215,8 @@ let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 " File navigation
 nmap <leader>fg <Action>(GotoFile)
 nmap <leader>fr <Action>(RecentFiles)
-nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fl <Action>(RecentLocations)
+nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
 nmap \\ :NERDTreeToggle<CR>
@@ -234,8 +233,9 @@ let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
 let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
 let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
 let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
-let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
 let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
+let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
+let g:WhichKeyDesc_file_opt_toggle_nerdtree_alt = "\\ Toggle NERDTree"
 let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
 let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
@@ -243,6 +243,17 @@ let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
 let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 
+" Yank Actions
+nmap <leader>yr <Action>(CopyReference)
+nmap <leader>yy <Action>(CopyContentRootPath)
+" GitHub actions are not working
+nmap <leader>yg <Action>(GitHub.Copy.Link)
+nmap <leader>ygx <action>(Github.Open.In.Browser)
+let g:WhichKeyDesc_yank_actions = "<leader>y Yank Actions"
+let g:WhichKeyDesc_yank_actions_copy_ref = "<leader>yr Copy Reference"
+let g:WhichKeyDesc_yank_actions_copy_content_root_path = "<leader>yy Copy Content Root Path"
+let g:WhichKeyDesc_yank_actions_copy_github_link = "<leader>yg Copy Github Link"
+let g:WhichKeyDesc_yank_actions_open_github_in_browser = "<leader>ygx Open Github In Browser"
 
 " Run Actions
 nmap <leader>rm <action>(RunMenu)
@@ -368,7 +379,7 @@ nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>st <Action>(TextSearchAction)
-nmap <leader>sg <Action>(FindInFiles)
+nmap <leader>sg <Action>(FindInPath)
 let g:WhichKeyDesc_search = "<leader>s Search"
 let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
 let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
@@ -378,6 +389,7 @@ let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
 let g:WhichKeyDesc_search_file = "<leader>sf Search File"
 let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
 let g:WhichKeyDesc_search_text = "<leader>st Search Text"
+let g:WhichKeyDesc_search_in_path = "<leader>sg Search in Files ([s]earch [g]rep)"
 
 
 " Case Conversion
