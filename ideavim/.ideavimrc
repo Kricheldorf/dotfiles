@@ -100,8 +100,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 
 " Navigation actions
-nmap <C-i> <Action>(Back)
-nmap <C-o> <Action>(Forward)
+nmap <C-i> <Action>(Forward)
+nmap <C-o> <Action>(Back)
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Jump between method
 nmap [[ <Action>(MethodUp)
@@ -150,7 +154,7 @@ let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
 let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
 let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
-nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+" nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
 " Window splits
@@ -219,7 +223,7 @@ nmap <leader>fl <Action>(RecentLocations)
 nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
-nmap \\ :NERDTreeToggle<CR>
+nmap \\ <Action>(SelectInProjectView)
 nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
 nmap <leader>fp <Action>(ManageRecentProjects)
@@ -235,7 +239,7 @@ let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations
 let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
 let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
 let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
-let g:WhichKeyDesc_file_opt_toggle_nerdtree_alt = "\\ Toggle NERDTree"
+let g:WhichKeyDesc_file_opt_toggle_nerdtree_alt = "\\ Select File in NERDTree"
 let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
 let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
@@ -447,3 +451,10 @@ let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
 let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
 let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
 let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
+
+" TODOS:
+" Check integration with clipboard manager and losing focus on the editor: open and close rofi fixes it, good enough for now
+" Check and add support to see diagnostics (problems on jetbrains) list: ActivateProblemsViewToolWindow
+" check and add support for going to next and previous diagnostic/problem (F2 on jetbrains by default)
+" build vimrc with some content from this file and use on both places (nvim and jetbrains config)https://www.reddit.com/r/neovim/comments/1gicg0o/can_i_somehow_source_my_vimrc_in_my_initlua_or/
+" install jetbrains plugins from cli (and save at least the config to it)
