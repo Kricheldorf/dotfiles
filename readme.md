@@ -6,12 +6,12 @@ Use stow to symlink the dotfiles to your home directory.
 
 ```zsh
 # Stow each folder separately and check if it's working
-stow i3
-stow dunst
-stow nvim
+stow i3 --dotfiles
+stow dunst --dotfiles
+stow nvim --dotfiles
 ...
 # Or stow all at once (not recommended)
-stow -t ~ */
+stow -t ~ */ --dotfiles
 ```
 
 There might be some useful information as comments in each config file. I find it easier
