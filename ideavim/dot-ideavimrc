@@ -50,7 +50,6 @@ let g:EasyMotion_override_acejump = 0
 set matchit
 set peekaboo
 
-
 " Highlighting Plugins
 " highlightedyank: highlight yanked content
 set highlightedyank
@@ -115,6 +114,8 @@ nmap ]] <Action>(MethodDown)
 vnoremap < <gv
 vnoremap > >gv
 
+vnoremap y ygv<Esc>
+
 " IDE interaction
 nmap <leader>ca <Action>(ShowPopupMenu)
 nmap <C-S-m> <Action>(ToolWindowsGroup)
@@ -122,6 +123,11 @@ nmap <C-S-m> <Action>(ToolWindowsGroup)
 " Clear Search Highlighitng
 nnoremap <C-[> :noh<return>
 
+" Inspired by https://github.com/terryma/vim-expand-region
+xmap + <Action>(EditorSelectWord)
+xmap _ <Action>(EditorUnSelectWord)
+nmap + <Action>(EditorSelectWord)
+nmap _ <Action>(EditorUnSelectWord)
 
 "" ========================================================
 "" Leader Commands
@@ -130,6 +136,8 @@ nnoremap <C-[> :noh<return>
 " EasyMotion
 let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
+nmap ]g <action>(GotoNextError)
+nmap [g <action>(GotoPreviousError)
 
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
