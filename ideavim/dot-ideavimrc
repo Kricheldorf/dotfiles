@@ -162,8 +162,14 @@ let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
 let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
 let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
+let g:WhichKeyDesc_info_file_structure_vim = "<leader>ds File Structure (Vim)"
 " nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+" Open new line below without leaving normal mode: https://superuser.com/questions/607163/inserting-a-blank-line-in-vim
+" It might not work on the terminal version of vim: https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 
 " Window splits
 nmap <C-w>v <action>(SplitVertically)
@@ -299,7 +305,8 @@ nmap <leader>di <Action>(StepInto)
 nmap <leader>do <Action>(StepOver)
 nmap <leader>dr <Action>(Resume)
 nmap <leader>dR <Action>(EvaluateExpression)
-nmap <leader>dt <Action>(ActivateDebugToolWindow)
+nmap <leader>dT <Action>(ActivateDebugToolWindow)
+nmap <leader>dX <Action>(XDebugger.ToggleDebuggerWindow)
 let g:WhichKeyDesc_debugging = "<leader>d Debugging"
 let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
 let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
@@ -312,7 +319,8 @@ let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
 let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
 let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
 let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
-let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dT Activate Debug Tool Window"
+let g:WhichKeyDesc_debug_stop = "<leader>dX Stop Debugging"
 
 
 " Language Actions
