@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git fzf z zsh-autosuggestions)
-plugins=(git zoxide fzf zsh-autosuggestions zsh-vi-mode)
+plugins=(git zoxide fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -241,3 +241,7 @@ PROMPT2="$(/sbin/starship prompt --continuation)"
 alias sk='screenkey -s small -M -p fixed -g '
 alias zz='z -'
 alias vim='nvim'
+
+export VISUAL=nvim
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line

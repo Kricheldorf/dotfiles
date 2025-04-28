@@ -282,6 +282,7 @@ nmap <leader>rt <Action>(RunTests)
 nmap <leader>rf <action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
 nmap <leader>rC <action>(ChooseRunConfiguration)
+nmap <leader>r <action>(Run)
 let g:WhichKeyDesc_run = "<leader>r Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
