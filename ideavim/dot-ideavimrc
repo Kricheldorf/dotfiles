@@ -164,7 +164,7 @@ let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 let g:WhichKeyDesc_info_file_structure_vim = "<leader>ds File Structure (Vim)"
 " nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
-nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+" nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
 " Open new line below without leaving normal mode: https://superuser.com/questions/607163/inserting-a-blank-line-in-vim
 " It might not work on the terminal version of vim: https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
@@ -454,6 +454,7 @@ nmap <leader>Ga <Action>(Annotate)
 nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
 nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
 nmap <leader>Gu <Action>(Vcs.UpdateProject)
+nmap <leader>Gd <Action>(Vcs.ShowDiffChangedLines)
 let g:WhichKeyDesc_git = "<leader>G Git"
 let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
 let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"
@@ -468,6 +469,7 @@ let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
 let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
 let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
 let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
+let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 
 " TODOS:
 " Check integration with clipboard manager and losing focus on the editor: open and close rofi fixes it, good enough for now
@@ -475,3 +477,18 @@ let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
 " check and add support for going to next and previous diagnostic/problem (F2 on jetbrains by default)
 " build vimrc with some content from this file and use on both places (nvim and jetbrains config)https://www.reddit.com/r/neovim/comments/1gicg0o/can_i_somehow_source_my_vimrc_in_my_initlua_or/
 " install jetbrains plugins from cli (and save at least the config to it)
+
+
+nmap <leader><C-1> :action SetHarpoon1<cr>
+nmap <leader><C-2> :action SetHarpoon2<cr>
+nmap <leader><C-3> :action SetHarpoon3<cr>
+nmap <leader><C-4> :action SetHarpoon4<cr>
+
+nmap <C-1> :action GotoHarpoon1<cr>
+nmap <C-2> :action GotoHarpoon2<cr>
+nmap <C-3> :action GotoHarpoon3<cr>
+nmap <C-4> :action GotoHarpoon4<cr>
+
+nmap <C-S-h> :action ShowHarpoon<cr>
+nmap <C-S-a> :action AddToHarpoon<cr>
+

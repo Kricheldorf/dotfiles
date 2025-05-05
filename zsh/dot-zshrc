@@ -120,6 +120,13 @@ alias lg='lazygit'
 # got from: https://github.com/kurealnum/dotfiles/blob/main/.bashrc
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n2|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias onedisplay='xrandr --output DP-2 --off'
+
+alias sdb='cd ~/Code/shipix/shipix-platform && npm run docker:database:up'
+alias sapi='cd ~/Code/shipix/shipix-platform && npm run start:api:dev'
+alias sapp='cd ~/Code/shipix/shipix-platform && npm run start:app:dev'
+
+
 function gotest() {
   set -o xtrace
   git fetch origin $1:$1
