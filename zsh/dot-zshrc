@@ -133,6 +133,16 @@ function gotest() {
   git checkout $1
 }
 
+function export_stash() {
+  set -o xtrace
+  git stash show stash@{$1} -p > patch_$1
+}
+
+function import_stash() {
+  set -o xtrace
+  git apply $1
+}
+
 # PATH updates
 
 export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
