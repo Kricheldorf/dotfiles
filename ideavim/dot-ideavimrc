@@ -31,6 +31,8 @@ set ideamarks
 set idearefactormode=keep
 set ideastatusicon=gray
 
+set multiple-cursors
+
 " try
 " wrapscan
 
@@ -83,14 +85,14 @@ nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 
 nnoremap <c-s-p> :action JumpToLastWindow<CR>
-nnoremap <c-x> :action HideAllWindows<CR>
+nnoremap zx :action HideAllWindows<CR>
 
 "" ========================================================
 "" Key Mappings
 "" ========================================================
 " Tab navigation
-nmap <C-p> <Action>(PreviousTab)
-nmap <C-n> <Action>(NextTab)
+" nmap <C-p> <Action>(PreviousTab)
+" nmap <C-n> <Action>(NextTab)
 
 " Pane navigation
 nnoremap <C-h> <C-w>h
@@ -129,6 +131,22 @@ xmap _ <Action>(EditorUnSelectWord)
 nmap + <Action>(EditorSelectWord)
 nmap _ <Action>(EditorUnSelectWord)
 
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
 "" ========================================================
 "" Leader Commands
 "" ========================================================
@@ -150,7 +168,6 @@ nmap <leader>ds <action>(FileStructurePopup)
 nmap <leader>iU <action>(ShowUmlDiagram)
 nmap <leader>ih <action>(CallHierarchy)
 nmap <leader>iu <action>(ShowUsages)
-nmap <leader>gr <action>(ShowUsages)
 nmap <leader>im <action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
 let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
@@ -168,12 +185,13 @@ let g:WhichKeyDesc_info_file_structure_vim = "<leader>ds File Structure (Vim)"
 
 " Open new line below without leaving normal mode: https://superuser.com/questions/607163/inserting-a-blank-line-in-vim
 " It might not work on the terminal version of vim: https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
+map <leader><Enter> o<ESC>
+map <leader><S-Enter> O<ESC>
 
 " Window splits
 nmap <C-w>v <action>(SplitVertically)
 nmap <C-w>h <action>(SplitHorizontally)
+
 nmap <C-w>u <action>(Unsplit)
 nmap <C-w>m <action>(MoveEditorToOppositeTabGroup)
 nmap <C-w>b <action>(Back)
@@ -228,7 +246,6 @@ let g:WhichKeyDesc_display = "<leader>D Display options"
 let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
 let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
-
 
 " File navigation
 nmap <leader>fg <Action>(GotoFile)
@@ -380,16 +397,18 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 " Go To
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>go <Action>(GotoSuperMethod)
-nmap <leader>gD <Action>(GotoTypeDeclaration)
+nmap gT <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
-nmap <leader>gT <Action>(GotoTest)
-let g:WhichKeyDesc_goto = "<leader>g Go To"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
-let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
-let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
-let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
-let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
-
+nmap gt <Action>(GotoTest)
+nmap gr <action>(ShowUsages)
+" let g:WhichKeyDesc_goto_leader = "<leader>g Go To"
+" let g:WhichKeyDesc_goto_declaration = "gd Go To Declaration"
+" let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
+" let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
+" let g:WhichKeyDesc_goto_type_declaration = "<leader>gt Go To Type Declaration"
+" let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
+" let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
+" let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
 
 " Search
 nmap <leader>sS <action>(SearchEverywhere)
@@ -399,6 +418,7 @@ nmap <leader>sa <Action>(GotoAction)
 nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>ss <Action>(GotoSymbol)
+nmap <leader>sd <Action>(GotoDatabaseObject)
 nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>sg <Action>(FindInPath)
 let g:WhichKeyDesc_search = "<leader>s Search"
@@ -479,16 +499,21 @@ let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 " install jetbrains plugins from cli (and save at least the config to it)
 
 
-nmap <leader><C-1> :action SetHarpoon1<cr>
-nmap <leader><C-2> :action SetHarpoon2<cr>
-nmap <leader><C-3> :action SetHarpoon3<cr>
-nmap <leader><C-4> :action SetHarpoon4<cr>
+" Harpoon
+
+nmap <leader>h1 :action SetHarpoon1<cr>
+nmap <leader>h2 :action SetHarpoon2<cr>
+nmap <leader>h3 :action SetHarpoon3<cr>
+nmap <leader>h4 :action SetHarpoon4<cr>
+nmap <leader>h5 :action SetHarpoon5<cr>
 
 nmap <C-1> :action GotoHarpoon1<cr>
 nmap <C-2> :action GotoHarpoon2<cr>
 nmap <C-3> :action GotoHarpoon3<cr>
 nmap <C-4> :action GotoHarpoon4<cr>
+nmap <C-5> :action GotoHarpoon5<cr>
 
-nmap <C-S-h> :action ShowHarpoon<cr>
-nmap <C-S-a> :action AddToHarpoon<cr>
+nmap <leader>hh :action ShowHarpoon<cr>
+nmap <leader>ha :action AddToHarpoon<cr>
 
+let g:WhichKeyDesc_harpoon = "<leader>h Harpoon"

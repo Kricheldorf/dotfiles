@@ -259,6 +259,8 @@ alias sk='screenkey -s small -M -p fixed -g '
 alias zz='z -'
 alias vim='nvim'
 
+bindkey -v
+
 # export VISUAL=nvim
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey -M vicmd 'v' edit-command-line
