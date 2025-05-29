@@ -397,18 +397,18 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 " Go To
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>go <Action>(GotoSuperMethod)
-nmap gT <Action>(GotoTypeDeclaration)
+nmap <leader>gT <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
-nmap gt <Action>(GotoTest)
-nmap gr <action>(ShowUsages)
-" let g:WhichKeyDesc_goto_leader = "<leader>g Go To"
-" let g:WhichKeyDesc_goto_declaration = "gd Go To Declaration"
-" let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
-" let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
-" let g:WhichKeyDesc_goto_type_declaration = "<leader>gt Go To Type Declaration"
-" let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
-" let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
-" let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gr <action>(ShowUsages)
+let g:WhichKeyDesc_goto_leader = "<leader>g Go To"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
+let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gT Go To Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go To Test"
+let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
 
 " Search
 nmap <leader>sS <action>(SearchEverywhere)
