@@ -12,7 +12,7 @@ customCommands:
       n[1] = toupper(n[1]);
       print (n[1] "-" n[2] ":" " " m)}')"
 
-    subprocess: true
+    output: terminal
 
     description: "Custom commit message"
 
