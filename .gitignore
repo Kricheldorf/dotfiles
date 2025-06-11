@@ -1,2 +1,4 @@
 .idea
 tmux/dot-config/tmux/plugins/
+qutebrowser/dot-config/qutebrowser/bookmarks
+qutebrowser/dot-config/qutebrowser/quickmarks
