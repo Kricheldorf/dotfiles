@@ -144,6 +144,10 @@ function import_stash() {
   git apply $1
 }
 
+cheatsh() {
+  curl cheat.sh/"$1"
+}
+
 # PATH updates
 
 export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
