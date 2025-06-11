@@ -81,11 +81,9 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_ShowTypedSequence = "true"
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
+" TODO: Review keybinds 
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
-
-nnoremap <c-s-p> :action JumpToLastWindow<CR>
-nnoremap zx :action HideAllWindows<CR>
 
 "" ========================================================
 "" Key Mappings
@@ -99,6 +97,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
+nnoremap <C-w>p :action JumpToLastWindow<CR>
+nnoremap <C-w>q :action HideAllWindows<CR>
+nnoremap zx :action HideAllWindows<CR>
 
 " Navigation actions
 nmap <C-i> <Action>(Forward)
@@ -119,8 +120,8 @@ vnoremap > >gv
 vnoremap y ygv<Esc>
 
 " IDE interaction
-nmap <leader>ca <Action>(ShowPopupMenu)
-nmap <C-S-m> <Action>(ToolWindowsGroup)
+"nmap <leader>ca <Action>(ShowPopupMenu)
+"nmap <C-S-m> <Action>(ToolWindowsGroup)
 
 " Clear Search Highlighitng
 nnoremap <C-[> :noh<return>
@@ -154,8 +155,10 @@ xmap <leader>g<C-n> <Plug>AllOccurrences
 " EasyMotion
 let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
-nmap ]g <action>(GotoNextError)
-nmap [g <action>(GotoPreviousError)
+nmap ]d <action>(GotoNextError)
+nmap [d <action>(GotoPreviousError)
+nmap <M-j> <action>(GotoNextError)
+nmap <M-k> <action>(GotoPreviousError)
 
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
@@ -312,7 +315,7 @@ let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configurati
 
 
 " Debugging commands
-nmap <leader>dx <Action>(Debug)
+nmap <leader>dx <Action>(ChooseDebugConfiguration)
 nmap <leader>dc <Action>(ContextDebug)
 nmap <leader>dv <Action>(ViewBreakpoints)
 nmap <leader>de <Action>(EditBreakpoint)
@@ -344,6 +347,7 @@ let g:WhichKeyDesc_debug_stop = "<leader>dX Stop Debugging"
 " Language Actions
 nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>lr <Action>(RenameElement)
+nmap <leader>rn <Action>(RenameElement)
 nmap <leader>lc <Action>(ChangeSignature)
 nmap <leader>lv <Action>(IntroduceVariable)
 nmap <leader>li <Action>(Inline)
@@ -354,10 +358,13 @@ nmap <leader>lp <Action>(IntroduceParameter)
 nmap <leader>lo <Action>(IntroduceParameterObject)
 nmap <leader>le <Action>(EncapsulateFields)
 nmap <leader>la <Action>(ShowIntentionActions)
+nmap <leader>ca <Action>(ShowIntentionActions)
 nmap <leader>lR <Action>(ReformatCode)
+nmap <leader>f <Action>(ReformatCode)
 nmap <leader>lI <Action>(InspectCode)
 nmap <leader>lG <Action>(Generate)
 nmap <leader>loi <Action>(OptimizeImports)
+nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
 let g:WhichKeyDesc_language = "<leader>l Language"
 let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
 let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
@@ -410,7 +417,7 @@ let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
 let g:WhichKeyDesc_goto_test = "<leader>gt Go To Test"
 let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
 
-" Search
+" Search / Telescope
 nmap <leader>sS <action>(SearchEverywhere)
 nmap <leader>su <Action>(FindUsages)
 nmap <leader>sn <Action>(ShowNavBar)
@@ -421,6 +428,12 @@ nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>sd <Action>(GotoDatabaseObject)
 nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>sg <Action>(FindInPath)
+map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
+map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
+map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
+map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
+" TODO: maybe update to <leader><leader>
+nmap <leader>s. <action>(RecentFiles)
 let g:WhichKeyDesc_search = "<leader>s Search"
 let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
 let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
@@ -432,6 +445,24 @@ let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
 let g:WhichKeyDesc_search_text = "<leader>st Search Text"
 let g:WhichKeyDesc_search_in_path = "<leader>sg Search in Files ([s]earch [g]rep)"
 
+" Harpoon
+" TODO: Review keybinds
+nmap <leader>h1 :action SetHarpoon1<cr>
+nmap <leader>h2 :action SetHarpoon2<cr>
+nmap <leader>h3 :action SetHarpoon3<cr>
+nmap <leader>h4 :action SetHarpoon4<cr>
+nmap <leader>h5 :action SetHarpoon5<cr>
+
+nmap <C-1> :action GotoHarpoon1<cr>
+nmap <C-2> :action GotoHarpoon2<cr>
+nmap <C-3> :action GotoHarpoon3<cr>
+nmap <C-4> :action GotoHarpoon4<cr>
+nmap <C-5> :action GotoHarpoon5<cr>
+
+nmap <leader>hh :action ShowHarpoon<cr>
+nmap <leader>a :action AddToHarpoon<cr>
+
+let g:WhichKeyDesc_harpoon = "<leader>h Harpoon"
 
 " Case Conversion
 vmap <leader>cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
@@ -499,21 +530,4 @@ let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 " install jetbrains plugins from cli (and save at least the config to it)
 
 
-" Harpoon
 
-nmap <leader>h1 :action SetHarpoon1<cr>
-nmap <leader>h2 :action SetHarpoon2<cr>
-nmap <leader>h3 :action SetHarpoon3<cr>
-nmap <leader>h4 :action SetHarpoon4<cr>
-nmap <leader>h5 :action SetHarpoon5<cr>
-
-nmap <C-1> :action GotoHarpoon1<cr>
-nmap <C-2> :action GotoHarpoon2<cr>
-nmap <C-3> :action GotoHarpoon3<cr>
-nmap <C-4> :action GotoHarpoon4<cr>
-nmap <C-5> :action GotoHarpoon5<cr>
-
-nmap <leader>hh :action ShowHarpoon<cr>
-nmap <leader>ha :action AddToHarpoon<cr>
-
-let g:WhichKeyDesc_harpoon = "<leader>h Harpoon"

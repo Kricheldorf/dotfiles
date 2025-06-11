@@ -69,6 +69,8 @@ title_align center
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+focus_wrapping workspace
+
 # switch/iterate between workspaces
 #bindsym $mod+Tab workspace next
 #bindsym $mod+Shift+Tab workspace prev
@@ -232,10 +234,12 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_bri
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 
 # change focus
-bindsym $mod+h focus left
+bindsym $mod+h exec --no-startup-id ~/.config/i3/scripts/fullscreen_wrap.sh i3-msg focus left
+# bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+l exec --no-startup-id ~/.config/i3/scripts/fullscreen_wrap.sh i3-msg focus right
+# bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 # bindsym $mod+Left focus left

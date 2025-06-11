@@ -126,6 +126,7 @@ alias sdb='cd ~/Code/shipix/shipix-platform && npm run docker:database:up'
 alias sapi='cd ~/Code/shipix/shipix-platform && npm run start:api:dev'
 alias sapp='cd ~/Code/shipix/shipix-platform && npm run start:app:dev'
 
+alias difft='nvim -d ~/Code/shipix/shipix-platform/apps/shipix-app/locales/en.json ~/Code/shipix/shipix-platform/apps/shipix-app/locales/nl.json'
 
 function gotest() {
   set -o xtrace
