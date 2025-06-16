@@ -418,6 +418,7 @@ let g:WhichKeyDesc_goto_test = "<leader>gt Go To Test"
 let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
 
 " Search / Telescope
+nmap <leader>/ <action>(Find)
 nmap <leader>sS <action>(SearchEverywhere)
 nmap <leader>su <Action>(FindUsages)
 nmap <leader>sn <Action>(ShowNavBar)
@@ -428,9 +429,9 @@ nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>sd <Action>(GotoDatabaseObject)
 nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>sg <Action>(FindInPath)
-map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
+" map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
 map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
-map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
+" map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
 map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
 " TODO: maybe update to <leader><leader>
 nmap <leader>s. <action>(RecentFiles)
@@ -528,6 +529,4 @@ let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 " check and add support for going to next and previous diagnostic/problem (F2 on jetbrains by default)
 " build vimrc with some content from this file and use on both places (nvim and jetbrains config)https://www.reddit.com/r/neovim/comments/1gicg0o/can_i_somehow_source_my_vimrc_in_my_initlua_or/
 " install jetbrains plugins from cli (and save at least the config to it)
-
-
 
