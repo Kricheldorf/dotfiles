@@ -1,20 +1,28 @@
 customCommands:
-  - key: "<c-c>"
-    context: "files"
-    prompts:
-      - type: "input"
-        title: "Add Commit Message with Jira prefix"
-        key: "Message"
+  - key: '<c-p>'
+    command: 'git push origin {{.CheckedOutBranch.Name}} --no-verify'
+    context: 'global'
+    loadingText: 'Pushing with --no-verify'
+    description: 'Push current branch to remote ignoring pre-push hooks'
+    output: 'popup'
 
-    command:
-      git commit -m "$(git branch --contains | awk -v m="{{.Form.Message}}" '
-      /\*/{split($2, n, /-/);
-      n[1] = toupper(n[1]);
-      print (n[1] "-" n[2] ":" " " m)}')"
-
-    output: terminal
-
-    description: "Commit message with the jira card from branch name"
+# customCommands:
+#   - key: "<c-c>"
+#     context: "files"
+#     prompts:
+#       - type: "input"
+#         title: "Add Commit Message with Jira prefix"
+#         key: "Message"
+#
+#     command:
+#       git commit -m "$(git branch --contains | awk -v m="{{.Form.Message}}" '
+#       /\*/{split($2, n, /-/);
+#       n[1] = toupper(n[1]);
+#       print (n[1] "-" n[2] ":" " " m)}')"
+#
+#     output: terminal
+#
+#     description: "Commit message with the jira card from branch name"
 
 git:
   paging:

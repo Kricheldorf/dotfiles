@@ -79,6 +79,7 @@ let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_ShowTypedSequence = "true"
+let g:WhichKey_DefaultDelay = 600
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 " TODO: Review keybinds 
@@ -432,7 +433,8 @@ nmap <leader>sg <Action>(FindInPath)
 " map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
 map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
 " map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
-map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
+" map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
+map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrepCaseInsensitive)
 " TODO: maybe update to <leader><leader>
 nmap <leader>s. <action>(RecentFiles)
 let g:WhichKeyDesc_search = "<leader>s Search"
@@ -523,10 +525,112 @@ let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
 let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
 let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 
+" HANDLERS
+"
+"Shift+Enter	Data Source Properties	Vim
+"Ctrl+Page Up	Move Caret to Page Top	Vim
+"Ctrl+Page Down	Move Caret to Page Bottom	Vim
+"Shift+Left	Extend Selection to Parent Node	Vim
+"Ctrl+Left	Move Caret to Previous Word	Vim
+"Shift+Up	Extend Selection with Previous Node	Vim
+"Ctrl+Up	Jump to Navigation Bar	Vim
+"Shift+Right	Extend Selection to Next Column	Vim
+"Ctrl+Right	Move Caret to Next Word	Vim
+"Shift+Down	Down with Selection	Vim
+"Ctrl+Down	Select Prompt	Vim
+"Ctrl+1	Send to Left	Vim
+"Ctrl+2	Project Directory	Vim
+"Ctrl+Shift+2	Toggle Bookmark 2	Vim
+"Ctrl+3	Go to Bookmark 3	Vim
+"Ctrl+4	Go to Bookmark 4	Vim
+"Ctrl+5	Go to Bookmark 5	Vim
+"Ctrl+6	Go to Bookmark 6	Vim
+"Ctrl+Shift+6	Toggle Bookmark 6	Vim
+"Ctrl+;	Activate / Cycle AceJump Mode	Vim
+"Ctrl+Shift+;	Start AceJump in All Line Marks Mode	Vim
+"Ctrl+A	Select All	Vim
+"Ctrl+B	Bold	Vim
+"Ctrl+C	Copy	Vim
+"Ctrl+D	Show Diff	Vim
+"Ctrl+E	Iterate Recent Files	Vim
+"Ctrl+F	Speed Search	Vim
+"Ctrl+G	Find Next / Move to Next Occurrence	Vim
+"Ctrl+H	Base on This Type	Vim
+"Ctrl+I	Implement Methods…	Vim
+"Ctrl+J	Use down split or switch down	Vim
+"Alt+J	Supermaven Chat: New Conversation	Vim
+"Ctrl+K	Select Previous Row	Vim
+"Ctrl+L	Focus Text Filter	Vim
+"Ctrl+M	Minimize	Vim
+"Ctrl+N	Use down split or switch down	Vim
+"Ctrl+O	Go to Class...	Vim
+"Ctrl+P	Select Previous Row	Vim
+"Ctrl+Q	Exit	Vim
+"Ctrl+R	Refresh	Vim
+"Ctrl+S	Save All	IDE
+"Ctrl+T	Terminal	Vim
+"Ctrl+U	Go to Super Method	Vim
+"Ctrl+V	Paste	Vim
+"Ctrl+X	Remove	Vim
+"Ctrl+Y	Quick Definition	Vim
+"Ctrl+[	Back	Vim
+"Ctrl+\	Root Directory	Vim
+"Ctrl+]	Next Directory	Vim
+"
+
+sethandler <S-CR> a:vim 
+sethandler <C-Pageup> a:vim
+sethandler <C-Pagedown> a:vim
+sethandler <S-Left> a:ide
+sethandler <C-Left> a:ide
+sethandler <S-Up> a:ide
+sethandler <C-Up> a:ide
+sethandler <S-Right> a:ide
+sethandler <C-Right> a:ide
+sethandler <S-Down> a:ide
+sethandler <C-Down> a:vim
+sethandler <C-1> a:vim
+sethandler <C-2> a:vim
+sethandler <C-S-2> a:vim
+sethandler <C-3> a:vim
+sethandler <C-4> a:vim
+sethandler <C-5> a:vim
+sethandler <C-6> a:vim
+sethandler <C-S-6> a:vim
+sethandler <C-;> a:vim
+sethandler <C-S-;> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:ide
+sethandler <C-C> a:ide
+sethandler <C-D> a:vim
+sethandler <C-E> a:ide
+sethandler <C-F> a:vim
+sethandler <C-G> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:ide
+sethandler <A-J> a:vim
+sethandler <C-K> a:ide
+sethandler <C-L> a:vim
+sethandler <C-M> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-Q> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:ide
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> a:vim
+sethandler <C-X> a:vim
+sethandler <C-Y> a:vim
+sethandler <C-[> a:vim
+sethandler <C-\> a:vim
+sethandler <C-]> a:vim
+
 " TODOS:
 " Check integration with clipboard manager and losing focus on the editor: open and close rofi fixes it, good enough for now
 " Check and add support to see diagnostics (problems on jetbrains) list: ActivateProblemsViewToolWindow
 " check and add support for going to next and previous diagnostic/problem (F2 on jetbrains by default)
 " build vimrc with some content from this file and use on both places (nvim and jetbrains config)https://www.reddit.com/r/neovim/comments/1gicg0o/can_i_somehow_source_my_vimrc_in_my_initlua_or/
 " install jetbrains plugins from cli (and save at least the config to it)
-
