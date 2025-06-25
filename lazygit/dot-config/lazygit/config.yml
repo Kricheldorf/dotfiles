@@ -1,5 +1,5 @@
 customCommands:
-  - key: '<c-p>'
+  - key: '<c-c>'
     command: 'git push origin {{.CheckedOutBranch.Name}} --no-verify'
     context: 'global'
     loadingText: 'Pushing with --no-verify'

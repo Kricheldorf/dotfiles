@@ -1,6 +1,17 @@
 # Script from kurealnum on https://github.com/kurealnum/dotfiles/blob/main/.config/scripts/sysmaintenance.sh
 
 # This code is almost entirely taken from Mr. Cejas's blog: https://fernandocejas.com/blog/engineering/2022-03-30-arch-linux-system-maintance/
+
+source $HOME/scripts/news.sh
+
+news
+
+read -p "Update system? (y/N): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  exit 0
+fi
+
 echo "Updating system"
 yay -Syu
 

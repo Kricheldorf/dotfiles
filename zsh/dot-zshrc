@@ -148,6 +148,8 @@ cheatsh() {
   curl cheat.sh/"$1"
 }
 
+source $HOME/scripts/news.sh
+
 # PATH updates
 
 export PATH="$HOME/Installations/WebStorm-243.22562.222/bin:$PATH"
