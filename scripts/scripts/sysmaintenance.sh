@@ -23,10 +23,16 @@ echo "Space saved: $pacman_cache_space_used"
 echo "Removing orphan packages"
 yay -Qdtq | yay -Rns -
 
-echo "Clearing ~/.cache"
-home_cache_used="$(du -sh ~/.cache)"
-rm -rf ~/.cache/
-echo "Spaced saved: $home_cache_used"
+read -p "Clear ~/.cache? (y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Clearing ~/.cache"
+  home_cache_used="$(du -sh ~/.cache)"
+  rm -rf ~/.cache/
+  echo "Spaced saved: $home_cache_used"
+else
+  echo "Skipping ~/.cache clearing"
+fi
 
 echo "Clearing system logs"
 journalctl --vacuum-time=7d
