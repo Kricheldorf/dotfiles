@@ -1,0 +1,4 @@
+[Default Applications]
+text/plain=neovide.desktop
+inode/directory=com.mitchellh.ghostty.desktop
+
