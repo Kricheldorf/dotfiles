@@ -4,15 +4,14 @@
  *******************************************************/
 configuration {
     modi:                "combi,drun,window";
-    font:                "MonoLisa-Regular 10";
+    font:                "MonoLisa-Meme 12";
     show-icons:          true;
     icon-theme:          "Qogir";
     combi-modes:         "window,drun";
     display-combi:       "  ";
     display-drun:        "  ";
-    drun-display-format: "{icon} {name}";
     display-window:      "  ";
-    window-format:       "  {w} · {c} · {t}";
+    window-format:       "{w} · {c} · {t}";
     scroll-method:       0;
     sidebar-mode:        false;
 }
@@ -22,8 +21,7 @@ configuration {
 
 window {
     background-color: @background;
-    border:           0;
-    padding:          30;
+    border-radius:     8;
 }
 listview {
     lines:   10;
@@ -43,16 +41,16 @@ textbox {
 }
 listview {
     fixed-height: 0;
-    border:       8px 0px 0px;
+    border:       0;
     border-color: @separatorcolor;
-    spacing:      8px;
+    spacing:      4px;
     scrollbar:    false;
     padding:      2px 0px 0px;
     columns:      1;
 }
 element {
     border:  0;
-    padding: 1px;
+    padding: 4px;
 }
 element-text {
     background-color: inherit;
@@ -116,7 +114,7 @@ button.selected {
 inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    1px;
+    padding:    8;
 }
 case-indicator {
     spacing:    0;
@@ -128,6 +126,7 @@ entry {
 }
 prompt {
     spacing:    0;
+    padding: 5px 0px;
     text-color: @normal-foreground;
 }
 inputbar {
@@ -135,9 +134,7 @@ inputbar {
 }
 textbox-prompt-colon {
     expand:     false;
-    str:        ":";
-    margin:     0em 0.3em 0em 0em;
+    str:        "";
+    margin:     0em 0.4em 0em 0em;
     text-color: @normal-foreground;
 }
-
-@import "~/.config/rofi/dracula-theme.rasi"

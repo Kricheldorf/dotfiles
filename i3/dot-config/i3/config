@@ -209,7 +209,7 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # lock with a picture:
 #bindsym $mod+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
-bindsym Control+Mod1+l exec --no-startup-id i3-msg workspace $wsL && ~/.config/i3/scripts/blur-lock
+bindsym Control+Mod1+l exec --no-startup-id i3-msg workspace $wsL && ~/.config/i3/scripts/lock-with-cleanup.sh
 # lock in case after sleep
 exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
 
@@ -293,6 +293,7 @@ bindsym $mod+Shift+Return resize set 1800 px 1000 px, move position center
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+equal border toggle
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
@@ -614,7 +615,7 @@ bar {
 		font pango: Noto Sans Regular 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position top
-#	    	i3bar_command i3bar --transparency
+	    	# i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
 		    tray_output primary

@@ -161,7 +161,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export BROWSER="microsoft-edge-stable"
+export BROWSER="vivaldi"
 
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
@@ -281,3 +281,5 @@ bindkey -v
 # export VISUAL=nvim
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey -M vicmd 'v' edit-command-line
+
+eval "$(batman --export-env)"
