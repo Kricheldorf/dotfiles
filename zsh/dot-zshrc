@@ -163,9 +163,9 @@ export NVM_DIR="$HOME/.nvm"
 
 export BROWSER="vivaldi"
 
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+# source <(carapace _carapace)
 
 # eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/robbyrussell.omp.json)"
 
