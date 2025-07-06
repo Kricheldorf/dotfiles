@@ -52,3 +52,4 @@ window-decoration = server
 
 # Currently, only available for MacOS. :(
 # keybind = global:alt+1=toggle_quick_terminal
+keybind = shift+enter=text:\n
