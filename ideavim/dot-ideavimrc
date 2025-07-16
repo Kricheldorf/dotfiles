@@ -161,6 +161,10 @@ nmap [d <action>(GotoPreviousError)
 nmap <M-j> <action>(GotoNextError)
 nmap <M-k> <action>(GotoPreviousError)
 
+" navigate vcs changes
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
 nmap <C-w>d <action>(ShowErrorDescription)
