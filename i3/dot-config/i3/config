@@ -157,15 +157,17 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
-# mode "launcher" {
-#     bindsym p exec --no-startup-id postman
-#     bindsym c exec --no-startup-id webstorm
-#     bindsym t exec --no-startup-id /usr/bin/thunar
-# 	     bindsym Return mode "default"
-#         bindsym Escape mode "default"
-# }
-#
-# bindsym $mod+p mode "launcher"
+mode "launcher" {
+    bindsym b exec --no-startup-id vivaldi; mode "default"
+    bindsym p exec --no-startup-id postman; mode "default"
+    bindsym c exec --no-startup-id webstorm; mode "default"
+    bindsym t exec --no-startup-id /usr/bin/thunar; mode "default"
+    bindsym s exec --no-startup-id ghostty -e "spotify_player"; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "launcher"
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -276,8 +278,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space focus mode_toggle
-bindsym $mod+Shift+ctrl+space floating toggle
+bindsym $mod+Shift+ctrl+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+d focus mode_toggle
