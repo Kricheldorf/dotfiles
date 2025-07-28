@@ -10,9 +10,9 @@
 # assign tags or translations to each profile
 declare -A tags
 tags=(
-  [performance]="Performance"
-  [balanced]="Balanced"
-  [power-saver]="Power saver"
+  [performance]=""
+  [balanced]=""
+  [power-saver]=""
 )
 
 # Get current profile 

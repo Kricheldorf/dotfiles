@@ -11,6 +11,7 @@ configuration {
     display-combi:       "  ";
     display-drun:        "  ";
     display-window:      "  ";
+    drun-display-format: "{icon} {name}";
     window-format:       "{w} · {c} · {t}";
     scroll-method:       0;
     sidebar-mode:        false;

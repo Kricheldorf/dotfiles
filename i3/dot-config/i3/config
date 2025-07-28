@@ -162,7 +162,7 @@ mode "launcher" {
     bindsym p exec --no-startup-id postman; mode "default"
     bindsym c exec --no-startup-id webstorm; mode "default"
     bindsym t exec --no-startup-id /usr/bin/thunar; mode "default"
-    bindsym s exec --no-startup-id ghostty -e "spotify_player"; mode "default"
+    bindsym s exec --no-startup-id ghostty --title="Spotify" -e "spotify_player"; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
