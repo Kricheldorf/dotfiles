@@ -212,6 +212,8 @@ display_todo() {
     echo "   ssh-keygen -t ed25519 -C 'your_email@example.com'"
     echo "   ssh-add ~/.ssh/id_ed25519"
     echo "   cat ~/.ssh/id_ed25519.pub # Add to GitHub"
+    echo "* Update dotfiles origin url"
+    echo "   cd $HOME/dotfiles && git remote set-url origin git@github.com:Kricheldorf/dotfiles.git"
     echo "* Clone work repositories"
     echo "* Configure Git identity:"
     echo "   git config --global user.email 'your_email@example.com'"
