@@ -219,6 +219,9 @@ display_todo() {
     echo "   git config --global user.email 'your_email@example.com'"
     echo "   git config --global user.name 'Your Name'"
     echo "* Install AUR helper (yay/paru) and AUR packages (insync, etc.)"
+    echo "* Install tmux plugin manager (https://github.com/tmux-plugins/tpm)"
+    echo "   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+    echo "* Change /etc/systemd/logind.conf (set HandleLidSwitchDocked=suspend)"
     echo "* Restart your session to apply all changes"
 }
 
