@@ -49,7 +49,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 1
+# new_window pixel 1
 
 # thin borders
 # hide_edge_borders both
@@ -157,17 +157,20 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
-mode "launcher" {
+set $mode_launcher "(B)rowser | (C)ode | (S)potify | (A)i | (T)hunar | (P)ostman"
+
+mode $mode_launcher {
     bindsym b exec --no-startup-id vivaldi; mode "default"
-    bindsym p exec --no-startup-id postman; mode "default"
     bindsym c exec --no-startup-id webstorm; mode "default"
-    bindsym t exec --no-startup-id /usr/bin/thunar; mode "default"
     bindsym s exec --no-startup-id ghostty --title="Spotify" -e "spotify_player"; mode "default"
+    bindsym t exec --no-startup-id /usr/bin/thunar; mode "default"
+    bindsym p exec --no-startup-id postman; mode "default"
+    bindsym a exec --no-startup-id "xdg-open https://claude.ai/new"; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "launcher"
+bindsym $mod+p mode $mode_launcher
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -691,3 +694,4 @@ bindsym $mod+Tab [con_mark=:i3b:] focus
 
 bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -config ~/.config/rofi/roficalc.rasi
 bindsym $mod+M exec --no-startup-id rofi -show emoji -modi emoji
+

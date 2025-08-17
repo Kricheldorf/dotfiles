@@ -4,6 +4,11 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export PATH=$PATH:$HOME/Installations/WebStorm-243.24978.60/bin
+
+# echo current dir when zoxide is used
+# export _ZO_ECHO=1
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -114,6 +119,7 @@ alias cat='bat'
 alias ls='eza'
 alias ncdu='ncdu -t8'
 alias lg='lazygit'
+alias zsl='cd ~/Code/shipix/shipix-platform && lg'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

@@ -39,4 +39,11 @@ gui:
   showDivergenceFromBaseBranch: onlyArrow
   commitAuthorLongLength: 2
 
+os:
+  edit: 'webstorm {{filename}}'
+  editAtLine: 'webstorm --line {{line}} {{filename}}'
+  editAtLineAndWait: 'webstorm --block --line {{line}} {{filename}}'
+  editInTerminal: false
+  openDirInEditor: 'webstorm {{dir}}'
+
 nerdFontsVersion: '3'
