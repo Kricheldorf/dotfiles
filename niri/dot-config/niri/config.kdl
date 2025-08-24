@@ -295,6 +295,7 @@ spawn-at-startup "dunst"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bash" "-e" "swaybg --mode fill --image ~/Pictures/bg.jpg"
 spawn-at-startup "copyq" "--start-server"
+spawn-at-startup "ydotoold"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -389,6 +390,30 @@ window-rule {
     match app-id="webstorm"
     default-column-width { proportion 1.0; }
 }
+
+// window-rule {
+//     match app-id="jetbrains-webstorm"
+//     match is-floating=true
+//
+//     // default-column-width { fixed 1200; }
+//     default-floating-position x=0 y=0 relative-to="top"
+//
+//     open-maximized false
+//     open-fullscreen false
+// }
+
+// window-rule {
+//     match app-id="^dropdown$"
+//
+//     // Open it as floating.
+//     open-floating true
+//     // Anchor to the top edge of the screen.
+//     default-floating-position x=0 y=0 relative-to="top"
+//     // Half of the screen high.
+//     default-window-height { proportion 0.5; }
+//     // 80% of the screen wide.
+//     default-column-width { proportion 0.8; }
+// }
 
 hotkey-overlay {
     skip-at-startup
@@ -639,7 +664,11 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-    Mod+Shift+Print { spawn "flameshot" "gui"; }
+
+    Mod+Print { spawn "sh" "-c" "grim -g \"$(slurp -o -c '#ff0000ff')\" - | satty -f - -o - | wl-copy"; }
+    Mod+Shift+Print { spawn "sh" "-c" "grim -g \"$(slurp -o -c '#ff0000ff')\"
+        -t ppm - | satty --filename - --fullscreen --output-filename
+        ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

@@ -1,4 +1,7 @@
 {
+   "wlr/taskbar": {
+      "tooltip-format": "{title} | {app_id}"
+   },
    "niri/workspaces": {
       "format": "{icon}",
       "format-icons": {

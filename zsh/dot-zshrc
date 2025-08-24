@@ -5,6 +5,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 export PATH=$PATH:$HOME/Installations/WebStorm-243.24978.60/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # echo current dir when zoxide is used
 # export _ZO_ECHO=1
@@ -272,7 +273,7 @@ PROMPT2="$(/sbin/starship prompt --continuation)"
 alias sk='screenkey -s small -M -p fixed -g '
 alias zz='z -'
 alias vim='nvim'
-alias cd='z'
+alias n='nvim .'
 
 bindkey -v
 # bindkey "^a" beginning-of-line

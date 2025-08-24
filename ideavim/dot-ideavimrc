@@ -47,7 +47,7 @@ set hlsearch
 set visualbell
 
 " Clipboard Integration
-set clipboard+=unnamed
+set clipboard+=unnamed,unnamedplus
 
 " Leader Key
 let mapleader=" "
@@ -78,7 +78,6 @@ vmap s S
 " Searching Plugins
 set sneak
 set easymotion
-let g:EasyMotion_override_acejump = 0
 set matchit
 set peekaboo
 

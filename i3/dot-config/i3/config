@@ -157,12 +157,14 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
+bindsym $mod+Tab workspace back_and_forth
+
 set $mode_launcher "(B)rowser | (C)ode | (S)potify | (A)i | (T)hunar | (P)ostman"
 
 mode $mode_launcher {
     bindsym b exec --no-startup-id vivaldi; mode "default"
     bindsym c exec --no-startup-id webstorm; mode "default"
-    bindsym s exec --no-startup-id ghostty --title="Spotify" -e "spotify_player"; mode "default"
+    bindsym s exec --no-startup-id ghostty --title="Spotify" -e "$HOME/.cargo/bin/spotify_player"; mode "default"
     bindsym t exec --no-startup-id /usr/bin/thunar; mode "default"
     bindsym p exec --no-startup-id postman; mode "default"
     bindsym a exec --no-startup-id "xdg-open https://claude.ai/new"; mode "default"
@@ -436,7 +438,7 @@ exec_always --no-startup-id picom -b
 # for custom config:
 # exec_always --no-startup-id picom --config  ~/.config/picom/picom.conf
 
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 #############################################
 # autostart applications/services on login: #
@@ -682,7 +684,7 @@ bindsym $mod+space exec --no-startup-id rofi -show combi \
 
 ## rofi bindings for window menu
 
-bindsym $mod+Tab [con_mark=:i3b:] focus
+# bindsym $mod+Tab [con_mark=:i3b:] focus
 # bindsym $mod+Tab exec --no-startup-id rofi -show window \
 		# -config ~/.config/rofi/rofidmenu.rasi
 
