@@ -9,18 +9,21 @@
          "chat": "",
          "code": "",
          "create": "",
-         "music": ""
+         "music": "",
+         "urgent": ""
       }
    },
    "cpu": {
       "interval": 10,
-      "format": "{}% ",
+      "format": " {}%",
       "max-length": 10
    },
    "bluetooth": {
-      "format": " {status}",
-      "format-connected": " {device_alias}",
-      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+      "format-on": " ",
+      "format-disabled": " 󰂲",
+      "format-off": " 󰂲 off",
+      "format-connected": " 󰂱 {device_alias}",
+      "format-connected-battery": " 󰂱 {device_battery_percentage}% ",
       // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
       "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -28,9 +31,40 @@
       "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
       "on-click": "blueberry"
    },
+   "clock#calendar": {
+      "format": "{:%H:%M  }",
+      "format-alt": "{:%a, %b %d, %Y (%R)}",
+      "tooltip-format": "{tz_list}\n<tt><small>{calendar}</small></tt>",
+      "timezones": [
+         "America/Sao_Paulo",
+         "Europe/Amsterdam",
+         "Etc/UTC"
+      ],
+      "calendar": {
+         "mode": "year",
+         "mode-mon-col": 3,
+         "weeks-pos": "right",
+         "on-scroll": 1,
+         "on-click-right": "mode",
+         "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+         }
+      },
+      "actions": {
+         "on-click-right": "mode",
+         "on-click-forward": "tz_up",
+         "on-click-backward": "tz_down",
+         "on-scroll-up": "shift_up",
+         "on-scroll-down": "shift_down"
+      }
+   },
    "clock": {
-      "format": "{:%Y-%m-%d %H:%M (%Z)}",
-      "tooltip-format": "{tz_list}",
+      "format": "{:%a %d %b %H:%M}",
+      "tooltip-format": "{calendar}\n\n{tz_list}",
       "timezones": [
          "America/Sao_Paulo",
          "Europe/Amsterdam",
@@ -70,7 +104,7 @@
       "tooltip": false
    },
    "pulseaudio": {
-      "format": "{icon} {volume}%",
+      "format": " {icon} {volume}%",
       "format-muted": "",
       "format-icons": {
          "headphones": "",
@@ -137,6 +171,12 @@
       "restart-interval": 2,
       "on-click": "dunstctl set-paused toggle"
    },
+   "custom/space": {
+      "return-type": "text",
+      "interval": "once",
+      "format": "  ",
+      "tooltip": false
+   },
    "custom/separator": {
       "return-type": "text",
       "interval": "once",
@@ -148,5 +188,35 @@
       "return-type": "json",
       "exec-if": "[[ $(checkupdates | wc -l) ]]",
       "interval": "once"
+   },
+   "memory": {
+      "interval": 2,
+      "format": " {used:0.1f}G"
+   },
+   "disk": {
+      "interval": 30,
+      "format": " {free}",
+      "path": "/"
+   },
+   "temperature": {
+      "interval": 30,
+      "format": " {temperatureC}°C",
+      "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+      "critical-threshold": 90,
+      "format-critical": " {temperatureC}°C "
+   },
+   "clock#amsterdam": {
+      "format": " {:%H:%M %Z}",
+      "timezone": "Europe/Amsterdam"
+   },
+   "custom/spotify": {
+      "exec": "~/.config/i3/scripts/spotify.sh",
+      "interval": 5,
+      "format": "{}"
+   },
+   "custom/bandwidth": {
+      "exec": "~/.config/i3/scripts/bandwidth2",
+      "interval": 1,
+      "format": "{}"
    }
 }

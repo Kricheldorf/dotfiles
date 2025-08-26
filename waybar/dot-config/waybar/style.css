@@ -83,7 +83,7 @@ window#waybar {
    color: @first_right_color;
 }
 
-#pulseaudio {
+#pulseaudio, #bluetooth {
    color: @middle_right_color;
 }
 

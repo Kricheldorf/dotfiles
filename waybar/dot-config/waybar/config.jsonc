@@ -4,7 +4,7 @@
       "name": "bar-niri",
       "layer": "top",
       "mode": "dock",
-      "height": 24,
+      "height": 26,
       "margin": 0,
       "spacing": 1,
       "include": [
@@ -12,25 +12,29 @@
       ],
       "modules-left": [
          "niri/workspaces",
-         "niri/window"
+         "custom/space",
+         "custom/spotify"
       ],
       "modules-center": [
-         "clock"
+         // "niri/window",
+         "clock#calendar"
+         // "clock#amsterdam"
       ],
       "modules-right": [
-         // "cpu",
-         "bluetooth",
+         "memory",
+         "cpu",
+         "disk",
+         "temperature",
          "custom/separator",
          "tray",
-         "privacy",
          "custom/separator",
+         "privacy",
          "custom/updates",
          "idle_inhibitor",
          "custom/notifications",
          "custom/separator",
+         "bluetooth",
          "pulseaudio",
-         // "custom/separator",
-         // "power-profiles-daemon", // via tuned and tuned-ppd
          "battery"
       ]
    }
