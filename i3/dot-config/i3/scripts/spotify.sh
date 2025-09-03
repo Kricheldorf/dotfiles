@@ -15,7 +15,7 @@ if [ "$STATUS" = "Playing" ] || [ "$STATUS" = "Paused" ]; then
     if [ -z "$ARTIST" ]; then ARTIST="Unknown Artist"; fi
     if [ -z "$TITLE" ]; then TITLE="Unknown Title"; fi
     
-    MAX_LENGTH=120
+    MAX_LENGTH=40
     COMBINED="$ARTIST - $TITLE"
     if [ ${#COMBINED} -gt $MAX_LENGTH ]; then
         if [ ${#ARTIST} -gt 20 ]; then

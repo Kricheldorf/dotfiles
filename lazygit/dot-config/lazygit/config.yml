@@ -1,10 +1,10 @@
 customCommands:
-  - key: '<c-c>'
-    command: 'git push origin {{.CheckedOutBranch.Name}} --no-verify'
+  - key: 'P'
+    command: '[[ "{{.CheckedOutBranch.Name}}" != "test-gui" && "{{.CheckedOutBranch.Name}}" != "master" ]] && git push origin {{.CheckedOutBranch.Name}} || (echo "CAUTION! Dont push to {{.CheckedOutBranch.Name}}")'
     context: 'global'
-    loadingText: 'Pushing with --no-verify'
-    description: 'Push current branch to remote ignoring pre-push hooks'
-    output: 'popup'
+    loadingText: 'Pushing with pre-push hook'
+    description: 'Push current branch to remote with pre-push hooks'
+    output: 'terminal'
 
 # customCommands:
 #   - key: "<c-c>"
