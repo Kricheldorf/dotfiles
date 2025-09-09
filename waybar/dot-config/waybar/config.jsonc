@@ -12,7 +12,7 @@
          "$HOME/.config/waybar/modules.jsonc"
       ],
       "modules-left": [
-         "niri/workspaces",
+         "hyprland/workspaces",
          "custom/space",
          "custom/spotify"
       ],

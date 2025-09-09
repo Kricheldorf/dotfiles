@@ -2,9 +2,15 @@ customCommands:
   - key: 'P'
     command: 'echo "Pushing to: {{.CheckedOutBranch.Name}}"; [[ "{{.CheckedOutBranch.Name}}" != "test-gui" && "{{.CheckedOutBranch.Name}}" != "master" ]] && git push origin {{.CheckedOutBranch.Name}} || (echo "CAUTION! Dont push to {{.CheckedOutBranch.Name}}")'
     context: 'global'
-    loadingText: 'Pushing with pre-push hook'
+    loadingText: 'Pushing with pre-push hooks'
     description: 'Push current branch to remote with pre-push hooks'
     output: 'terminal'
+#  - key: '<c-P>'
+#    command: 'echo "No-verify pushing to: {{.CheckedOutBranch.Name}}"; [[ "{{.CheckedOutBranch.Name}}" != "test-gui" && "{{.CheckedOutBranch.Name}}" != "master" ]] && git push origin {{.CheckedOutBranch.Name}} --no-verify || (echo "CAUTION! Dont push to {{.CheckedOutBranch.Name}}")'
+#    context: 'global'
+#    loadingText: 'Pushing ignoring pre-push hooks'
+#    description: 'Push current branch to remote ignoring pre-push hooks'
+#    output: 'terminal'
 
 # customCommands:
 #   - key: "<c-c>"

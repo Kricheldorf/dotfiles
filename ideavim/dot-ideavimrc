@@ -77,7 +77,7 @@ set nerdtree
 vmap s S
 " Searching Plugins
 set sneak
-set easymotion
+" set easymotion
 set matchit
 set peekaboo
 
@@ -128,7 +128,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 nnoremap <C-w>p :action JumpToLastWindow<CR>
-nnoremap <C-w>q :action HideAllWindows<CR>
+nnoremap <C-w>o :action HideAllWindows<CR>
 nnoremap zx :action HideAllWindows<CR>
 
 " Navigation actions
@@ -183,7 +183,7 @@ xmap <leader>g<C-n> <Plug>AllOccurrences
 "" ========================================================
 
 " EasyMotion
-let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
+" let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
 nmap ]d <action>(GotoNextError)
 nmap [d <action>(GotoPreviousError)
