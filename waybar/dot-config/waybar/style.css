@@ -33,6 +33,13 @@ window#waybar {
    border-radius: 4px;
 }
 
+
+#workspaces button.active {
+   background: @tray_color;
+   box-shadow: inherit;
+   text-shadow: inherit;
+}
+
 #workspaces button:hover {
    background: @highlight_color;
    color: @invert_color;
