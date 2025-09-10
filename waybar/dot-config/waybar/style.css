@@ -35,9 +35,8 @@ window#waybar {
 
 
 #workspaces button.active {
-   background: @tray_color;
-   box-shadow: inherit;
-   text-shadow: inherit;
+   background: @highlight_color;
+   color: @invert_color;
 }
 
 #workspaces button:hover {
@@ -69,6 +68,7 @@ window#waybar {
 #clock,
 #custom-notifications,
 #custom-updates,
+#custom-spotify,
 #idle_inhibitor,
 #network,
 #power-profiles-daemon,
