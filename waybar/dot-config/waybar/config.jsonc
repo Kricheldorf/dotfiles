@@ -14,7 +14,8 @@
       "modules-left": [
          "hyprland/workspaces",
          "custom/space",
-         "custom/spotify"
+         "custom/spotify",
+         "custom/fullscreen"
       ],
       "modules-center": [
          // "niri/window",

@@ -2,6 +2,12 @@
    "wlr/taskbar": {
       "tooltip-format": "{title} | {app_id}"
    },
+   "custom/fullscreen": {
+      "exec": "~/.config/waybar/scripts/waybar-fullscreen-events.sh",
+      "return-type": "json",
+      "format": "{}",
+      "restart-interval": 0
+   },
    "niri/workspaces": {
       "format": "{icon}",
       "format-icons": {
