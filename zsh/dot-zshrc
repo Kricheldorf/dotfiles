@@ -138,6 +138,7 @@ alias kdiff='kitten diff'
 alias ndiff='nvim -d'
 
 alias dev="tmux new -A -s dev"
+alias qna="claude -p"
 
 function gotest() {
   set -o xtrace
