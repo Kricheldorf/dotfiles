@@ -137,7 +137,7 @@ alias difft='nvim -d ~/Code/shipix/shipix-platform/apps/shipix-app/locales/en.js
 alias kdiff='kitten diff'
 alias ndiff='nvim -d'
 
-alias dev="tmux new -A -s dev"
+alias dev="tmux new -A -s 0"
 alias qna="claude -p"
 
 function gotest() {
@@ -301,3 +301,6 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
 eval "$(batman --export-env)"
+
+# autoload -Uz edit-command-line zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
