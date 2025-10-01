@@ -6,9 +6,9 @@ source $HOME/scripts/news.sh
 
 news
 
-read -p "Update system? (y/N): " -n 1 -r
+read -p "Update system? (Y/n): " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Nn]$ ]]; then
   exit 0
 fi
 
@@ -23,20 +23,21 @@ echo "Space saved: $pacman_cache_space_used"
 echo "Removing orphan packages"
 yay -Qdtq | yay -Rns -
 
-read -p "Clear ~/.cache? (y/N): " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "Clearing ~/.cache"
-  home_cache_used="$(du -sh ~/.cache)"
-  rm -rf ~/.cache/
-  echo "Spaced saved: $home_cache_used"
-else
-  echo "Skipping ~/.cache clearing"
-fi
+# read -p "Clear ~/.cache? (y/N): " -n 1 -r
+# echo
+# if [[ $REPLY =~ ^[Yy]$ ]]; then
+#   echo "Clearing ~/.cache"
+#   home_cache_used="$(du -sh ~/.cache)"
+#   rm -rf ~/.cache/
+#   echo "Spaced saved: $home_cache_used"
+# else
+#   echo "Skipping ~/.cache clearing"
+# fi
 
 echo "Clearing system logs"
 journalctl --vacuum-time=7d
 
 rm -rf ~/Code/shipix/shipix-platform/apps/shipix-app/.next
+rm -rf ~/Code/shipix/shipix-platform/apps/shipix-app/.next-dev
 cd ~/Code/shipix/shipix-platform && npx nx reset
 
