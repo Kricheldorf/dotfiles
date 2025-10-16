@@ -28,3 +28,4 @@ x-scheme-handler/unknown=zen.desktop
 text/plain=neovide.desktop
 inode/directory=com.mitchellh.ghostty.desktop
 x-scheme-handler/webcal=zen.desktop
+x-scheme-handler/terminal=kitty.desktop

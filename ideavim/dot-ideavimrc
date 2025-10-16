@@ -299,7 +299,7 @@ nmap <leader>fh <Action>(LocalHistory.ShowHistory)
 nmap <leader>ff <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
 nmap <leader>fp <Action>(ReplaceInPath)
-let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
+let g:WhichKeyDesc_file_opt = "<leader>f Reformat Code"
 let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
 let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
 let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
@@ -485,7 +485,8 @@ let g:WhichKeyDesc_search_in_path = "<leader>sg Search in Files ([s]earch [g]rep
 
 nmap <leader>hh <action>(HarpoonerToggleQuickMenu)
 
-nmap <leader>ha <action>(HarpoonerToggleFile)
+nmap <leader>ha <action>(HarpoonerAddFile)
+nmap <leader>ha <action>(HarpoonerRemoveFile)
 
 nmap <C-1> <action>(HarpoonerOpenFile0)
 nmap <C-2> <action>(HarpoonerOpenFile1)
@@ -497,6 +498,8 @@ nmap <leader>hn <action>(HarpoonerNextFileAction)
 nmap <leader>hp <action>(HarpoonerPreviousFileAction)
 
 nmap <leader>hc <action>(HarpoonerClearMenu)
+
+nmap <leader>or <action>($LRU)
 
 let g:WhichKeyDesc_harpoon = "<leader>h Harpoon"
 
