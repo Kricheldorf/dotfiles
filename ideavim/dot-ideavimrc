@@ -60,6 +60,7 @@ set ideajoin
 set ideamarks
 set idearefactormode=keep
 set ideastatusicon=gray
+set ideaput
 
 set multiple-cursors
 
@@ -77,7 +78,7 @@ set nerdtree
 vmap s S
 " Searching Plugins
 set sneak
-" set easymotion
+set easymotion
 set matchit
 set peekaboo
 
@@ -123,8 +124,8 @@ nnoremap <leader>zo :action ExpandAllRegions<CR>
 " nmap <C-n> <Action>(NextTab)
 
 " Pane navigation
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-j> <C-w>j
 nnoremap <C-w>p :action JumpToLastWindow<CR>
@@ -183,7 +184,7 @@ xmap <leader>g<C-n> <Plug>AllOccurrences
 "" ========================================================
 
 " EasyMotion
-" let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
+let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
 nmap ]d <action>(GotoNextError)
 nmap [d <action>(GotoPreviousError)
