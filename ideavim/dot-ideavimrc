@@ -60,6 +60,7 @@ set ideajoin
 set ideamarks
 set idearefactormode=keep
 set ideastatusicon=gray
+set ideavimsupport=singleline
 set ideaput
 
 set multiple-cursors
@@ -115,6 +116,9 @@ nnoremap zo :action ExpandRegion<CR>
 " TODO: Review keybinds 
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
+
+map Q gq
+
 
 "" ========================================================
 "" Key Mappings
@@ -297,7 +301,8 @@ nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fh <Action>(LocalHistory.ShowHistory)
-nmap <leader>ff <Action>(ShowFilePath)
+" nmap <leader>ff <Action>(ShowFilePath)
+nmsap <leader>ff <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
 nmap <leader>fp <Action>(ReplaceInPath)
 let g:WhichKeyDesc_file_opt = "<leader>f Reformat Code"
@@ -464,11 +469,12 @@ nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>sd <Action>(GotoDatabaseObject)
 nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>sg <Action>(FindInPath)
+nmap <leader>sG <Action>(ReplaceInPath)
 " map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
 map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
 " map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
 " map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
-map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrepCaseInsensitive)
+" map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrepCaseInsensitive)
 " TODO: maybe update to <leader><leader>
 nmap <leader>s. <action>(RecentFiles)
 let g:WhichKeyDesc_search = "<leader>s Search"

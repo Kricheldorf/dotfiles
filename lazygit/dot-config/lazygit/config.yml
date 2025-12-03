@@ -29,27 +29,23 @@ customCommands:
 #     output: terminal
 #
 #     description: "Commit message with the jira card from branch name"
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
   commitPrefix:
     - pattern: "^\\w+\\/(\\w+-\\d+).*"
       replace: '$1: '
     - pattern: "^(\\w+-\\d+).*"
       replace: '$1: '
-
 gui:
   scrollHeight: 10
   showDivergenceFromBaseBranch: onlyArrow
   commitAuthorLongLength: 2
-
 os:
   edit: 'webstorm {{filename}}'
   editAtLine: 'webstorm --line {{line}} {{filename}}'
   editAtLineAndWait: 'webstorm --block --line {{line}} {{filename}}'
   editInTerminal: false
   openDirInEditor: 'webstorm {{dir}}'
-
 nerdFontsVersion: '3'

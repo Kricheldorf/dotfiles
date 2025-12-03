@@ -38,16 +38,16 @@
       "on-click": "blueberry"
    },
    "clock#calendar": {
-      "format": "{:%H:%M  }",
-      "format-alt": "{:%a, %b %d, %Y (%R)}",
-      "tooltip-format": "{tz_list}\n<tt><small>{calendar}</small></tt>",
+      "format": "{:%b %d  %R %Z}",
+      // "format-alt": "{:%H:%M  }",
+      "tooltip-format": "\n{tz_list}\n<tt><small>{calendar}</small></tt>",
       "timezones": [
          "America/Sao_Paulo",
          "Europe/Amsterdam",
          "Etc/UTC"
       ],
       "calendar": {
-         "mode": "year",
+         "mode": "month",
          "mode-mon-col": 3,
          "weeks-pos": "right",
          "on-scroll": 1,
@@ -61,6 +61,7 @@
          }
       },
       "actions": {
+         "on-click": "~/.config/waybar/scripts/waybar-toggle-timezone.sh",
          "on-click-right": "mode",
          "on-click-forward": "tz_up",
          "on-click-backward": "tz_down",
