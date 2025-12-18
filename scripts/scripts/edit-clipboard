@@ -1,0 +1,53 @@
+#!/bin/bash
+
+mime_types=$(wl-paste --list-types 2>/dev/null)
+
+if echo "$mime_types" | grep -q "image/"; then
+    temp_file=$(mktemp --suffix=.png)
+
+    wl-paste --type image/png > "$temp_file" 2>/dev/null || \
+    wl-paste > "$temp_file" 2>/dev/null
+
+    if [ -s "$temp_file" ]; then
+        satty --filename "$temp_file" --output-filename "$temp_file"
+
+        wl-copy --type image/png < "$temp_file"
+    fi
+
+    rm "$temp_file"
+elif [ -z "$mime_types" ]; then
+    clipboard_content=$(wl-paste 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$clipboard_content" ]; then
+        temp_file=$(mktemp --suffix=.txt)
+        echo "$clipboard_content" > "$temp_file"
+
+        kitty -e /usr/bin/nvim "$temp_file"
+
+        wl-copy < "$temp_file"
+
+        rm "$temp_file"
+    else
+        temp_file=$(mktemp --suffix=.png)
+        wl-paste > "$temp_file" 2>/dev/null
+
+        satty --filename "$temp_file" --output-filename "$temp_file"
+
+        wl-copy --type image/png < "$temp_file"
+
+        rm "$temp_file"
+    fi
+else
+    clipboard_content=$(wl-paste 2>/dev/null)
+
+    if [ -n "$clipboard_content" ]; then
+        temp_file=$(mktemp --suffix=.txt)
+        echo "$clipboard_content" > "$temp_file"
+
+        kitty -e /usr/bin/nvim "$temp_file"
+
+        wl-copy < "$temp_file"
+
+        rm "$temp_file"
+    fi
+fi
