@@ -9,7 +9,8 @@
 // an example to remove mapkey `Ctrl-i`
 // api.unmap('<ctrl-i>');
 
-api.mapkey(' l', ';U');
+// todo fix
+api.map(' l', ';U');
 
 // set theme
 settings.theme = `
