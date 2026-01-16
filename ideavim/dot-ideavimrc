@@ -48,6 +48,11 @@ set visualbell
 
 " Clipboard Integration
 set clipboard+=unnamed,unnamedplus
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+" workaround for copying with multiple cursors - it doesn't work right with yank (y)
+vmap <C-c> <Action>(EditorCopy)
 
 " Leader Key
 let mapleader=" "
@@ -75,6 +80,7 @@ set exchange
 set commentary
 set ReplaceWithRegister
 set surround
+" TODO: fix function surround
 set nerdtree
 vmap s S
 " Searching Plugins
@@ -82,6 +88,12 @@ set sneak
 set easymotion
 set matchit
 set peekaboo
+
+vmap <S-J> <Action>(MoveLineDown)
+vmap <S-K> <Action>(MoveLineUp)
+
+nmap ]b <Action>(GotoNextBookmark)
+nmap [b <Action>(GotoPreviousBookmark)
 
 " Highlighting Plugins
 " highlightedyank: highlight yanked content
@@ -151,6 +163,11 @@ nmap ]] <Action>(MethodDown)
 " Visual indentation
 vnoremap < <gv
 vnoremap > >gv
+
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 vnoremap y ygv<Esc>
 
@@ -323,13 +340,16 @@ let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 
 " Yank Actions
 nmap <leader>yr <Action>(CopyReference)
-nmap <leader>yy <Action>(CopyContentRootPath)
+nmap <leader>yY <Action>(CopyContentRootPath)
+nmap <leader>yy <Action>(Tool_External Tools_Transform path)
 " GitHub actions are not working
 nmap <leader>yg <Action>(GitHub.Copy.Link)
 nmap <leader>ygx <action>(Github.Open.In.Browser)
 let g:WhichKeyDesc_yank_actions = "<leader>y Yank Actions"
 let g:WhichKeyDesc_yank_actions_copy_ref = "<leader>yr Copy Reference"
-let g:WhichKeyDesc_yank_actions_copy_content_root_path = "<leader>yy Copy Content Root Path"
+let g:WhichKeyDesc_yank_actions_copy_content_root_path_raw = "<leader>yY Copy Content Root Path (raw)"
+let g:WhichKeyDesc_yank_actions_copy_content_root_path = "<leader>yy Copy Content Root Path (transformed)"
+let g:WhichKeyDesc_yank_actions_transform_clipboard = "<leader>yt Transform clipboard path"
 let g:WhichKeyDesc_yank_actions_copy_github_link = "<leader>yg Copy Github Link"
 let g:WhichKeyDesc_yank_actions_open_github_in_browser = "<leader>ygx Open Github In Browser"
 
@@ -677,3 +697,6 @@ sethandler <C-]> a:vim
 " check and add support for going to next and previous diagnostic/problem (F2 on jetbrains by default)
 " build vimrc with some content from this file and use on both places (nvim and jetbrains config)https://www.reddit.com/r/neovim/comments/1gicg0o/can_i_somehow_source_my_vimrc_in_my_initlua_or/
 " install jetbrains plugins from cli (and save at least the config to it)
+
+" Sweep AI Tab completion mapping
+map <Tab> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>

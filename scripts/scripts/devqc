@@ -1,0 +1,8 @@
+#!/bin/bash
+
+kitty --hold -d ~/Code/quicargo/quicargo-platform/ zsh -c 'npm run dev:docker-run' & disown
+sleep 1
+kitty --hold -d ~/Code/quicargo/quicargo-platform/ zsh -c 'npm run dev:app-client:watch' & disown
+sleep 1
+kitty --hold -d ~/Code/quicargo/quicargo-platform/ zsh -c 'npm run dev:shared-services:watch' & disown
+sleep 1

@@ -35,7 +35,7 @@ yay -Qdtq | yay -Rns -
 # fi
 
 echo "Clearing system logs"
-journalctl --vacuum-time=7d
+sudo journalctl --vacuum-time=7d
 
 rm -rf ~/Code/shipix/shipix-platform/apps/shipix-app/.next
 rm -rf ~/Code/shipix/shipix-platform/apps/shipix-app/.next-dev
