@@ -1,0 +1,194 @@
+{
+  "about": {
+    "browser": "online",
+    "version": "22.0.0"
+  },
+  "showall": true,
+  "lang": "en",
+  "dark": "system",
+  "favicon": "",
+  "tabtitle": "",
+  "greeting": "",
+  "greetingsize": "3",
+  "greetingsmode": "auto",
+  "pagegap": 1,
+  "pagewidth": 1600,
+  "time": true,
+  "main": true,
+  "dateformat": "auto",
+  "quicklinks": true,
+  "textShadow": 0.2,
+  "announcements": "all",
+  "review": -1,
+  "css": "",
+  "hide": {
+    "settingsicon": true,
+    "clock": false,
+    "date": true,
+    "greetings": true
+  },
+  "clock": {
+    "size": 1,
+    "ampm": false,
+    "analog": false,
+    "seconds": false,
+    "ampmlabel": false,
+    "worldclocks": true,
+    "timezone": "auto"
+  },
+  "linkstyle": "inline",
+  "linktitles": true,
+  "linkbackgrounds": true,
+  "linknewtab": false,
+  "linksrow": "7",
+  "linkiconradius": "0.8",
+  "linkgroups": {
+    "on": true,
+    "selected": "Quicargo",
+    "groups": [
+      "default",
+      "Quicargo"
+    ],
+    "pinned": [],
+    "synced": []
+  },
+  "backgrounds": {
+    "type": "images",
+    "fadein": 0,
+    "blur": 13,
+    "bright": 0.36,
+    "frequency": "hour",
+    "color": "#185A63",
+    "urls": "",
+    "images": "bonjourr-images-daylight",
+    "videos": "bonjourr-videos-daylight",
+    "queries": {},
+    "texture": {
+      "type": "none"
+    }
+  },
+  "worldclocks": [
+    {
+      "timezone": "-03:00"
+    },
+    {
+      "timezone": "CET"
+    }
+  ],
+  "analogstyle": {
+    "face": "none",
+    "hands": "modern",
+    "shape": "round",
+    "border": "#ffff",
+    "background": "#fff2"
+  },
+  "weather": {
+    "city": "vorstadt",
+    "unit": "metric",
+    "provider": "",
+    "moreinfo": "accu",
+    "forecast": "auto",
+    "temperature": "both",
+    "geolocation": "approximate"
+  },
+  "greetingscustom": {
+    "morning": "",
+    "afternoon": "",
+    "evening": "",
+    "night": ""
+  },
+  "notes": {
+    "on": false,
+    "background": "#fff3",
+    "width": 47,
+    "opacity": 0.1,
+    "align": "left",
+    "text": "## Edit this note!:\n\n[ ] With markdown titles, lists, and checkboxes\n\n[x] "
+  },
+  "searchbar": {
+    "on": false,
+    "opacity": 0.1,
+    "newtab": false,
+    "suggestions": true,
+    "engine": "default",
+    "request": "",
+    "placeholder": ""
+  },
+  "quotes": {
+    "on": false,
+    "type": "office",
+    "frequency": "day",
+    "author": true,
+    "last": 1768678587000
+  },
+  "pomodoro": {
+    "on": true,
+    "mode": "pomodoro",
+    "pause": 0,
+    "end": 0,
+    "timeFor": {
+      "pomodoro": 1500,
+      "break": 300,
+      "longbreak": 1200
+    },
+    "focus": false,
+    "sound": true,
+    "history": [
+      {},
+      {}
+    ]
+  },
+  "font": {
+    "size": "14",
+    "family": "",
+    "system": true,
+    "weightlist": [],
+    "weight": "300"
+  },
+  "supporters": {
+    "enabled": false,
+    "closed": false,
+    "month": 12
+  },
+  "move": {
+    "selection": "single",
+    "layouts": {
+      "single": {
+        "items": {
+          "time": {
+            "text": "",
+            "box": "center"
+          }
+        },
+        "grid": [
+          [
+            "time"
+          ],
+          [
+            "main"
+          ],
+          [
+            "pomodoro"
+          ],
+          [
+            "quicklinks"
+          ]
+        ]
+      }
+    }
+  },
+  "linksrjgqbb": {
+    "_id": "linksrjgqbb",
+    "parent": "Quicargo",
+    "order": 0,
+    "title": "BEST shipper",
+    "url": "https://test-admin.quicargo.com/#/user/5737"
+  },
+  "linksiidjgf": {
+    "_id": "linksiidjgf",
+    "parent": "Quicargo",
+    "order": 1,
+    "title": "Local shipper",
+    "url": "http://admin.quicargo.local/#/user/3"
+  }
+}
