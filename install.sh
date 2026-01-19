@@ -77,13 +77,15 @@ setup_dotfiles() {
 install_packages() {
     log_info "Installing packages..."
 
-
     local packages=(
-        base-devel git ghostty fzf zsh bitwarden vivaldi stow neovim
-        lazygit zsh-autocomplete starship postgresql bat bat-extras
-        eza ncdu yazi keyd dbeaver nvm git-delta docker docker-compose
-        spotify-player bluez bluez-utils blueberry perl-image-exiftool
-        flameshot copyq xclip
+        base-devel git kitty fzf zsh brave-bin stow neovim lazygit zsh-autocomplete zsh-autosuggestions
+        starship postgresql bat bat-extras eza ncdu yazi keyd dbeaver nvm git-delta docker docker-compose
+        spotify-player perl-image-exiftool wl-clipboard dunst hyprpolkitagent ly zoxide pnpm
+        fuse2 hyprlock seahorse gnome-keyring tmux resvg 7zip satty hyprshot
+        hyprpicker swaybg hyprland obsidian libappindicator nwg-look
+    )
+    local aur_packages=(
+        vicinae-bin insync tmux-plugin-manager slack-desktop ente-auth-bin
     )
  
     log_info "Installing ${#packages[@]} packages: ${packages[*]}"
@@ -91,6 +93,14 @@ install_packages() {
         log_success "Packages installed successfully"
     else
         log_error "Failed to install some packages"
+        return 1
+    fi
+
+    log_info "Installing ${#aur_packages[@]} AUR packages: ${aur_packages[*]}"
+    if paru -S --needed --batchinstall --sudoloop "${aur_packages[@]}"; then
+        log_success "AUR packages installed successfully"
+    else
+        log_error "Failed to install some AUR packages"
         return 1
     fi
 }
@@ -204,23 +214,44 @@ setup_shell() {
     fi
 }
 
+setup_keyboard_layout() {
+    log_info "Setting up keyboard layout..."
+
+    if cat /etc/X11/xorg.conf.d/00-keyboard.conf | grep -q "Layout"; then
+        log_info "Keyboard layout already set"
+    else
+        log_info "Setting keyboard layout..."
+        sudo localectl set-x11-keymap us "" altgr-intl
+        sudo localectl set-keymap us-acentos
+        sudo localectl set-locale LANG=en_US.UTF-8 \
+          LC_NUMERIC=pt_BR.UTF-8 \
+          LC_TIME=pt_BR.UTF-8 \
+          LC_MONETARY=pt_BR.UTF-8 \
+          LC_PAPER=pt_BR.UTF-8 \
+          LC_NAME=pt_BR.UTF-8 \
+          LC_ADDRESS=pt_BR.UTF-8 \
+          LC_TELEPHONE=pt_BR.UTF-8 \
+          LC_MEASUREMENT=pt_BR.UTF-8 \
+          LC_IDENTIFICATION=pt_BR.UTF-8
+        log_success "Keyboard layout set"
+    fi
+}
+
 display_todo() {
     log_info "Post-installation tasks to complete manually:"
-    echo "* Check keyboard layout (cat /etc/X11/xorg.conf.d/00-keyboard.conf) - Todo: Automate"
     echo "* Install WebStorm IDE"
     echo "* Configure SSH key for GitHub:"
     echo "   ssh-keygen -t ed25519 -C 'your_email@example.com'"
     echo "   ssh-add ~/.ssh/id_ed25519"
     echo "   cat ~/.ssh/id_ed25519.pub # Add to GitHub"
-    echo "* Update dotfiles origin url"
+    echo "* Update dotfiles origin url. TODO: Automate in an interactive post-install script"
     echo "   cd $HOME/dotfiles && git remote set-url origin git@github.com:Kricheldorf/dotfiles.git"
     echo "* Clone work repositories"
-    echo "* Configure Git identity:"
+    echo "* Configure Git identity: TODO: Automate in an interactive post-install script"
     echo "   git config --global user.email 'your_email@example.com'"
     echo "   git config --global user.name 'Your Name'"
-    echo "* Install AUR helper (yay/paru) and AUR packages (insync, etc.)"
-    echo "* Install tmux plugin manager (https://github.com/tmux-plugins/tpm)"
-    echo "   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+    echo "* Update MANUAL configs from the dotfiles repo"
+    echo "* Update browser settings (manual). TODO: Create browser settings todo list with settings to change and services to log in"
     echo "* Change /etc/systemd/logind.conf (set HandleLidSwitchDocked=suspend)"
     echo "* Restart your session to apply all changes"
 }

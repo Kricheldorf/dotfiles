@@ -45,6 +45,7 @@ set ignorecase
 set incsearch
 set hlsearch
 set visualbell
+set switch
 
 " Clipboard Integration
 set clipboard+=unnamed,unnamedplus
@@ -53,6 +54,11 @@ set clipboard+=ideaput
 
 " workaround for copying with multiple cursors - it doesn't work right with yank (y)
 vmap <C-c> <Action>(EditorCopy)
+
+nnoremap gs :Switch<CR>
+nnoremap <leader>gs :SwitchReverse<CR>
+
+let g:switch_definitions = 'group:basic,group:javascript,group:markdown'
 
 " Leader Key
 let mapleader=" "
