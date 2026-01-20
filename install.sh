@@ -8,6 +8,10 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NO_COLOR='\033[0m'
 
+
+# TODO: Remove this variable after post-install tasks are automated and implement a better solution
+TODO_DONE=true
+
 log_info() {
     echo -e "${BLUE}[INFO]${NO_COLOR} $1"
 }
@@ -237,6 +241,16 @@ setup_keyboard_layout() {
     fi
 }
 
+post_install() {
+    if [[ "$TODO_DONE" == false ]]; then
+        display_todo
+        return 0
+    fi
+
+    log_info "TODO-DONE variable set to true. Running post-installation tasks..."
+    # TODO: Write post-installation tasks
+}
+
 display_todo() {
     log_info "Post-installation tasks to complete manually:"
     echo "* Install WebStorm IDE"
@@ -244,9 +258,11 @@ display_todo() {
     echo "   ssh-keygen -t ed25519 -C 'your_email@example.com'"
     echo "   ssh-add ~/.ssh/id_ed25519"
     echo "   cat ~/.ssh/id_ed25519.pub # Add to GitHub"
+    # TODO: Automate in an interactive post-install script
     echo "* Update dotfiles origin url. TODO: Automate in an interactive post-install script"
     echo "   cd $HOME/dotfiles && git remote set-url origin git@github.com:Kricheldorf/dotfiles.git"
     echo "* Clone work repositories"
+    # TODO: Automate in an interactive post-install script
     echo "* Configure Git identity: TODO: Automate in an interactive post-install script"
     echo "   git config --global user.email 'your_email@example.com'"
     echo "   git config --global user.name 'Your Name'"
@@ -254,6 +270,7 @@ display_todo() {
     echo "* Update browser settings (manual). TODO: Create browser settings todo list with settings to change and services to log in"
     echo "* Change /etc/systemd/logind.conf (set HandleLidSwitchDocked=suspend)"
     echo "* Restart your session to apply all changes"
+    echo "* Update TODO-DONE variable in the installation script and run it again"
 }
 
 main() {
@@ -272,7 +289,7 @@ main() {
     setup_docker
     setup_shell
     
-    display_todo
+    post_install
     
     log_success "Setup completed successfully!"
     log_info "Restart your session to ensure all changes take effect."
