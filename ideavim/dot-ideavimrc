@@ -71,7 +71,7 @@ set ideajoin
 set ideamarks
 set idearefactormode=keep
 set ideastatusicon=gray
-set ideavimsupport=singleline
+set ideavimsupport=dialog
 set ideaput
 
 set multiple-cursors
@@ -94,6 +94,7 @@ set sneak
 set easymotion
 set matchit
 set peekaboo
+set anyobject
 
 vmap <S-J> <Action>(MoveLineDown)
 vmap <S-K> <Action>(MoveLineUp)
@@ -113,9 +114,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 set textobj-entire
 " indent-object: add a new textobj to make operations based on indentation level (most useful for langs such as python)
 set indent-object
-set argtextobj
-let g:argtextobj_pairs="[:],(:),<:>"
-set functiontextobj
+"set argtextobj
+"let g:argtextobj_pairs="[:],(:),<:>"
+"set functiontextobj
 set mini-ai
 
 " Which-key settings
@@ -363,17 +364,17 @@ let g:WhichKeyDesc_yank_actions_open_github_in_browser = "<leader>ygx Open Githu
 nmap <leader>rm <action>(RunMenu)
 nmap <leader>rn <action>(RunClass)
 nmap <leader>rc <Action>(ContextRun)
-nmap <leader>rr <action>(Rerun)
+nmap <leader>rR <action>(Rerun)
 nmap <leader>rt <Action>(RunTests)
 nmap <leader>rf <action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
 nmap <leader>rC <action>(ChooseRunConfiguration)
-nmap <leader>r <action>(Run)
-let g:WhichKeyDesc_run = "<leader>r Run"
+nmap <leader>rr <action>(Run)
+let g:WhichKeyDesc_run = "<leader>rr Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
 let g:WhichKeyDesc_run_context = "<leader>rc Context Run"
-let g:WhichKeyDesc_run_rerun = "<leader>rr Rerun"
+let g:WhichKeyDesc_run_rerun = "<leader>rR Rerun"
 let g:WhichKeyDesc_run_tests = "<leader>rt Run Tests"
 let g:WhichKeyDesc_run_failed = "<leader>rf Rerun Failed Tests"
 let g:WhichKeyDesc_run_stop = "<leader>rs Stop"
