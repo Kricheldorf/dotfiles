@@ -9,11 +9,11 @@
     follow = none
 
     ### Geometry ###
-    width = 300
+    width = 350
 
     # dynamic height from 0 to 300
     # The maximum height of a single notification, excluding the frame.
-    height = (0, 300)
+    height = (60, 300)
 
     # Position the notification in the top right corner
     origin = bottom-right
@@ -24,6 +24,9 @@
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
     notification_limit = 5
+
+    # Gap between notifications
+    gap_size = 8
 
     ### Progress bar ###
     progress_bar = true
@@ -36,20 +39,20 @@
     icon_corner_radius = 0
     icon_corners = all
     indicate_hidden = yes
-    transparency = 16
+    transparency = 20
     separator_height = 2
-    padding = 8
-    horizontal_padding = 8
-    text_icon_padding = 0
-    frame_width = 1
-    frame_color = "#7f3fbf"
-    gap_size = 0
+    padding = 12
+    horizontal_padding = 16
+    text_icon_padding = 8
+    frame_width = 2
+    frame_color = "#7aa2f7"
+    gap_size = 8
     separator_color = auto
     sort = yes
     idle_threshold = 0
 
     ### Text ###
-    font = Noto Sans Regular 9
+    font = Noto Sans Medium 10
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -65,7 +68,7 @@
     ### Icons ###
     icon_position = left
     min_icon_size = 0
-    max_icon_size = 32
+    max_icon_size = 48
     icon_path = /usr/share/icons/Qogir/16/status:/usr/share/icons/Qogir/16/devices/:/usr/share/icons/Qogir/24/panel/:/usr/share/icons/Qogir/16/apps/:/usr/share/pixmaps/:/usr/share/icons/Qogir/scalable/apps/
 
     ### History ###
@@ -78,7 +81,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 7
+    corner_radius = 12
     corners = all
     ignore_dbusclose = false
 
@@ -95,22 +98,24 @@
 
 
 [urgency_low]
-    background = "#28143c"
-    foreground = "#ffffff"
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#565f89"
     timeout = 5
     icon = /usr/share/icons/Qogir/16/status/package-installed-outdated.svg
 
 [urgency_normal]
-    background = "#28143c"
-    foreground = "#ffffff"
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#7aa2f7"
     timeout = 5
     override_pause_level = 30
     icon = /usr/share/icons/Qogir/16/emblems/emblem-question.svg
 
 [urgency_critical]
-    background = "#28143c"
-    foreground = "#ffffff"
-    frame_color = "#ff7f7f"
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#f7768e"
     timeout = 120
     icon = /usr/share/icons/Qogir/16/actions/dialog-warning.svg
 

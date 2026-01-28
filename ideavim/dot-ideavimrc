@@ -132,7 +132,7 @@ let g:WhichKey_ShowTypedSequence = "true"
 let g:WhichKey_DefaultDelay = 600
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
-" TODO: Review keybinds 
+" TODO: Review keybinds
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 
@@ -370,6 +370,7 @@ nmap <leader>rf <action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
 nmap <leader>rC <action>(ChooseRunConfiguration)
 nmap <leader>rr <action>(Run)
+nmap <leader>rq <action>(Console.Jdbc.ExplainGroup)
 let g:WhichKeyDesc_run = "<leader>rr Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
@@ -648,7 +649,7 @@ let g:WhichKeyDesc_git_diff_changed_lines = "<leader>Gd Show Diff Changed Lines"
 "Ctrl+]	Next Directory	Vim
 "
 
-sethandler <S-CR> a:vim 
+sethandler <S-CR> a:vim
 sethandler <C-Pageup> a:vim
 sethandler <C-Pagedown> a:vim
 sethandler <S-Left> a:ide
