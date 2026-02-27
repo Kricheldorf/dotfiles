@@ -1,3 +1,4 @@
+!#/usr/bin/bash
 # Script from kurealnum on https://github.com/kurealnum/dotfiles/blob/main/.config/scripts/sysmaintenance.sh
 
 # This code is almost entirely taken from Mr. Cejas's blog: https://fernandocejas.com/blog/engineering/2022-03-30-arch-linux-system-maintance/
@@ -13,7 +14,7 @@ if [[ $REPLY =~ ^[Nn]$ ]]; then
 fi
 
 echo "Updating system"
-yay -Syu
+paru -Syu
 
 echo "Clearing pacman cache"
 pacman_cache_space_used="$(du -sh /var/cache/pacman/pkg/)"

@@ -1,3 +1,4 @@
+!# /usr/bin/env bash
 # Source: https://www.reddit.com/r/archlinux/comments/1ljpqf5/comment/mzltvox/
 
 news() {

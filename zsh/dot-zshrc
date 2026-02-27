@@ -138,8 +138,8 @@ extract() {
 
 source $HOME/scripts/news.sh
 
-export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/init-nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+# source /usr/share/nvm/init-nvm.sh
 # Node version manager (lazy-loaded for faster shell startup)
 # _load_nvm() {
 #   unset -f nvm node npm npx
@@ -149,9 +149,6 @@ source /usr/share/nvm/init-nvm.sh
 # node() { _load_nvm && node "$@"; }
 # npm() { _load_nvm && npm "$@"; }
 # npx() { _load_nvm && npx "$@"; }
-
-# Browser
-export BROWSER="vivaldi"
 
 # Vim keybindings
 bindkey -v
@@ -207,3 +204,11 @@ eval "$(starship init zsh)"
 if [[ -n "$DEFAULT_WORK_DIR" && "$PWD" == "$HOME" ]]; then
     cd "$DEFAULT_WORK_DIR"
 fi
+
+# pnpm
+export PNPM_HOME="/home/kricheldorf/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
