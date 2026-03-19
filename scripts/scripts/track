@@ -36,6 +36,46 @@ Commands:
 EOF
 }
 
+# Returns the account name of the open session, or empty string if none.
+# An open session is when the last non-empty line starts with "i".
+get_open_session() {
+  local last_line
+  last_line=$(grep -v '^$' "$TIMECLOCK_FILE" | tail -1)
+  if [[ "$last_line" == i\ * ]]; then
+    echo "$last_line" | awk '{for(i=4;i<=NF;i++) printf "%s%s",$i,(i<NF?OFS:""); print ""}'
+  fi
+}
+
+# Appends a clock-in line: "i YYYY-MM-DD HH:MM:SS account"
+clock_in() {
+  local account="$1" ts="$2"
+  local date_part="${ts%T*}"
+  local time_part="${ts#*T}"
+  echo "i $date_part $time_part $account" >> "$TIMECLOCK_FILE"
+}
+
+# Appends a clock-out line, or removes the last i line if zero-duration.
+clock_out() {
+  local ts="$1"
+  local date_part="${ts%T*}"
+  local time_part="${ts#*T}"
+
+  local last_line
+  last_line=$(grep -v '^$' "$TIMECLOCK_FILE" | tail -1)
+  local open_ts
+  open_ts=$(echo "$last_line" | awk '{print $2"T"$3}')
+
+  if [[ "$open_ts" == "$ts" ]]; then
+    # Zero duration — remove the last line
+    local tmp
+    tmp=$(mktemp)
+    head -n -1 "$TIMECLOCK_FILE" > "$tmp"
+    mv "$tmp" "$TIMECLOCK_FILE"
+  else
+    echo "o $date_part $time_part" >> "$TIMECLOCK_FILE"
+  fi
+}
+
 main() {
   check_deps
   init_data_dir
