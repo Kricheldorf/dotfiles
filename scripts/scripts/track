@@ -99,8 +99,45 @@ main() {
   esac
 }
 
-cmd_stop()    { echo "not implemented"; exit 1; }
-cmd_status()  { echo "not implemented"; exit 1; }
+cmd_stop() {
+  local open
+  open=$(get_open_session)
+  if [[ -z "$open" ]]; then
+    echo "No active session."
+    return 0
+  fi
+  clock_out "$(date "+%Y-%m-%dT%H:%M:%S")"
+  local ticket="${open##*:}"
+  echo "Stopped: $ticket"
+}
+
+cmd_status() {
+  local open
+  open=$(get_open_session)
+  if [[ -z "$open" ]]; then
+    echo "No active session."
+    return 0
+  fi
+
+  local ticket="${open##*:}"
+  local last_line
+  last_line=$(grep -v '^$' "$TIMECLOCK_FILE" | tail -1)
+  local open_date open_time
+  read -r open_date open_time <<< "$(echo "$last_line" | awk '{print $2, $3}')"
+
+  local start_epoch now elapsed_secs elapsed_h elapsed_m
+  start_epoch=$(date -d "${open_date} ${open_time}" "+%s")
+  now=$(date "+%s")
+  elapsed_secs=$(( now - start_epoch ))
+  elapsed_h=$(( elapsed_secs / 3600 ))
+  elapsed_m=$(( (elapsed_secs % 3600) / 60 ))
+
+  if [[ $elapsed_h -gt 0 ]]; then
+    echo "$ticket (${elapsed_h}h ${elapsed_m}m)"
+  else
+    echo "$ticket (${elapsed_m}m)"
+  fi
+}
 cmd_start()   { echo "not implemented"; exit 1; }
 cmd_report()  { echo "not implemented"; exit 1; }
 cmd_edit()    { echo "not implemented"; exit 1; }

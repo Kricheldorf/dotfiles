@@ -71,3 +71,35 @@ load_track() {
   clock_out "2026-03-19T09:00:00"
   [ ! -s "$TIMECLOCK_FILE" ]
 }
+
+@test "track stop with no active session exits 0 with message" {
+  run bash "$TRACK" stop
+  [ "$status" -eq 0 ]
+  [ "$output" = "No active session." ]
+}
+
+@test "track stop clocks out an open session" {
+  load_track
+  clock_in "Shipix:Backend Dev:SHIP-123" "2026-03-19T09:00:00"
+  run bash "$TRACK" stop
+  [ "$status" -eq 0 ]
+  [ "$output" = "Stopped: SHIP-123" ]
+  open=$(get_open_session)
+  [ -z "$open" ]
+}
+
+@test "track status with no active session exits 0 with message" {
+  run bash "$TRACK" status
+  [ "$status" -eq 0 ]
+  [ "$output" = "No active session." ]
+}
+
+@test "track status shows ticket and elapsed time" {
+  load_track
+  local start
+  start=$(date -d "90 minutes ago" "+%Y-%m-%dT%H:%M:%S")
+  clock_in "Shipix:Backend Dev:SHIP-123" "$start"
+  run bash "$TRACK" status
+  [ "$status" -eq 0 ]
+  [[ "$output" == "SHIP-123 ("*")"* ]]
+}
