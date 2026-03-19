@@ -138,7 +138,34 @@ cmd_status() {
     echo "$ticket (${elapsed_m}m)"
   fi
 }
-cmd_start()   { echo "not implemented"; exit 1; }
+# Temporary stub — returns cached data only. Full Jira fetch added in Task 5.
+get_ticket_info() {
+  local ticket="$1"
+  jq -c --arg t "$ticket" '.[$t] // empty' "$CACHE_FILE"
+}
+
+cmd_start() {
+  local ticket="$1"
+  local now
+  now=$(date "+%Y-%m-%dT%H:%M:%S")
+
+  local open
+  open=$(get_open_session)
+  if [[ -n "$open" ]]; then
+    local prev_ticket="${open##*:}"
+    clock_out "$now"
+    echo "Stopped: $prev_ticket"
+  fi
+
+  local info
+  info=$(get_ticket_info "$ticket")
+  [[ -z "$info" ]] && { echo "Error: ticket '$ticket' not found in cache. Run after Jira env vars are set." >&2; exit 1; }
+  local client project
+  read -r client project < <(echo "$info" | jq -r '[.client, .project] | @tsv')
+
+  clock_in "$client:$project:$ticket" "$now"
+  echo "Tracking: $ticket"
+}
 cmd_report()  { echo "not implemented"; exit 1; }
 cmd_edit()    { echo "not implemented"; exit 1; }
 cmd_refresh() { echo "not implemented"; exit 1; }

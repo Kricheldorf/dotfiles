@@ -3,6 +3,7 @@
 
 setup() {
   export TIMETRACK_DATA_DIR="$(mktemp -d)"
+  export CACHE_FILE="$TIMETRACK_DATA_DIR/ticket-cache.json"
   TRACK="$BATS_TEST_DIRNAME/../scripts/track"
 }
 
@@ -102,4 +103,28 @@ load_track() {
   run bash "$TRACK" status
   [ "$status" -eq 0 ]
   [[ "$output" == "SHIP-123 ("*")"* ]]
+}
+
+@test "track TICKET starts a new session using cached client/project" {
+  echo '{"SHIP-123":{"client":"Shipix","project":"Backend Dev"}}' > "$CACHE_FILE"
+  run bash "$TRACK" SHIP-123
+  [ "$status" -eq 0 ]
+  load_track
+  open=$(get_open_session)
+  [ "$open" = "Shipix:Backend Dev:SHIP-123" ]
+}
+
+@test "track TICKET closes previous session before starting new one" {
+  echo '{"SHIP-123":{"client":"Shipix","project":"Backend Dev"},"QUIC-456":{"client":"Quicargo","project":"Platform"}}' > "$CACHE_FILE"
+  load_track
+  clock_in "Shipix:Backend Dev:SHIP-123" "2026-03-19T09:00:00"
+  run bash "$TRACK" QUIC-456
+  [ "$status" -eq 0 ]
+  open=$(get_open_session)
+  [ "$open" = "Quicargo:Platform:QUIC-456" ]
+}
+
+@test "invalid ticket format exits 1" {
+  run bash "$TRACK" not-a-ticket
+  [ "$status" -eq 1 ]
 }
