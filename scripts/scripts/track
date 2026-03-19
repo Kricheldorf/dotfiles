@@ -138,10 +138,80 @@ cmd_status() {
     echo "$ticket (${elapsed_m}m)"
   fi
 }
-# Temporary stub — returns cached data only. Full Jira fetch added in Task 5.
+validate_jira_env() {
+  local missing=()
+  for var in JIRA_BASE_URL JIRA_EMAIL JIRA_API_TOKEN JIRA_CLIENT_FIELD JIRA_PROJECT_FIELD; do
+    if [[ -z "${!var:-}" ]]; then
+      missing+=("$var")
+    fi
+  done
+  if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "Error: Missing required env var(s): ${missing[*]}" >&2
+    echo "Set these in your fish config." >&2
+    exit 1
+  fi
+}
+
+fetch_from_jira() {
+  local ticket="$1"
+  local auth
+  auth=$(echo -n "$JIRA_EMAIL:$JIRA_API_TOKEN" | base64 -w0)
+
+  local http_code body tmp_response
+  tmp_response=$(mktemp)
+  http_code=$(curl -s -o "$tmp_response" -w "%{http_code}" \
+    -H "Authorization: Basic $auth" \
+    -H "Accept: application/json" \
+    "$JIRA_BASE_URL/rest/api/3/issue/$ticket") || {
+    rm -f "$tmp_response"
+    echo "Error: curl failed for $ticket" >&2; exit 1
+  }
+  body=$(< "$tmp_response")
+  rm -f "$tmp_response"
+
+  if [[ "$http_code" == "404" ]]; then
+    echo "Error: Ticket $ticket not found in Jira." >&2; exit 1
+  elif [[ "$http_code" != "2"* ]]; then
+    echo "Error: Jira API returned HTTP $http_code for $ticket." >&2; exit 1
+  fi
+
+  local client project
+  client=$(echo "$body" | jq -r \
+    --arg f "$JIRA_CLIENT_FIELD" \
+    '.fields[$f] | if type == "array" then .[0].value // .[0].name else .value // .name // . end // empty')
+  project=$(echo "$body" | jq -r \
+    --arg f "$JIRA_PROJECT_FIELD" \
+    '.fields[$f] | if type == "array" then .[0].value // .[0].name else .value // .name // . end // empty')
+
+  if [[ -z "$client" ]]; then
+    echo "Error: field JIRA_CLIENT_FIELD ($JIRA_CLIENT_FIELD) returned null for $ticket. Check your env var values." >&2; exit 1
+  fi
+  if [[ -z "$project" ]]; then
+    echo "Error: field JIRA_PROJECT_FIELD ($JIRA_PROJECT_FIELD) returned null for $ticket. Check your env var values." >&2; exit 1
+  fi
+
+  jq -cn --arg client "$client" --arg project "$project" '{client: $client, project: $project}'
+}
+
 get_ticket_info() {
   local ticket="$1"
-  jq -c --arg t "$ticket" '.[$t] // empty' "$CACHE_FILE"
+  local cached
+  cached=$(jq -c --arg t "$ticket" '.[$t] // empty' "$CACHE_FILE")
+
+  if [[ -n "$cached" ]]; then
+    echo "$cached"; return 0
+  fi
+
+  validate_jira_env
+  local info
+  info=$(fetch_from_jira "$ticket")
+
+  local tmp
+  tmp=$(mktemp)
+  jq --arg t "$ticket" --argjson info "$info" '.[$t] = $info' "$CACHE_FILE" > "$tmp"
+  mv "$tmp" "$CACHE_FILE"
+
+  echo "$info"
 }
 
 cmd_start() {
@@ -169,7 +239,34 @@ cmd_start() {
 cmd_report()  { echo "not implemented"; exit 1; }
 cmd_edit()    { echo "not implemented"; exit 1; }
 cmd_refresh() { echo "not implemented"; exit 1; }
-cmd_fields()  { echo "not implemented"; exit 1; }
+
+cmd_fields() {
+  local ticket="${1:-}"
+  if [[ -z "$ticket" ]]; then
+    echo "Usage: track fields TICKET-123" >&2; exit 1
+  fi
+  validate_jira_env
+  local auth
+  auth=$(echo -n "$JIRA_EMAIL:$JIRA_API_TOKEN" | base64 -w0)
+
+  local http_code body tmp_response
+  tmp_response=$(mktemp)
+  http_code=$(curl -s -o "$tmp_response" -w "%{http_code}" \
+    -H "Authorization: Basic $auth" \
+    -H "Accept: application/json" \
+    "$JIRA_BASE_URL/rest/api/3/issue/$ticket?expand=names") || {
+    rm -f "$tmp_response"
+    echo "Error: curl failed for $ticket" >&2; exit 1
+  }
+  body=$(< "$tmp_response")
+  rm -f "$tmp_response"
+
+  if [[ "$http_code" != "2"* ]]; then
+    echo "Error: HTTP $http_code" >&2; exit 1
+  fi
+
+  echo "$body" | jq -r '.names | to_entries[] | "\(.key)\t\(.value)"' | sort | column -t -s $'\t'
+}
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   main "$@"

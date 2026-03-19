@@ -128,3 +128,48 @@ load_track() {
   run bash "$TRACK" not-a-ticket
   [ "$status" -eq 1 ]
 }
+
+@test "validate_jira_env fails with missing var named in message" {
+  load_track
+  unset JIRA_BASE_URL 2>/dev/null || true
+  run validate_jira_env
+  [ "$status" -eq 1 ]
+  [[ "$output" == *"JIRA_BASE_URL"* ]]
+}
+
+@test "get_ticket_info returns cached data without API call" {
+  load_track
+  echo '{"SHIP-123":{"client":"Shipix","project":"Backend Dev"}}' > "$CACHE_FILE"
+  result=$(get_ticket_info "SHIP-123")
+  [ "$(echo "$result" | jq -r '.client')" = "Shipix" ]
+}
+
+@test "fetch_from_jira parses client and project" {
+  load_track
+  export JIRA_BASE_URL="https://test.atlassian.net"
+  export JIRA_EMAIL="u@example.com"
+  export JIRA_API_TOKEN="tok"
+  export JIRA_CLIENT_FIELD="customfield_10001"
+  export JIRA_PROJECT_FIELD="customfield_10002"
+
+  local mock_dir
+  mock_dir="$(mktemp -d)"
+  cat > "$mock_dir/curl" <<'MOCK'
+#!/usr/bin/env bash
+# Parse -o argument to get output file
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -o) output_file="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+echo '{"fields":{"customfield_10001":{"value":"Shipix"},"customfield_10002":{"value":"Backend Dev"}}}' > "$output_file"
+echo "200"
+MOCK
+  chmod +x "$mock_dir/curl"
+
+  PATH="$mock_dir:$PATH" result=$(fetch_from_jira "SHIP-123")
+  [ "$(echo "$result" | jq -r '.client')" = "Shipix" ]
+  [ "$(echo "$result" | jq -r '.project')" = "Backend Dev" ]
+  rm -rf "$mock_dir"
+}
