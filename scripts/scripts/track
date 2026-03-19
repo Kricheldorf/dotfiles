@@ -238,7 +238,27 @@ cmd_start() {
 }
 cmd_report()  { echo "not implemented"; exit 1; }
 cmd_edit()    { echo "not implemented"; exit 1; }
-cmd_refresh() { echo "not implemented"; exit 1; }
+cmd_refresh() {
+  local ticket="${1:-}"
+  if [[ -z "$ticket" ]]; then
+    echo "Usage: track refresh TICKET-123" >&2; exit 1
+  fi
+  if [[ ! "$ticket" =~ ^[A-Z]+-[0-9]+$ ]]; then
+    echo "Error: Invalid ticket format '$ticket'. Expected format: PROJ-123" >&2; exit 1
+  fi
+  validate_jira_env
+
+  local info
+  if ! info=$(fetch_from_jira "$ticket"); then
+    exit 1
+  fi
+
+  local tmp
+  tmp=$(mktemp)
+  jq --arg t "$ticket" --argjson info "$info" '.[$t] = $info' "$CACHE_FILE" > "$tmp"
+  mv "$tmp" "$CACHE_FILE"
+  echo "Refreshed: $ticket"
+}
 
 cmd_fields() {
   local ticket="${1:-}"

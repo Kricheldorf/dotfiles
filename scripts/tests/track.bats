@@ -173,3 +173,39 @@ MOCK
   [ "$(echo "$result" | jq -r '.project')" = "Backend Dev" ]
   rm -rf "$mock_dir"
 }
+
+@test "track refresh updates cache entry" {
+  export JIRA_BASE_URL="https://test.atlassian.net"
+  export JIRA_EMAIL="u@example.com"
+  export JIRA_API_TOKEN="tok"
+  export JIRA_CLIENT_FIELD="customfield_10001"
+  export JIRA_PROJECT_FIELD="customfield_10002"
+
+  echo '{"SHIP-123":{"client":"OldClient","project":"OldProject"}}' > "$CACHE_FILE"
+
+  local mock_dir
+  mock_dir="$(mktemp -d)"
+  cat > "$mock_dir/curl" <<'MOCK'
+#!/usr/bin/env bash
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -o) output_file="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+echo '{"fields":{"customfield_10001":{"value":"Shipix"},"customfield_10002":{"value":"Backend Dev"}}}' > "$output_file"
+echo "200"
+MOCK
+  chmod +x "$mock_dir/curl"
+
+  PATH="$mock_dir:$PATH" run bash "$TRACK" refresh SHIP-123
+  [ "$status" -eq 0 ]
+  load_track
+  [ "$(jq -r '.["SHIP-123"].client' "$CACHE_FILE")" = "Shipix" ]
+  rm -rf "$mock_dir"
+}
+
+@test "track refresh with no ticket arg exits 1" {
+  run bash "$TRACK" refresh
+  [ "$status" -eq 1 ]
+}
