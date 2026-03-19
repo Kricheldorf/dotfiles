@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# scripts/scripts/track
+set -euo pipefail
+
+DATA_DIR="${TIMETRACK_DATA_DIR:-$HOME/.local/share/timetrack}"
+TIMECLOCK_FILE="$DATA_DIR/time.timeclock"
+CACHE_FILE="$DATA_DIR/ticket-cache.json"
+
+check_deps() {
+  for cmd in hledger jq curl; do
+    if ! command -v "$cmd" &>/dev/null; then
+      echo "Error: '$cmd' is required but not installed." >&2
+      exit 1
+    fi
+  done
+}
+
+init_data_dir() {
+  mkdir -p "$DATA_DIR"
+  [[ -f "$TIMECLOCK_FILE" ]] || touch "$TIMECLOCK_FILE"
+  [[ -f "$CACHE_FILE" ]] || echo '{}' > "$CACHE_FILE"
+}
+
+usage() {
+  cat >&2 <<EOF
+Usage: track <command>
+
+Commands:
+  track TICKET-123          Start tracking a ticket (e.g. SHIP-123)
+  track stop                Stop current session
+  track status              Show current ticket and elapsed time
+  track report [YYYY-MM-DD] Show hledger report for today or a given date
+  track edit                Open timeclock file in \$EDITOR
+  track refresh TICKET-123  Re-fetch Jira metadata for a ticket
+  track fields  TICKET-123  List Jira field names/IDs for a ticket
+EOF
+}
+
+main() {
+  check_deps
+  init_data_dir
+
+  local cmd="${1:-}"
+  case "$cmd" in
+    stop)    cmd_stop ;;
+    status)  cmd_status ;;
+    report)  cmd_report "${2:-}" ;;
+    edit)    cmd_edit ;;
+    refresh) cmd_refresh "${2:-}" ;;
+    fields)  cmd_fields "${2:-}" ;;
+    "")      usage; exit 1 ;;
+    *)
+      if [[ "$cmd" =~ ^[A-Z]+-[0-9]+$ ]]; then
+        cmd_start "$cmd"
+      else
+        usage; exit 1
+      fi
+      ;;
+  esac
+}
+
+cmd_stop()    { echo "not implemented"; exit 1; }
+cmd_status()  { echo "not implemented"; exit 1; }
+cmd_start()   { echo "not implemented"; exit 1; }
+cmd_report()  { echo "not implemented"; exit 1; }
+cmd_edit()    { echo "not implemented"; exit 1; }
+cmd_refresh() { echo "not implemented"; exit 1; }
+cmd_fields()  { echo "not implemented"; exit 1; }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
