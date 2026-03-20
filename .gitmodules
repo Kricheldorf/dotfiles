@@ -2,5 +2,5 @@
 	path = nvim/dot-config/nvim
 	url = git@github.com:Kricheldorf/kickstart.nvim.git
 [submodule "scripts/timetrack"]
-	path = scripts/timetrack
+	path = scripts/scripts/timetrack
 	url = git@github.com:Kricheldorf/timetrack.git
