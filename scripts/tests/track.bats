@@ -209,3 +209,34 @@ MOCK
   run bash "$TRACK" refresh
   [ "$status" -eq 1 ]
 }
+
+@test "track report delegates to hledger for given date" {
+  load_track
+  echo "i 2026-03-19 09:00:00 Shipix:Backend Dev:SHIP-123" >> "$TIMECLOCK_FILE"
+  echo "o 2026-03-19 10:30:00" >> "$TIMECLOCK_FILE"
+
+  run bash "$TRACK" report 2026-03-19
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"SHIP-123"* ]]
+}
+
+@test "track report defaults to today without error" {
+  run bash "$TRACK" report
+  [ "$status" -eq 0 ]
+}
+
+@test "track edit opens timeclock file with EDITOR" {
+  local mock_dir called_with
+  mock_dir="$(mktemp -d)"
+  called_with="$mock_dir/called_with"
+  cat > "$mock_dir/nvim" <<MOCK
+#!/usr/bin/env bash
+echo "\$1" > "$called_with"
+MOCK
+  chmod +x "$mock_dir/nvim"
+
+  EDITOR="$mock_dir/nvim" run bash "$TRACK" edit
+  [ "$status" -eq 0 ]
+  [ "$(cat "$called_with")" = "$TIMETRACK_DATA_DIR/time.timeclock" ]
+  rm -rf "$mock_dir"
+}

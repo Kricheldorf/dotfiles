@@ -236,8 +236,14 @@ cmd_start() {
   clock_in "$client:$project:$ticket" "$now"
   echo "Tracking: $ticket"
 }
-cmd_report()  { echo "not implemented"; exit 1; }
-cmd_edit()    { echo "not implemented"; exit 1; }
+cmd_report() {
+  local date_arg="${1:-$(date "+%Y-%m-%d")}"
+  hledger -f "$TIMECLOCK_FILE" register --period "$date_arg"
+}
+
+cmd_edit() {
+  "${EDITOR:-vi}" "$TIMECLOCK_FILE"
+}
 cmd_refresh() {
   local ticket="${1:-}"
   if [[ -z "$ticket" ]]; then
