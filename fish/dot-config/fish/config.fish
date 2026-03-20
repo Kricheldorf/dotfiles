@@ -19,14 +19,25 @@ end
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
+# Time tracker — Jira integration
+set -gx JIRA_BASE_URL "https://yourcompany.atlassian.net"
+set -gx JIRA_EMAIL "your@email.com"
+set -gx JIRA_API_TOKEN "your-api-token"
+set -gx JIRA_CLIENT_FIELD ""   # discover with: track fields TICKET-123
+set -gx JIRA_PROJECT_FIELD ""  # discover with: track fields TICKET-123
+
 set -g async_prompt_functions _pure_prompt_git
 
 # Aliases
+abbr -a hl "hledger"
 abbr -a dev "tmux new -A -s 0"
 abbr -a lg "lazygit"
 abbr -a vim "nvim"
 abbr -a ncdu "ncdu -t8"
 abbr -a gco "git checkout"
+abbr -a gm "git merge"
+abbr -a gd "gh dash"
+
 function ggpush
     git push origin (git rev-parse --abbrev-ref HEAD)
 end
@@ -53,10 +64,24 @@ abbr -a rmpkg "sudo pacman -Rsn"
 abbr -a cleanch "sudo pacman -Scc"
 abbr -a fixpacman "sudo rm /var/lib/pacman/db.lck"
 abbr -a c "claude"
+abbr -a cr "claude /resume"
+abbr -a cu "claude /usage"
 
 # Functions
 function n
-    nvim .
+    if test $argv[1]
+        nvim $argv[1]
+    else
+        nvim .
+    end
+end
+
+function review
+    if string match -qr '^\d+$' -- $argv[1]
+        nvim -c ":silent Octo pr edit $argv[1]"
+    else
+        nvim -c ":silent Octo $argv[1]"
+    end
 end
 
 function zsl
@@ -67,7 +92,7 @@ function zsn
     cd ~/Code/shipix/shipix-platform && nvim .
 end
 
-function gotest
+function gt
     set -l branch $argv[1]
     git fetch origin $branch:$branch
     git checkout $branch
@@ -193,3 +218,4 @@ function pom
         -sound Crystal \
         || pom
 end
+
