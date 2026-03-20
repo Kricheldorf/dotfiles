@@ -178,10 +178,10 @@ fetch_from_jira() {
   local client project
   client=$(echo "$body" | jq -r \
     --arg f "$JIRA_CLIENT_FIELD" \
-    '.fields[$f] | if type == "array" then .[0].value // .[0].name else .value // .name // . end // empty')
+    '.fields[$f] | if type == "array" then .[0].value // .[0].name elif type == "object" then .value // .name else . end // empty')
   project=$(echo "$body" | jq -r \
     --arg f "$JIRA_PROJECT_FIELD" \
-    '.fields[$f] | if type == "array" then .[0].value // .[0].name else .value // .name // . end // empty')
+    '.fields[$f] | if type == "array" then .[0].value // .[0].name elif type == "object" then .value // .name else . end // empty')
 
   if [[ -z "$client" ]]; then
     echo "Error: field JIRA_CLIENT_FIELD ($JIRA_CLIENT_FIELD) returned null for $ticket. Check your env var values." >&2; exit 1
@@ -216,6 +216,15 @@ get_ticket_info() {
 
 cmd_start() {
   local ticket="$1"
+
+  # Fetch ticket info BEFORE touching the timeclock file so a Jira failure
+  # cannot leave the user with no active session.
+  local info
+  info=$(get_ticket_info "$ticket")
+  [[ -z "$info" ]] && { echo "Error: ticket '$ticket' not found in cache. Run after Jira env vars are set." >&2; exit 1; }
+  local client project
+  read -r client project < <(echo "$info" | jq -r '[.client, .project] | @tsv')
+
   local now
   now=$(date "+%Y-%m-%dT%H:%M:%S")
 
@@ -226,12 +235,6 @@ cmd_start() {
     clock_out "$now"
     echo "Stopped: $prev_ticket"
   fi
-
-  local info
-  info=$(get_ticket_info "$ticket")
-  [[ -z "$info" ]] && { echo "Error: ticket '$ticket' not found in cache. Run after Jira env vars are set." >&2; exit 1; }
-  local client project
-  read -r client project < <(echo "$info" | jq -r '[.client, .project] | @tsv')
 
   clock_in "$client:$project:$ticket" "$now"
   echo "Tracking: $ticket"
