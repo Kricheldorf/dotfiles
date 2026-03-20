@@ -223,6 +223,7 @@ MOCK
 @test "track report defaults to today without error" {
   run bash "$TRACK" report
   [ "$status" -eq 0 ]
+  [ -z "$output" ]
 }
 
 @test "track edit opens timeclock file with EDITOR" {
