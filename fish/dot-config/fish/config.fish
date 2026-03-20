@@ -211,7 +211,7 @@ function pom
             return
     end
 
-    timer $work && notify-send 'Work Timer is up! Take a Break 😊' 'Pomodoro' --icon=dialog-information 
+    timer $work && notify-send 'Work Timer is up! Take a Break 😊' 'Pomodoro' --icon=dialog-information
 
     gum confirm "Ready for a break?" && timer $break && terminal-notifier -message Pomodoro \
             -title 'Break is over! Get back to work 😬' \

@@ -1,8 +1,8 @@
 prSections:
-    - title: My Pull Requests
-      filters: is:open author:@me
     - title: Needs My Review
       filters: is:open review-requested:@me
+    - title: My Pull Requests
+      filters: is:open author:@me draft:false
     - title: Involved
       filters: is:open involves:@me -author:@me
 issuesSections:
@@ -37,7 +37,7 @@ defaults:
         open: true
         width: 120
     prsLimit: 20
-    prApproveComment: "Good stuff! 🚀"
+    prApproveComment: "🚀"
     issuesLimit: 20
     notificationsLimit: 20
     view: prs
@@ -79,8 +79,18 @@ defaults:
                 width: 20
                 hidden: true
     refetchIntervalMinutes: 30
-keybindings: {}
-repoPaths: {}
+keybindings:
+  universal:
+    - key: g
+      name: lazygit
+      command: >
+        cd {{.RepoPath}} && lazygit
+  prs:
+    - key: C
+      name: code review
+      command: cd {{.RepoPath}} && nvim -c ":silent Octo pr edit {{.PrNumber}}"
+repoPaths:
+  Shipix-Tech/shipix-platform: ~/Code/shipix/shipix-platform
 theme:
     ui:
         sectionsShowCount: true
@@ -88,7 +98,7 @@ theme:
             showSeparator: true
             compact: false
 pager:
-    diff: "delta"
+    diff: "diffnav"
 confirmQuit: false
 showAuthorIcons: true
 smartFilteringAtLaunch: true
