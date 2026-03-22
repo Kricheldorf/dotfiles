@@ -104,6 +104,11 @@ window#waybar {
    color: @invert_color;
 }
 
+#custom-track {
+   font-size: 17px;
+   color: @caution_color;
+}
+
 #tray {
    background-color: @tray_color;
 }

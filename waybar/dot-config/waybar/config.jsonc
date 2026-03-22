@@ -13,14 +13,14 @@
       ],
       "modules-left": [
          "hyprland/workspaces",
-         // "custom/space"
-         "custom/track"
+         "custom/space"
          // "custom/spotify"
          // "custom/fullscreen"
       ],
       "modules-center": [
          // "niri/window",
-         "clock#calendar"
+         "clock#calendar",
+         "custom/track"
          // "clock#amsterdam"
       ],
       "modules-right": [
