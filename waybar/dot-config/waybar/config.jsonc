@@ -13,8 +13,9 @@
       ],
       "modules-left": [
          "hyprland/workspaces",
-         "custom/space",
-         "custom/spotify"
+         // "custom/space"
+         "custom/track"
+         // "custom/spotify"
          // "custom/fullscreen"
       ],
       "modules-center": [

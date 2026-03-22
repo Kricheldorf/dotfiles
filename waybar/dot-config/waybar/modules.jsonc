@@ -38,7 +38,7 @@
       "on-click": "blueberry"
    },
    "clock#calendar": {
-      "format": "{:%b %d  %R %Z}",
+      "format": "{:%b %d ~ %R %Z}",
       // "format-alt": "{:%H:%M  }",
       "tooltip-format": "\n{tz_list}\n<tt><small>{calendar}</small></tt>",
       "timezones": [
@@ -225,5 +225,14 @@
       "exec": "~/.config/i3/scripts/bandwidth2",
       "interval": 1,
       "format": "{}"
+   },
+   "custom/track": {
+      "exec": "track status",
+      "exec-if": "track status | grep -qv 'No active session'",
+      "interval": 30,
+      "format": " 󰔠 ",
+      "tooltip-format": "{}",
+      "tooltip": true,
+      "on-click": "track stop"
    }
 }

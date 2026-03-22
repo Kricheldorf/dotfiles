@@ -50,9 +50,9 @@ update_system() {
 
 create_directories() {
     log_info "Creating necessary directories..."
-    
+
     local dirs=("$HOME/Code" "$HOME/Installations")
-    
+
     for dir in "${dirs[@]}"; do
         if [[ ! -d "$dir" ]]; then
             mkdir -p "$dir"
@@ -65,7 +65,7 @@ create_directories() {
 
 setup_dotfiles() {
     log_info "Setting up dotfiles..."
-    
+
     cd "$HOME"
     if [[ ! -d "dotfiles" ]]; then
         if git clone https://github.com/Kricheldorf/dotfiles.git; then
@@ -91,7 +91,7 @@ install_packages() {
     local aur_packages=(
         vicinae-bin insync tmux-plugin-manager slack-desktop ente-auth-bin
     )
- 
+
     log_info "Installing ${#packages[@]} packages: ${packages[*]}"
     if sudo pacman -S --noconfirm --needed "${packages[@]}"; then
         log_success "Packages installed successfully"
@@ -111,7 +111,7 @@ install_packages() {
 
 setup_oh_my_zsh() {
     log_info "Setting up Oh My Zsh..."
- 
+
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
         if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended; then
             log_success "Oh My Zsh installed"
@@ -121,7 +121,7 @@ setup_oh_my_zsh() {
     else
         log_info "Oh My Zsh already installed"
     fi
-    
+
     local plugin_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
     if [[ ! -d "$plugin_dir" ]]; then
         log_info "Installing zsh-autosuggestions plugin..."
@@ -137,10 +137,10 @@ setup_oh_my_zsh() {
 
 setup_keyd() {
     log_info "Setting up keyd configuration..."
-    
+
     local keyd_config="$HOME/dotfiles/MANUAL/keyd/etc/keyd/default.conf"
     local target_config="/etc/keyd/default.conf"
-    
+
     if [[ -f "$keyd_config" ]]; then
         if [[ ! -d "$target_config" ]]; then
             log_info "keyd already configured"
@@ -150,7 +150,7 @@ setup_keyd() {
         sudo mkdir -p /etc/keyd
         if sudo cp -s "$keyd_config" "$target_config"; then
             log_success "Keyd configuration copied"
-            
+
             if sudo systemctl enable keyd --now; then
                 log_success "Keyd service enabled and started"
             else
@@ -166,7 +166,7 @@ setup_keyd() {
 
 setup_nodejs() {
     log_info "Setting up Node.js..."
-    
+
     if command -v nvm &> /dev/null; then
         log_info "Installing latest LTS Node.js..."
         nvm install --lts
@@ -179,10 +179,10 @@ setup_nodejs() {
 
 setup_docker() {
     log_info "Setting up Docker..."
-    
+
     sudo gpasswd -a "$(whoami)" docker
     log_success "User added to docker group"
-    
+
     if sudo systemctl enable docker.socket --now; then
         log_success "Docker service enabled and started"
     else
@@ -192,7 +192,7 @@ setup_docker() {
 
 setup_shell() {
     log_info "Setting up shell..."
-    
+
     if [[ "$SHELL" != "$(which zsh)" ]]; then
         log_info "Changing default shell to zsh..."
         if chsh -s "$(which zsh)"; then
@@ -275,10 +275,10 @@ display_todo() {
 
 main() {
     log_info "Starting system setup..."
-    
+
     check_root
     check_arch
-    
+
     update_system
     create_directories
     setup_dotfiles
@@ -288,12 +288,11 @@ main() {
     setup_nodejs
     setup_docker
     setup_shell
-    
+
     post_install
-    
+
     log_success "Setup completed successfully!"
     log_info "Restart your session to ensure all changes take effect."
 }
 
 main "$@"
-

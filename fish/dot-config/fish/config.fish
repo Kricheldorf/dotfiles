@@ -7,7 +7,7 @@ function fish_greeting
 end
 
 # PATH configuration
-fish_add_path $HOME/bin $HOME/.local/bin /usr/local/bin $HOME/.cargo/bin "$HOME/Installations/Webstorm/bin" "/usr/local/opt/postgresql@16/bin" "$HOME/scripts" $GOPATH/bin
+fish_add_path $HOME/bin $HOME/.local/bin /usr/local/bin $HOME/.cargo/bin "$HOME/Installations/Webstorm/bin" "/usr/local/opt/postgresql@16/bin" "$HOME/scripts" $HOME/scripts/*/bin $GOPATH/bin
 
 zoxide init fish | source
 
