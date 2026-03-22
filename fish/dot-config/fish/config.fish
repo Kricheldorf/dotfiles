@@ -31,7 +31,6 @@ set -g async_prompt_functions _pure_prompt_git
 # Aliases
 abbr -a hl "hledger"
 abbr -a dev "tmux new -A -s 0"
-abbr -a lg "lazygit"
 abbr -a vim "nvim"
 abbr -a ncdu "ncdu -t8"
 abbr -a gco "git checkout"
@@ -68,6 +67,17 @@ abbr -a cr "claude /resume"
 abbr -a cu "claude /usage"
 
 # Functions
+function lg
+    set -x LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
+
+    lazygit $argv
+
+    if test -f $LAZYGIT_NEW_DIR_FILE
+        cd (cat $LAZYGIT_NEW_DIR_FILE)
+        rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+    end
+end
+
 function n
     if test $argv[1]
         nvim $argv[1]
