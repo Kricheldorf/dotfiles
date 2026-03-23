@@ -15,7 +15,7 @@
     # The maximum height of a single notification, excluding the frame.
     height = (60, 300)
 
-    origin = top-right
+    origin = top-center
 
     # Offset from the origin
     offset = (30, 40)
