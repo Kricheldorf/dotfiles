@@ -583,9 +583,6 @@ for_window [title=quick-terminal] resize set height 1000
 for_window [title=quick-terminal] move position 1920 0
 for_window [title=quick-terminal] focus
 
-for_window [class="Bitwarden"] sticky enable
-for_window [class="Bitwarden"] floating enable
-
 for_window [all] border pixel 1
 
 ######################################

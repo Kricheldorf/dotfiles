@@ -321,6 +321,7 @@ nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
 nmap \\ <Action>(SelectInProjectView)
+nmap - <Action>(SelectInProjectView)
 nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
 nmap <leader>fp <Action>(ManageRecentProjects)
