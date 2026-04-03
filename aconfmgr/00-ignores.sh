@@ -56,7 +56,6 @@ IgnorePackage fastfetch # A feature-rich and performance oriented neofetch like 
 IgnorePackage ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers
 IgnorePackage firefox # Fast, Private & Safe Web Browser
 IgnorePackage fsarchiver # Safe and flexible file-system backup and deployment tool
-IgnorePackage fuse2 # Interface for userspace programs to export a filesystem to the Linux kernel
 IgnorePackage grub-btrfs-support # Support package for enabling grub-btrfs support
 IgnorePackage grub # GNU GRand Unified Bootloader (2)
 IgnorePackage grub-hook # Pacman hook to update GRUB after a kernel update
@@ -128,7 +127,6 @@ IgnorePackage python-packaging # Core utilities for Python packages
 IgnorePackage python # The Python programming language
 IgnorePackage rebuild-detector # Detects which packages need to be rebuilt
 IgnorePackage reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
-IgnorePackage resvg # SVG rendering library and CLI
 IgnorePackage rsync # A fast and versatile file copying tool for remote and local files
 IgnorePackage rtkit # Realtime Policy and Watchdog Daemon
 IgnorePackage sddm # QML based X11 and Wayland display manager
@@ -139,7 +137,6 @@ IgnorePackage snapper # A tool for managing BTRFS and LVM snapshots
 IgnorePackage sof-firmware # Sound Open Firmware
 IgnorePackage starship # The cross-shell prompt for astronauts
 IgnorePackage sudo # Give certain users the ability to run some commands as root
-IgnorePackage swaybg # Wallpaper tool for Wayland compositors
 IgnorePackage sway # Tiling Wayland compositor and replacement for the i3 window manager
 IgnorePackage sysfsutils # System Utilities Based on Sysfs
 IgnorePackage texinfo # GNU documentation system for on-line information and printed output

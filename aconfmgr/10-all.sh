@@ -14,6 +14,7 @@ AddPackage bluez-libs # Deprecated libraries for the bluetooth protocol stack
 AddPackage bluez-utils # Development and debugging utilities for the bluetooth protocol stack
 AddPackage btop # A monitor of system resources, bpytop ported to C++
 AddPackage diffutils # Utility programs used for creating patch files
+AddPackage fuse2 # Interface for userspace programs to export a filesystem to the Linux kernel
 AddPackage git-delta # syntax-highlighting pager for git and diff output
 AddPackage git # the fast distributed version control system
 AddPackage go # core compiler tools for the go programming language
@@ -27,6 +28,7 @@ AddPackage noto-fonts # Google Noto TTF fonts
 AddPackage perl # A highly capable, feature-rich programming language
 AddPackage perl-image-exiftool # Read and write EXIF information
 AddPackage playerctl # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+AddPackage resvg # SVG rendering library and CLI
 AddPackage ripgrep # A search tool that combines the usability of ag with the raw speed of grep
 AddPackage tmux # Terminal multiplexer
 AddPackage ttf-bitstream-vera # Bitstream Vera fonts.
@@ -65,6 +67,7 @@ AddPackage pavucontrol # PulseAudio Volume Control
 AddPackage polkit-kde-agent # Daemon providing a polkit authentication UI for KDE
 AddPackage satty # Modern screenshot annotation tool, inspired by Swappy and Flameshot
 AddPackage seahorse # GNOME application for managing PGP keys
+AddPackage swaybg # Wallpaper tool for Wayland compositors
 AddPackage waybar # Highly customizable Wayland bar for Sway and Wlroots based compositors
 AddPackage wayland-protocols # Specifications of extended Wayland protocols
 AddPackage wl-clipboard # Command-line copy/paste utilities for Wayland
