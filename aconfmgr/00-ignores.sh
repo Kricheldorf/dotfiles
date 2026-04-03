@@ -12,8 +12,8 @@ IgnorePackage alsa-firmware # Firmware binaries for loader programs in alsa-tool
 IgnorePackage alsa-plugins # Additional ALSA plugins
 IgnorePackage alsa-utils # Advanced Linux Sound Architecture - Utilities
 IgnorePackage amd-ucode # Microcode update image for AMD CPUs
-IgnorePackage base # Minimal package set to define a basic Arch Linux installation
 IgnorePackage base-devel # Basic tools to build Arch Linux packages
+IgnorePackage base # Minimal package set to define a basic Arch Linux installation
 IgnorePackage bash-completion # Programmable completion for the bash shell
 IgnorePackage bind # A complete, highly portable implementation of the DNS protocol
 IgnorePackage btrfs-assistant # An application for managing BTRFS subvolumes and Snapper snapshots
@@ -49,16 +49,16 @@ IgnorePackage efibootmgr # Linux user-space application to modify the EFI Boot M
 IgnorePackage efitools # Tools for manipulating UEFI secure boot platforms
 IgnorePackage egl-wayland # EGLStream-based Wayland external platform
 IgnorePackage ethtool # Utility for controlling network drivers and hardware
-IgnorePackage ex-vi-compat # The ex and vi commands based on vim's compatibility modes
 IgnorePackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kernel exfat driver
+IgnorePackage ex-vi-compat # The ex and vi commands based on vim's compatibility modes
 IgnorePackage f2fs-tools # Tools for Flash-Friendly File System (F2FS)
 IgnorePackage fastfetch # A feature-rich and performance oriented neofetch like system information tool
 IgnorePackage ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers
 IgnorePackage firefox # Fast, Private & Safe Web Browser
 IgnorePackage fsarchiver # Safe and flexible file-system backup and deployment tool
 IgnorePackage fuse2 # Interface for userspace programs to export a filesystem to the Linux kernel
-IgnorePackage grub # GNU GRand Unified Bootloader (2)
 IgnorePackage grub-btrfs-support # Support package for enabling grub-btrfs support
+IgnorePackage grub # GNU GRand Unified Bootloader (2)
 IgnorePackage grub-hook # Pacman hook to update GRUB after a kernel update
 IgnorePackage gst-libav # Multimedia graph framework - libav plugin
 IgnorePackage gst-plugin-pipewire # Multimedia graph framework - pipewire plugin
@@ -81,12 +81,12 @@ IgnorePackage libgsf # Extensible I/O abstraction library for dealing with struc
 IgnorePackage libopenraw # Library for decoding RAW files
 IgnorePackage libva-nvidia-driver # VA-API implementation that uses NVDEC as a backend
 IgnorePackage libwnck3 # Library to manage X windows and workspaces (for e.g. pagers or tasklists)
-IgnorePackage linux-cachyos # The Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel and modules
 IgnorePackage linux-cachyos-headers # Headers and scripts for building modules for the Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel
-IgnorePackage linux-cachyos-lts # The Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel and modules
 IgnorePackage linux-cachyos-lts-headers # Headers and scripts for building modules for the Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel
 IgnorePackage linux-cachyos-lts-nvidia-open # nvidia open modules of 595.58.03 driver for the linux-cachyos-lts kernel
+IgnorePackage linux-cachyos-lts # The Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel and modules
 IgnorePackage linux-cachyos-nvidia-open # nvidia open modules of 595.58.03 driver for the linux-cachyos kernel
+IgnorePackage linux-cachyos # The Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel and modules
 IgnorePackage linux-firmware # Firmware files for Linux - Default set
 IgnorePackage logrotate # Rotates system logs automatically
 IgnorePackage lsb-release # LSB version query program
@@ -118,27 +118,29 @@ IgnorePackage paru # Feature packed AUR helper
 IgnorePackage pipewire-alsa # Low-latency audio/video router and processor - ALSA configuration
 IgnorePackage pipewire-pulse # Low-latency audio/video router and processor - PulseAudio replacement
 IgnorePackage pkgfile # A tool to search for files in official repository packages
+IgnorePackage plocate # Alternative to locate, faster and compatible with mlocate's database.
+IgnorePackage plymouth # Graphical boot splash screen
 IgnorePackage poppler-glib # Poppler glib bindings
 IgnorePackage power-profiles-daemon # Makes power profiles handling available over D-Bus
 IgnorePackage pv # A terminal-based tool for monitoring the progress of data through a pipeline
-IgnorePackage python # The Python programming language
 IgnorePackage python-defusedxml # XML bomb protection for Python stdlib modules
 IgnorePackage python-packaging # Core utilities for Python packages
+IgnorePackage python # The Python programming language
 IgnorePackage rebuild-detector # Detects which packages need to be rebuilt
 IgnorePackage reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
 IgnorePackage resvg # SVG rendering library and CLI
 IgnorePackage rsync # A fast and versatile file copying tool for remote and local files
 IgnorePackage rtkit # Realtime Policy and Watchdog Daemon
-IgnorePackage s-nail # Environment for sending and receiving mail
 IgnorePackage sddm # QML based X11 and Wayland display manager
 IgnorePackage sg3_utils # Generic SCSI utilities
 IgnorePackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+IgnorePackage s-nail # Environment for sending and receiving mail
 IgnorePackage snapper # A tool for managing BTRFS and LVM snapshots
 IgnorePackage sof-firmware # Sound Open Firmware
 IgnorePackage starship # The cross-shell prompt for astronauts
 IgnorePackage sudo # Give certain users the ability to run some commands as root
-IgnorePackage sway # Tiling Wayland compositor and replacement for the i3 window manager
 IgnorePackage swaybg # Wallpaper tool for Wayland compositors
+IgnorePackage sway # Tiling Wayland compositor and replacement for the i3 window manager
 IgnorePackage sysfsutils # System Utilities Based on Sysfs
 IgnorePackage texinfo # GNU documentation system for on-line information and printed output
 IgnorePackage ufw # Uncomplicated and easy to use CLI tool for managing a netfilter firewall
