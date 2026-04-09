@@ -30,6 +30,7 @@ set -g async_prompt_functions _pure_prompt_git
 
 # Aliases
 abbr -a hl "hledger"
+abbr -a zl "zellij"
 abbr -a dev "tmux new -A -s 0"
 abbr -a vim "nvim"
 abbr -a ncdu "ncdu -t8"
@@ -82,7 +83,7 @@ function n
     if test $argv[1]
         nvim $argv[1]
     else
-        nvim .
+        nvim
     end
 end
 

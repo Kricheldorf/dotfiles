@@ -42,4 +42,5 @@ gui:
   scrollHeight: 10
   showDivergenceFromBaseBranch: onlyArrow
   commitAuthorLongLength: 2
-nerdFontsVersion: '3'
+  nerdFontsVersion: '3'
+  showFileIcons: true

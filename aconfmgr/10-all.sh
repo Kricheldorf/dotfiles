@@ -97,7 +97,9 @@ AddPackage fnm # Fast and simple Node.js version manager, built with Rust
 AddPackage github-cli # The GitHub CLI
 AddPackage lazydocker # A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
 AddPackage lazygit # Simple terminal UI for git commands
-AddPackage neovim-git # Fork of Vim aiming to improve user experience, plugins, and GUIs
+AddPackage neovim # Fork of Vim aiming to improve user experience, plugins, and GUIs
+AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
+AddPackage zellij # A terminal multiplexer
 AddPackage postgresql # Sophisticated object-relational DBMS
 
 # AUR packages
