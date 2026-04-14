@@ -10,9 +10,8 @@
 " AceJump
 " Fuzzier
 " Gerry Themes
-" HarpoonIJ
+" HarpoonIJ / Harpooner
 " IdeaVim
-" IdeaVim-EasyMotion
 " IdeaVim-Quickscope
 " macOS For All
 " Relative Line Numbers
@@ -88,10 +87,8 @@ set ReplaceWithRegister
 set surround
 " TODO: fix function surround
 set nerdtree
-vmap s S
 " Searching Plugins
 set sneak
-set easymotion
 set matchit
 set peekaboo
 set anyobject
@@ -99,6 +96,13 @@ set anyobject
 vmap <S-J> <Action>(MoveLineDown)
 vmap <S-K> <Action>(MoveLineUp)
 
+" Remap to cr* to free gr* for LSP-style aliases
+nmap cr  <Plug>ReplaceWithRegisterOperator
+nmap crr <Plug>ReplaceWithRegisterLine
+xmap cr  <Plug>ReplaceWithRegisterVisual
+vmap s S
+
+" TODO: review dup with <leader>bn/<leader>bp
 nmap ]b <Action>(GotoNextBookmark)
 nmap [b <Action>(GotoPreviousBookmark)
 
@@ -153,7 +157,6 @@ nnoremap <C-l> <C-w>l
 " nnoremap <C-j> <C-w>j
 nnoremap <C-w>p :action JumpToLastWindow<CR>
 nnoremap <C-w>o :action HideAllWindows<CR>
-nnoremap zx :action HideAllWindows<CR>
 
 " Navigation actions
 nmap <C-i> <Action>(Forward)
@@ -182,8 +185,12 @@ vnoremap y ygv<Esc>
 "nmap <leader>ca <Action>(ShowPopupMenu)
 "nmap <C-S-m> <Action>(ToolWindowsGroup)
 
-" Clear Search Highlighitng
-nnoremap <C-[> :noh<return>
+" Clear Search Highlighting
+nnoremap <Esc> :noh<CR><Esc>
+
+" Save file (parity with nvim)
+nmap <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>
 
 " Inspired by https://github.com/terryma/vim-expand-region
 xmap + <Action>(EditorSelectWord)
@@ -211,9 +218,6 @@ xmap <leader>g<C-n> <Plug>AllOccurrences
 "" Leader Commands
 "" ========================================================
 
-" EasyMotion
-let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
-
 nmap ]d <action>(GotoNextError)
 nmap [d <action>(GotoPreviousError)
 nmap <M-j> <action>(GotoNextError)
@@ -224,28 +228,20 @@ nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap ]c <Action>(VcsShowNextChangeMarker)
 
 " Information commands
-nmap <leader>ie <action>(ShowErrorDescription)
 nmap <C-w>d <action>(ShowErrorDescription)
 nmap <leader>it <action>(ExpressionTypeInfo)
 nmap <leader>ip <action>(ParameterInfo)
 nmap <leader>ij <action>(QuickJavaDoc)
-nmap <leader>if <action>(FileStructurePopup)
-nmap <leader>ds <action>(FileStructurePopup)
 nmap <leader>iU <action>(ShowUmlDiagram)
 nmap <leader>ih <action>(CallHierarchy)
-nmap <leader>iu <action>(ShowUsages)
 nmap <leader>im <action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
-let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
 let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
 let g:WhichKeyDesc_info_parameter = "<leader>ip Parameter Info"
 let g:WhichKeyDesc_info_javadoc = "<leader>ij Java Doc"
-let g:WhichKeyDesc_info_file_structure = "<leader>if File Structure"
 let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
 let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
-let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
-let g:WhichKeyDesc_info_file_structure_vim = "<leader>ds File Structure (Vim)"
 " nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 " nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
@@ -260,15 +256,11 @@ nmap <C-w>" <action>(SplitHorizontally)
 
 nmap <C-w>u <action>(Unsplit)
 nmap <C-w>m <action>(MoveEditorToOppositeTabGroup)
-nmap <C-w>b <action>(Back)
-nmap <C-w>f <action>(Forward)
 let g:WhichKeyDesc_window = "<leader>w Window splits"
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
 let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
 let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
-let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
-let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
 
 
 " Tab Navigation and Management
@@ -314,37 +306,27 @@ let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
 let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 
 " File navigation
-nmap <leader>fg <Action>(GotoFile)
-nmap <leader>fr <Action>(RecentFiles)
+nmap <leader><leader> <Action>(RecentFiles)
 nmap <leader>fl <Action>(RecentLocations)
-nmap <leader>fc <Action>(FindInPath)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
 nmap \\ <Action>(SelectInProjectView)
 nmap - <Action>(SelectInProjectView)
 nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
-nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fh <Action>(LocalHistory.ShowHistory)
 " nmap <leader>ff <Action>(ShowFilePath)
-nmsap <leader>ff <Action>(ShowFilePath)
+nmap <leader>ff <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
-nmap <leader>fp <Action>(ReplaceInPath)
-let g:WhichKeyDesc_file_opt = "<leader>f Reformat Code"
-let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
-let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
-let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
 let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
 let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
 let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
 let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
 let g:WhichKeyDesc_file_opt_toggle_nerdtree_alt = "\\ Select File in NERDTree"
 let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
-let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
 let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
-let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 
 " Yank Actions
 nmap <leader>yr <Action>(CopyReference)
@@ -414,9 +396,18 @@ let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dT Activate Debug Tool 
 
 
 " Language Actions
+" gr* LSP-style aliases (nvim 0.11 defaults) — primary
+nmap grn <Action>(RenameElement)
+nmap gra <Action>(ShowIntentionActions)
+xmap gra <Action>(ShowIntentionActions)
+nmap grr <Action>(ShowUsages)
+nmap gri <Action>(GotoImplementation)
+nmap grd <Action>(GotoDeclaration)
+nmap grD <Action>(GotoTypeDeclaration)
+nmap grt <Action>(GotoTest)
+nmap gO  <Action>(FileStructurePopup)
+
 nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>lr <Action>(RenameElement)
-nmap <leader>rn <Action>(RenameElement)
 nmap <leader>lc <Action>(ChangeSignature)
 nmap <leader>lv <Action>(IntroduceVariable)
 nmap <leader>li <Action>(Inline)
@@ -426,17 +417,13 @@ nmap <leader>lC <Action>(IntroduceConstant)
 nmap <leader>lp <Action>(IntroduceParameter)
 nmap <leader>lo <Action>(IntroduceParameterObject)
 nmap <leader>le <Action>(EncapsulateFields)
-nmap <leader>la <Action>(ShowIntentionActions)
-nmap <leader>ca <Action>(ShowIntentionActions)
-map <leader>lR <Action>(ReformatCode)
-map <leader>f <Action>(ReformatCode)
+nmap <leader>cf <Action>(ReformatCode)
+vmap <leader>cf <Action>(ReformatCode)
 nmap <leader>lI <Action>(InspectCode)
 nmap <leader>lG <Action>(Generate)
 nmap <leader>loi <Action>(OptimizeImports)
-nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
 let g:WhichKeyDesc_language = "<leader>l Language"
 let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
-let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
 let g:WhichKeyDesc_language_change_signature = "<leader>lc Change Signature"
 let g:WhichKeyDesc_language_inline_variable = "<leader>li Inline"
 let g:WhichKeyDesc_language_introduce_field = "<leader>lf Introduce Field"
@@ -445,8 +432,7 @@ let g:WhichKeyDesc_language_introduce_constant = "<leader>lC Introduce Constant"
 let g:WhichKeyDesc_language_introduce_parameter = "<leader>lp Introduce Parameter"
 let g:WhichKeyDesc_language_introduce_param_object = "<leader>lo Introduce Parameter Object"
 let g:WhichKeyDesc_language_encapsulate = "<leader>le Encapsulate Fields"
-let g:WhichKeyDesc_language_show_intention_actions = "<leader>la Show Intention Actions"
-let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
+let g:WhichKeyDesc_language_reformat_code = "<leader>cf Reformat Code"
 let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
 let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
 let g:WhichKeyDesc_language_optimize_imports = "<leader>loi Optimize Imports"
@@ -471,31 +457,24 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 
 
 " Go To
-nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>go <Action>(GotoSuperMethod)
-nmap <leader>gT <Action>(GotoTypeDeclaration)
-nmap <leader>gi <Action>(GotoImplementation)
+" TODO: review dup with grt (GotoTest)
 nmap <leader>gt <Action>(GotoTest)
-nmap <leader>gr <action>(ShowUsages)
 let g:WhichKeyDesc_goto_leader = "<leader>g Go To"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
 let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
-let g:WhichKeyDesc_goto_type_declaration = "<leader>gT Go To Type Declaration"
-let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
 let g:WhichKeyDesc_goto_test = "<leader>gt Go To Test"
-let g:WhichKeyDesc_goto_usages = "<leader>gr Go To Usages"
 
 " Search / Telescope
 nmap <leader>/ <action>(Find)
 nmap <leader>sS <action>(SearchEverywhere)
 nmap <leader>su <Action>(FindUsages)
-nmap <leader>sn <Action>(ShowNavBar)
+nmap <leader>sB <Action>(ShowNavBar)
 nmap <leader>sa <Action>(GotoAction)
-nmap <leader>sc <Action>(GotoClass)
+nmap <leader>sC <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>ss <Action>(GotoSymbol)
-nmap <leader>sd <Action>(GotoDatabaseObject)
+nmap <leader>sD <Action>(GotoDatabaseObject)
+nmap <leader>sd <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>se <Action>(GotoUrlAction)
 nmap <leader>sg <Action>(FindInPath)
@@ -506,7 +485,6 @@ nmap <leader>sG <Action>(ReplaceInPath)
 " map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrep)
 " map <leader>sg <action>(com.mituuz.fuzzier.FuzzyGrepCaseInsensitive)
 " TODO: maybe update to <leader><leader>
-nmap <leader>s. <action>(RecentFiles)
 let g:WhichKeyDesc_search = "<leader>s Search"
 let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
 let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
@@ -519,17 +497,21 @@ let g:WhichKeyDesc_search_text = "<leader>st Search Text"
 let g:WhichKeyDesc_search_in_path = "<leader>sg Search in Files ([s]earch [g]rep)"
 
 " Harpoon
-
 nmap <leader>hh <action>(HarpoonerToggleQuickMenu)
 
 nmap <leader>ha <action>(HarpoonerAddFile)
-nmap <leader>ha <action>(HarpoonerRemoveFile)
+nmap <leader>hd <action>(HarpoonerRemoveFile)
 
 nmap <C-1> <action>(HarpoonerOpenFile0)
 nmap <C-2> <action>(HarpoonerOpenFile1)
 nmap <C-3> <action>(HarpoonerOpenFile2)
 nmap <C-4> <action>(HarpoonerOpenFile3)
 nmap <C-5> <action>(HarpoonerOpenFile4)
+
+nmap <leader>h1 <action>(HarpoonerOpenFile0)
+nmap <leader>h2 <action>(HarpoonerOpenFile1)
+nmap <leader>h3 <action>(HarpoonerOpenFile2)
+nmap <leader>h4 <action>(HarpoonerOpenFile3)
 
 nmap <leader>hn <action>(HarpoonerNextFileAction)
 nmap <leader>hp <action>(HarpoonerPreviousFileAction)
