@@ -55,7 +55,7 @@ set clipboard+=ideaput
 vmap <C-c> <Action>(EditorCopy)
 
 nnoremap gs :Switch<CR>
-nnoremap <leader>gs :SwitchReverse<CR>
+nnoremap <leader>gR :SwitchReverse<CR>
 
 let g:switch_definitions = 'group:basic,group:javascript,group:markdown'
 
@@ -294,6 +294,18 @@ let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
 let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 
+" Snacks-style top pickers (mirrors nvim snacks.nvim keys)
+nmap <leader>. <Action>(NewScratchFile)
+nmap <leader>, <Action>(RecentFiles)
+nmap <leader>: <Action>(GotoAction)
+nmap <leader>e <Action>(SelectInProjectView)
+let g:WhichKeyDesc_scratch = "<leader>. New Scratch File"
+let g:WhichKeyDesc_recent_buffers = "<leader>, Recent Files"
+let g:WhichKeyDesc_grep_project = "<leader>/ Grep in project"
+let g:WhichKeyDesc_find_local = "<leader>? Find in file"
+let g:WhichKeyDesc_command_actions = "<leader>: Goto Action"
+let g:WhichKeyDesc_explorer = "<leader>e Select In Project View"
+
 " File navigation
 nmap <leader><leader> <Action>(RecentFiles)
 nmap <leader>fl <Action>(RecentLocations)
@@ -307,6 +319,11 @@ nmap <leader>fh <Action>(LocalHistory.ShowHistory)
 " nmap <leader>ff <Action>(ShowFilePath)
 nmap <leader>ff <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
+" Snacks-style file picker mirrors
+nmap <leader>fb <Action>(RecentFiles)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fp <Action>(ManageRecentProjects)
+nmap <leader>fg <Action>(GotoFile)
 let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
 let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
 let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
@@ -316,6 +333,10 @@ let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
 let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
+let g:WhichKeyDesc_file_opt_buffers = "<leader>fb Buffers (Recent Files)"
+let g:WhichKeyDesc_file_opt_recent = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_opt_projects = "<leader>fp Recent Projects"
+let g:WhichKeyDesc_file_opt_git_files = "<leader>fg Git Files (Goto File)"
 
 " Yank Actions
 nmap <leader>yr <Action>(CopyReference)
@@ -449,12 +470,33 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 nmap <leader>go <Action>(GotoSuperMethod)
 " TODO: review dup with grt (GotoTest)
 nmap <leader>gt <Action>(GotoTest)
-let g:WhichKeyDesc_goto_leader = "<leader>g Go To"
+let g:WhichKeyDesc_goto_leader = "<leader>g Go To / Git"
 let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
 let g:WhichKeyDesc_goto_test = "<leader>gt Go To Test"
 
+" Git (snacks-style lowercase mirrors; see <leader>G for full VCS suite)
+nmap <leader>gs <Action>(Vcs.Show.Local.Changes)
+nmap <leader>gb <Action>(Git.Branches)
+nmap <leader>gd <Action>(Vcs.ShowDiffChangedLines)
+nmap <leader>gl <Action>(ActivateVersionControlToolWindow)
+nmap <leader>gL <Action>(Annotate)
+nmap <leader>gf <Action>(Vcs.ShowHistoryForFile)
+nmap <leader>gS <Action>(ChangesView.Shelve)
+nmap <leader>gp <Action>(Github.View.Pull.Request)
+nmap <leader>gP <Action>(Github.View.Pull.Request)
+let g:WhichKeyDesc_git_lc_status = "<leader>gs Git Status (Local Changes)"
+let g:WhichKeyDesc_git_lc_branches = "<leader>gb Git Branches"
+let g:WhichKeyDesc_git_lc_diff = "<leader>gd Git Diff (Changed Lines)"
+let g:WhichKeyDesc_git_lc_log = "<leader>gl Git Log (VCS Tool Window)"
+let g:WhichKeyDesc_git_lc_blame = "<leader>gL Git Blame (Annotate)"
+let g:WhichKeyDesc_git_lc_file_history = "<leader>gf Git File History"
+let g:WhichKeyDesc_git_lc_stash = "<leader>gS Git Stash/Shelve"
+let g:WhichKeyDesc_git_lc_pr_open = "<leader>gp GitHub PRs"
+let g:WhichKeyDesc_git_lc_pr_all = "<leader>gP GitHub PRs (all)"
+
 " Search / Telescope
-nmap <leader>/ <action>(Find)
+nmap <leader>/ <action>(FindInPath)
+nmap <leader>? <action>(Find)
 nmap <leader>sS <action>(SearchEverywhere)
 nmap <leader>su <Action>(FindUsages)
 nmap <leader>sB <Action>(ShowNavBar)
@@ -468,6 +510,20 @@ nmap <leader>st <Action>(TextSearchAction)
 nmap <leader>se <Action>(GotoUrlAction)
 nmap <leader>sg <Action>(FindInPath)
 nmap <leader>sG <Action>(ReplaceInPath)
+" Snacks-style picker mirrors
+nmap <leader>sb <Action>(FileStructurePopup)
+nmap <leader>sw <Action>(FindWordAtCaret)
+xmap <leader>sw <Action>(FindWordAtCaret)
+nmap <leader>sj <Action>(RecentLocations)
+nmap <leader>sm <Action>(ShowBookmarks)
+nmap <leader>sk <Action>(GotoAction)
+nmap <leader>sr <Action>(FindNext)
+let g:WhichKeyDesc_search_buffer_lines = "<leader>sb Buffer Lines (File Structure)"
+let g:WhichKeyDesc_search_word = "<leader>sw Grep Word at Caret"
+let g:WhichKeyDesc_search_jumps = "<leader>sj Recent Locations"
+let g:WhichKeyDesc_search_marks = "<leader>sm Show Bookmarks"
+let g:WhichKeyDesc_search_keymaps = "<leader>sk Search Keymaps (Actions)"
+let g:WhichKeyDesc_search_resume = "<leader>sr Resume (Find Next)"
 " map <leader>sf <action>(com.mituuz.fuzzier.Fuzzier)
 " map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
 " map <leader>sv <action>(com.mituuz.fuzzier.FuzzierVCS)
