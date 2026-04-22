@@ -1,0 +1,10 @@
+cd /home/kricheldorf/Code/shipix/shipix-platform
+
+layout splits
+launch --location=first fish -i -C "npm run db:migration:run && npm run start:api:docs"
+launch --location=vsplit fish -c "npm run start:app:dev; exec fish"
+
+new_tab docker
+launch fish -c "npm run docker:database:up; exec fish"
+
+

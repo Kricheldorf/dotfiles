@@ -157,6 +157,7 @@ nnoremap <C-l> <C-w>l
 " nnoremap <C-j> <C-w>j
 nnoremap <C-w>p :action JumpToLastWindow<CR>
 nnoremap <C-w>o :action HideAllWindows<CR>
+nnoremap zx :action HideAllWindows<CR>
 
 " Navigation actions
 nmap <C-i> <Action>(Forward)
