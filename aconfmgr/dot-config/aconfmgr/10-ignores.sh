@@ -1,9 +1,13 @@
 IgnorePath '/usr/*' # system files
 IgnorePath '/var/*' # system files
-IgnorePath '/etc/*' # system files
 IgnorePath '/boot/*' # system files
 IgnorePath '/opt/*' # system files
 IgnorePath '/.snapshots/*' # system files
+
+etc_white_list=(
+  'keyd/*'
+)
+IgnorePathsExcept '/etc' "${etc_white_list[@]}"
 
 # CachyOS base files
 
@@ -12,13 +16,16 @@ IgnorePackage alsa-firmware # Firmware binaries for loader programs in alsa-tool
 IgnorePackage alsa-plugins # Additional ALSA plugins
 IgnorePackage alsa-utils # Advanced Linux Sound Architecture - Utilities
 IgnorePackage amd-ucode # Microcode update image for AMD CPUs
-IgnorePackage base-devel # Basic tools to build Arch Linux packages
+IgnorePackage arianna # EPub Reader for mobile devices
 IgnorePackage base # Minimal package set to define a basic Arch Linux installation
+IgnorePackage base-devel # Basic tools to build Arch Linux packages
 IgnorePackage bash-completion # Programmable completion for the bash shell
 IgnorePackage bind # A complete, highly portable implementation of the DNS protocol
 IgnorePackage btrfs-assistant # An application for managing BTRFS subvolumes and Snapper snapshots
 IgnorePackage btrfs-progs # Btrfs filesystem utilities
 IgnorePackage cachyos-fish-config # Fish configuration of CachyOS
+IgnorePackage cachyos-gaming-applications # Common Applications used for Gaming
+IgnorePackage cachyos-gaming-meta # Meta package for Gaming dependencies
 IgnorePackage cachyos-grub-theme # Grub2 Theme for CachyOS
 IgnorePackage cachyos-hello # Welcome screen for CachyOS
 IgnorePackage cachyos-hooks # CachyOS libalpm hooks
@@ -34,11 +41,15 @@ IgnorePackage cachyos-v3-mirrorlist # CachyOS repository mirrorlist
 IgnorePackage cachyos-v4-mirrorlist # CachyOS repository mirrorlist
 IgnorePackage cachyos-zsh-config # Zsh configuration for CachyOS
 IgnorePackage cantarell-fonts # Humanist sans serif font
+IgnorePackage catch2 # Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 IgnorePackage chwd # CachyOS Hardware Detection Tool
+IgnorePackage cmake # A cross-platform open-source make system
+IgnorePackage code # The Open Source build of Visual Studio Code (vscode) editor
 IgnorePackage cpupower # Linux kernel tool to examine and tune power saving related features of your processor
 IgnorePackage cryptsetup # Userspace setup tool for transparent encryption of block devices using dm-crypt
 IgnorePackage device-mapper # Device mapper userspace library and tools
 IgnorePackage dhclient # A standalone DHCP client from the dhcp package
+IgnorePackage discord # All-in-one voice and text chat for gamers
 IgnorePackage dmidecode # Desktop Management Interface table related utilities
 IgnorePackage dmraid # Device mapper RAID interface
 IgnorePackage dnsmasq # Lightweight, easy to configure DNS forwarder and DHCP server
@@ -49,15 +60,16 @@ IgnorePackage efibootmgr # Linux user-space application to modify the EFI Boot M
 IgnorePackage efitools # Tools for manipulating UEFI secure boot platforms
 IgnorePackage egl-wayland # EGLStream-based Wayland external platform
 IgnorePackage ethtool # Utility for controlling network drivers and hardware
-IgnorePackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kernel exfat driver
 IgnorePackage ex-vi-compat # The ex and vi commands based on vim's compatibility modes
+IgnorePackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kernel exfat driver
 IgnorePackage f2fs-tools # Tools for Flash-Friendly File System (F2FS)
 IgnorePackage fastfetch # A feature-rich and performance oriented neofetch like system information tool
 IgnorePackage ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers
 IgnorePackage firefox # Fast, Private & Safe Web Browser
 IgnorePackage fsarchiver # Safe and flexible file-system backup and deployment tool
-IgnorePackage grub-btrfs-support # Support package for enabling grub-btrfs support
+IgnorePackage glaze # An Extremely fast, In-Memory JSON and Interface Library for Modern C++
 IgnorePackage grub # GNU GRand Unified Bootloader (2)
+IgnorePackage grub-btrfs-support # Support package for enabling grub-btrfs support
 IgnorePackage grub-hook # Pacman hook to update GRUB after a kernel update
 IgnorePackage gst-libav # Multimedia graph framework - libav plugin
 IgnorePackage gst-plugin-pipewire # Multimedia graph framework - pipewire plugin
@@ -68,6 +80,7 @@ IgnorePackage hdparm # A shell utility for manipulating Linux IDE drive/driver p
 IgnorePackage hwdetect # Hardware detection script with loading modules and mkinitcpio.conf
 IgnorePackage hwinfo # Hardware detection tool from openSUSE
 IgnorePackage inetutils # A collection of common network programs
+IgnorePackage iptables # Linux kernel packet control tool (using nft interface)
 IgnorePackage iptables-nft # Linux kernel packet control tool (using nft interface)
 IgnorePackage iwd # Internet Wireless Daemon
 IgnorePackage jfsutils # JFS filesystem utilities
@@ -77,15 +90,16 @@ IgnorePackage lib32-opencl-nvidia # OpenCL implemention for NVIDIA (32-bit)
 IgnorePackage lib32-vulkan-icd-loader # Vulkan Installable Client Driver (ICD) Loader (32-bit)
 IgnorePackage libdvdcss # Portable abstraction library for DVD decryption
 IgnorePackage libgsf # Extensible I/O abstraction library for dealing with structured file formats
+IgnorePackage libinput-tools # Input device management and event handling library (debug utilities)
 IgnorePackage libopenraw # Library for decoding RAW files
 IgnorePackage libva-nvidia-driver # VA-API implementation that uses NVDEC as a backend
 IgnorePackage libwnck3 # Library to manage X windows and workspaces (for e.g. pagers or tasklists)
+IgnorePackage linux-cachyos # The Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel and modules
 IgnorePackage linux-cachyos-headers # Headers and scripts for building modules for the Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel
+IgnorePackage linux-cachyos-lts # The Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel and modules
 IgnorePackage linux-cachyos-lts-headers # Headers and scripts for building modules for the Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel
 IgnorePackage linux-cachyos-lts-nvidia-open # nvidia open modules of 595.58.03 driver for the linux-cachyos-lts kernel
-IgnorePackage linux-cachyos-lts # The Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel and modules
 IgnorePackage linux-cachyos-nvidia-open # nvidia open modules of 595.58.03 driver for the linux-cachyos kernel
-IgnorePackage linux-cachyos # The Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel and modules
 IgnorePackage linux-firmware # Firmware files for Linux - Default set
 IgnorePackage logrotate # Rotates system logs automatically
 IgnorePackage lsb-release # LSB version query program
@@ -104,6 +118,7 @@ IgnorePackage nano # Pico editor clone with enhancements
 IgnorePackage nano-syntax-highlighting # Nano editor syntax highlighting enhancements
 IgnorePackage nfs-utils # Support programs for Network File Systems
 IgnorePackage nilfs-utils # A log-structured file system supporting continuous snapshotting (userspace utils)
+IgnorePackage ninja # Small build system with a focus on speed
 IgnorePackage nss-mdns # glibc plugin providing host name resolution via mDNS
 IgnorePackage ntp # Network Time Protocol reference implementation
 IgnorePackage nvidia-settings # Tool for configuring the NVIDIA graphics driver
@@ -121,18 +136,20 @@ IgnorePackage plocate # Alternative to locate, faster and compatible with mlocat
 IgnorePackage plymouth # Graphical boot splash screen
 IgnorePackage poppler-glib # Poppler glib bindings
 IgnorePackage power-profiles-daemon # Makes power profiles handling available over D-Bus
+IgnorePackage pulumi # Modern Infrastructure as Code
 IgnorePackage pv # A terminal-based tool for monitoring the progress of data through a pipeline
+IgnorePackage python # The Python programming language
 IgnorePackage python-defusedxml # XML bomb protection for Python stdlib modules
 IgnorePackage python-packaging # Core utilities for Python packages
-IgnorePackage python # The Python programming language
+IgnorePackage python-weasyprint # Utility to render HTML and CSS to PDF
 IgnorePackage rebuild-detector # Detects which packages need to be rebuilt
 IgnorePackage reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
 IgnorePackage rsync # A fast and versatile file copying tool for remote and local files
 IgnorePackage rtkit # Realtime Policy and Watchdog Daemon
+IgnorePackage s-nail # Environment for sending and receiving mail
 IgnorePackage sddm # QML based X11 and Wayland display manager
 IgnorePackage sg3_utils # Generic SCSI utilities
 IgnorePackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
-IgnorePackage s-nail # Environment for sending and receiving mail
 IgnorePackage snapper # A tool for managing BTRFS and LVM snapshots
 IgnorePackage sof-firmware # Sound Open Firmware
 IgnorePackage starship # The cross-shell prompt for astronauts
@@ -148,6 +165,7 @@ IgnorePackage uwsm # A standalone Wayland session manager
 IgnorePackage vulkan-icd-loader # Vulkan Installable Client Driver (ICD) Loader
 IgnorePackage wget # Network utility to retrieve files from the web
 IgnorePackage which # A utility to show the full path of commands
+IgnorePackage wine-mono # Wine's built-in replacement for Microsoft's .NET Framework
 IgnorePackage wireless-regdb # Central Regulatory Domain Database
 IgnorePackage wireplumber # Session / policy manager implementation for PipeWire
 IgnorePackage wpa_supplicant # A utility providing key negotiation for WPA wireless networks
@@ -161,3 +179,5 @@ IgnorePackage xorg-xinput # Small commandline tool to configure devices
 IgnorePackage xorg-xkill # Kill a client by its X resource
 IgnorePackage xorg-xrandr # Primitive command line interface to RandR extension
 IgnorePackage zsh-autocomplete # Real-time type-ahead completion for Zsh
+
+IgnorePackage --foreign bolt-launcher # Free open-source third-party implementation of the Jagex Launcher

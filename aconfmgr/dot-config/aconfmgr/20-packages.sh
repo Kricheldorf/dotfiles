@@ -1,4 +1,4 @@
-# 10-all.sh — Core system packages and user packages for current workflow (build upon CachyOS)
+# Core system packages and user packages for current workflow (build upon CachyOS)
 # TODO: Break into multiple files
 
 
@@ -15,19 +15,20 @@ AddPackage bluez-utils # Development and debugging utilities for the bluetooth p
 AddPackage btop # A monitor of system resources, bpytop ported to C++
 AddPackage diffutils # Utility programs used for creating patch files
 AddPackage fuse2 # Interface for userspace programs to export a filesystem to the Linux kernel
-AddPackage git-delta # syntax-highlighting pager for git and diff output
 AddPackage git # the fast distributed version control system
+AddPackage git-delta # syntax-highlighting pager for git and diff output
 AddPackage go # core compiler tools for the go programming language
 AddPackage netctl # Profile based systemd network management
 AddPackage networkmanager # Network connection manager and user applications
 AddPackage networkmanager-openvpn # NetworkManager VPN plugin for OpenVPN (with GUI)
 AddPackage noto-color-emoji-fontconfig # Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
+AddPackage noto-fonts # Google Noto TTF fonts
 AddPackage noto-fonts-cjk # Google Noto CJK fonts
 AddPackage noto-fonts-emoji # Google Noto Color Emoji font
-AddPackage noto-fonts # Google Noto TTF fonts
 AddPackage perl # A highly capable, feature-rich programming language
 AddPackage perl-image-exiftool # Read and write EXIF information
 AddPackage playerctl # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+AddPackage python-pygments # Python syntax highlighter
 AddPackage resvg # SVG rendering library and CLI
 AddPackage ripgrep # A search tool that combines the usability of ag with the raw speed of grep
 AddPackage tmux # Terminal multiplexer
@@ -35,11 +36,13 @@ AddPackage ttf-bitstream-vera # Bitstream Vera fonts.
 AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wider range of characters
 AddPackage ttf-liberation # Font family which aims at metric compatibility with Arial, Times New Roman, and Courier New
 AddPackage ttf-meslo-nerd # Patched font Meslo LG from nerd fonts library
+AddPackage ttf-nerd-fonts-symbols-mono # High number of extra glyphs from popular 'iconic fonts' (monospace)
 AddPackage ttf-opensans # Sans-serif typeface commissioned by Google
 AddPackage unrar # The RAR uncompression program
 AddPackage unzip # For extracting and viewing files in .zip archives
 AddPackage vim # Vi Improved, a highly configurable, improved version of the vi text editor
 AddPackage yazi # Blazing fast terminal file manager written in Rust, based on async I/O
+AddPackage zip # Compressor/archiver for creating and modifying zipfiles
 AddPackage zoxide # A smarter cd command for your terminal
 
 # AUR packages
