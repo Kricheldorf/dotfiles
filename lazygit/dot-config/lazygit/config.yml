@@ -1,34 +1,3 @@
-customCommands:
-  - key: 'P'
-    command: 'bash -c "echo \"Pushing to: {{.CheckedOutBranch.Name}}\"; [[ \"{{.CheckedOutBranch.Name}}\" != \"main\" && \"{{.CheckedOutBranch.Name}}\" != \"master\" ]] && git push origin {{.CheckedOutBranch.Name}} || (echo \"CAUTION! Dont push to {{.CheckedOutBranch.Name}}\")"'
-    context: 'global'
-    loadingText: 'Pushing with pre-push hooks'
-    description: 'Push current branch to remote with pre-push hooks'
-    output: 'terminal'
-#  - key: '<c-P>'
-#    command: 'echo "No-verify pushing to: {{.CheckedOutBranch.Name}}"; [[ "{{.CheckedOutBranch.Name}}" != "test-gui" && "{{.CheckedOutBranch.Name}}" != "master" ]] && git push origin {{.CheckedOutBranch.Name}} --no-verify || (echo "CAUTION! Dont push to {{.CheckedOutBranch.Name}}")'
-#    context: 'global'
-#    loadingText: 'Pushing ignoring pre-push hooks'
-#    description: 'Push current branch to remote ignoring pre-push hooks'
-#    output: 'terminal'
-
-# customCommands:
-#   - key: "<c-c>"
-#     context: "files"
-#     prompts:
-#       - type: "input"
-#         title: "Add Commit Message with Jira prefix"
-#         key: "Message"
-#
-#     command:
-#       git commit -m "$(git branch --contains | awk -v m="{{.Form.Message}}" '
-#       /\*/{split($2, n, /-/);
-#       n[1] = toupper(n[1]);
-#       print (n[1] "-" n[2] ":" " " m)}')"
-#
-#     output: terminal
-#
-#     description: "Commit message with the jira card from branch name"
 git:
   pagers:
     - colorArg: always
@@ -38,9 +7,10 @@ git:
       replace: '$1: '
     - pattern: "^(\\w+-\\d+).*"
       replace: '$1: '
+  push:
+    forcePushWithLease: true
 gui:
   scrollHeight: 10
-  showDivergenceFromBaseBranch: onlyArrow
   commitAuthorLongLength: 2
   nerdFontsVersion: '3'
   showFileIcons: true
