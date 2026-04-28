@@ -44,7 +44,7 @@ check_arch() {
 
 update_system() {
     log_info "Updating system packages..."
-    sudo pacman -Syu --noconfirm
+    sudo pacman -Syu
     log_success "System updated"
 }
 
@@ -78,102 +78,16 @@ setup_dotfiles() {
     fi
 }
 
-install_packages() {
-    log_info "Installing packages..."
-
-    local packages=(
-        base-devel git kitty fzf zsh brave-bin stow neovim lazygit zsh-autocomplete zsh-autosuggestions
-        starship postgresql bat bat-extras eza ncdu yazi keyd dbeaver nvm git-delta docker docker-compose
-        spotify-player perl-image-exiftool wl-clipboard dunst hyprpolkitagent ly zoxide pnpm
-        fuse2 hyprlock seahorse gnome-keyring tmux resvg 7zip satty hyprshot
-        hyprpicker swaybg hyprland obsidian libappindicator nwg-look
-    )
-    local aur_packages=(
-        vicinae-bin insync tmux-plugin-manager slack-desktop ente-auth-bin
-    )
-
-    log_info "Installing ${#packages[@]} packages: ${packages[*]}"
-    if sudo pacman -S --noconfirm --needed "${packages[@]}"; then
-        log_success "Packages installed successfully"
-    else
-        log_error "Failed to install some packages"
-        return 1
-    fi
-
-    log_info "Installing ${#aur_packages[@]} AUR packages: ${aur_packages[*]}"
-    if paru -S --needed --batchinstall --sudoloop "${aur_packages[@]}"; then
-        log_success "AUR packages installed successfully"
-    else
-        log_error "Failed to install some AUR packages"
-        return 1
-    fi
-}
-
-setup_oh_my_zsh() {
-    log_info "Setting up Oh My Zsh..."
-
-    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-        if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended; then
-            log_success "Oh My Zsh installed"
-        else
-            log_error "Failed to install Oh My Zsh"
-        fi
-    else
-        log_info "Oh My Zsh already installed"
-    fi
-
-    local plugin_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-    if [[ ! -d "$plugin_dir" ]]; then
-        log_info "Installing zsh-autosuggestions plugin..."
-        if git clone https://github.com/zsh-users/zsh-autosuggestions "$plugin_dir"; then
-            log_success "zsh-autosuggestions installed"
-        else
-            log_error "Failed to install zsh-autosuggestions"
-        fi
-    else
-        log_info "zsh-autosuggestions already installed"
-    fi
-}
-
-setup_keyd() {
-    log_info "Setting up keyd configuration..."
-
-    local keyd_config="$HOME/dotfiles/MANUAL/keyd/etc/keyd/default.conf"
-    local target_config="/etc/keyd/default.conf"
-
-    if [[ -f "$keyd_config" ]]; then
-        if [[ ! -d "$target_config" ]]; then
-            log_info "keyd already configured"
-            return 0
-        fi
-
-        sudo mkdir -p /etc/keyd
-        if sudo cp -s "$keyd_config" "$target_config"; then
-            log_success "Keyd configuration copied"
-
-            if sudo systemctl enable keyd --now; then
-                log_success "Keyd service enabled and started"
-            else
-                log_warning "Failed to enable/start keyd service"
-            fi
-        else
-            log_error "Failed to copy keyd configuration"
-        fi
-    else
-        log_warning "Keyd configuration file not found in dotfiles"
-    fi
-}
-
 setup_nodejs() {
     log_info "Setting up Node.js..."
 
-    if command -v nvm &> /dev/null; then
+    if command -v fnm &> /dev/null; then
         log_info "Installing latest LTS Node.js..."
-        nvm install --lts
-        nvm use --lts
+        fnm install lts-latest
+        fnm use lts-latest
         log_success "Node.js LTS installed and activated"
     else
-        log_warning "nvm not found. Please install nvm manually or restart your shell"
+        log_warning "fnm not found. Please install fnm manually or restart your shell"
     fi
 }
 
@@ -187,34 +101,6 @@ setup_docker() {
         log_success "Docker service enabled and started"
     else
         log_error "Failed to enable/start Docker service"
-    fi
-}
-
-setup_shell() {
-    log_info "Setting up shell..."
-
-    if [[ "$SHELL" != "$(which zsh)" ]]; then
-        log_info "Changing default shell to zsh..."
-        if chsh -s "$(which zsh)"; then
-            log_success "Default shell changed to zsh"
-            log_warning "Please restart your session to use zsh"
-        else
-            log_error "Failed to change default shell"
-        fi
-    else
-        log_info "Zsh is already the default shell"
-    fi
-
-
-    [[ -f "$HOME/.zshrc" ]] && rm "$HOME/.zshrc"
-
-    if [[ -d "$HOME/dotfiles" ]]; then
-        log_info "Configuring zsh..."
-        cd "$HOME/dotfiles"
-        stow zsh --dotfiles
-        log_success "Zsh configured"
-    else
-        log_error "Cannot configure zsh: dotfiles directory not found"
     fi
 }
 
@@ -253,7 +139,6 @@ post_install() {
 
 display_todo() {
     log_info "Post-installation tasks to complete manually:"
-    echo "* Install WebStorm IDE"
     echo "* Configure SSH key for GitHub:"
     echo "   ssh-keygen -t ed25519 -C 'your_email@example.com'"
     echo "   ssh-add ~/.ssh/id_ed25519"
@@ -282,12 +167,8 @@ main() {
     update_system
     create_directories
     setup_dotfiles
-    install_packages
-    setup_oh_my_zsh
-    setup_keyd
     setup_nodejs
     setup_docker
-    setup_shell
 
     post_install
 
