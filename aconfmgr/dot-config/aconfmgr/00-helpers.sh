@@ -1,5 +1,21 @@
 #!/bin/bash
 
+log_info() {
+    echo -e "${BLUE}[INFO]${NO_COLOR} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NO_COLOR} $1"
+}
+
+log_warning() {
+    echo -e "${YELLOW}[WARNING]${NO_COLOR} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NO_COLOR} $1"
+}
+
 # https://github.com/CyberShadow/aconfmgr/wiki/Whitelist-files
 function IgnorePathsExcept() {
     # Ignore all paths in the given directory (first parameter)
@@ -41,5 +57,9 @@ function IgnorePathsExcept() {
 
 function SystemdEnable() {
     local service=$1
-    sudo systemctl enable --now ${service}
+    if sudo systemctl enable --now ${service}; then
+        log_success "Systemd: ${service} service enabled and started"
+    else
+        log_error "Systemd: ${service} service failed to enable/start"
+    fi
 }
