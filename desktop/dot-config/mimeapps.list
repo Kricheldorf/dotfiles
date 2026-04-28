@@ -12,7 +12,7 @@ application/x-extension-xhtml=brave-browser.desktop
 application/x-extension-xht=brave-browser.desktop
 
 [Default Applications]
-x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/postman=kitty.desktop
 x-scheme-handler/http=brave-browser.desktop
 x-scheme-handler/https=brave-browser.desktop
 x-scheme-handler/chrome=brave-browser.desktop
@@ -25,7 +25,7 @@ application/x-extension-xhtml=brave-browser.desktop
 application/x-extension-xht=brave-browser.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
-text/plain=neovide.desktop
-inode/directory=com.mitchellh.ghostty.desktop
+text/plain=kitty.desktop
+inode/directory=kitty.desktop
 x-scheme-handler/webcal=brave-browser.desktop
 x-scheme-handler/terminal=kitty.desktop
