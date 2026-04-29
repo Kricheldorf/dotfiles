@@ -41,6 +41,8 @@ AddPackage ttf-opensans # Sans-serif typeface commissioned by Google
 AddPackage unrar # The RAR uncompression program
 AddPackage unzip # For extracting and viewing files in .zip archives
 AddPackage vim # Vi Improved, a highly configurable, improved version of the vi text editor
+AddPackage vlc # Free and open source cross-platform multimedia player and framework
+AddPackage vlc-plugins-all # Free and open source cross-platform multimedia player and framework - all plugins
 AddPackage yazi # Blazing fast terminal file manager written in Rust, based on async I/O
 AddPackage zip # Compressor/archiver for creating and modifying zipfiles
 AddPackage zoxide # A smarter cd command for your terminal
@@ -94,16 +96,18 @@ AddPackage bats # Bash Automated Testing System
 AddPackage csvlens # Command line csv viewer
 AddPackage dbeaver # Free universal SQL Client for developers and database administrators (community edition)
 AddPackage diffnav # git diff pager based on delta but with a file tree, à la GitHub
-AddPackage docker-compose # Fast, isolated development environments using Docker
 AddPackage docker # Pack, ship and run any application as a lightweight container
+AddPackage docker-compose # Fast, isolated development environments using Docker
 AddPackage fnm # Fast and simple Node.js version manager, built with Rust
 AddPackage github-cli # The GitHub CLI
 AddPackage lazydocker # A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
 AddPackage lazygit # Simple terminal UI for git commands
+AddPackage neovide # No Nonsense Neovim Client in Rust
 AddPackage neovim # Fork of Vim aiming to improve user experience, plugins, and GUIs
-AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
-AddPackage zellij # A terminal multiplexer
 AddPackage postgresql # Sophisticated object-relational DBMS
+AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
+AddPackage typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+AddPackage zellij # A terminal multiplexer
 
 # AUR packages
 

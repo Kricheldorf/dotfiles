@@ -1,19 +1,25 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
 log_info() {
-    echo -e "${BLUE}[INFO]${NO_COLOR} $1"
+    echo -e "${BLUE}[INFO]${NC} $1"
 }
 
 log_success() {
-    echo -e "${GREEN}[SUCCESS]${NO_COLOR} $1"
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
 }
 
 log_warning() {
-    echo -e "${YELLOW}[WARNING]${NO_COLOR} $1"
+    echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
 log_error() {
-    echo -e "${RED}[ERROR]${NO_COLOR} $1"
+    echo -e "${RED}[ERROR]${NC} $1"
 }
 
 # https://github.com/CyberShadow/aconfmgr/wiki/Whitelist-files

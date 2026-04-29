@@ -181,3 +181,24 @@ IgnorePackage xorg-xrandr # Primitive command line interface to RandR extension
 IgnorePackage zsh-autocomplete # Real-time type-ahead completion for Zsh
 
 IgnorePackage --foreign bolt-launcher # Free open-source third-party implementation of the Jagex Launcher
+
+# Notebook
+IgnorePackage cachyos-niri-noctalia # CachyOS Niri (+Noctalia) settings
+IgnorePackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
+IgnorePackage intel-ucode # Microcode update files for Intel CPUs
+IgnorePackage limine-snapper-sync # Automatically syncs Limine snapshot entries with Snapper snapshots.
+IgnorePackage limine-mkinitcpio-hook # Install kernels for the Limine bootloader.
+IgnorePackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
+IgnorePackage limine # An advanced, portable, multiprotocol bootloader
+IgnorePackage glances # CLI curses-based monitoring tool
+IgnorePackage gst-plugin-va # Multimedia graph framework - va plugin
+IgnorePackage cachyos-plymouth-theme # CachyOS plymouth theme
+IgnorePackage bluez-obex # Object Exchange daemon for sharing content
+IgnorePackage cachyos-snapper-support # CachyOS package that handles snapper configs.
+IgnorePackage cachyos-wallpapers # Wallpapers for CachyOS
+IgnorePackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities
+IgnorePackage shelly # Shelly: A Modern Arch Package Manager
+IgnorePackage switcheroo-control # D-Bus service to check the availability of dual-GPU
+IgnorePackage ufw-extras # Extra configuration files for UFW
+IgnorePackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
+IgnorePackage vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
