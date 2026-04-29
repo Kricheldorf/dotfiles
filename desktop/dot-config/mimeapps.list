@@ -29,3 +29,4 @@ text/plain=kitty.desktop
 inode/directory=kitty.desktop
 x-scheme-handler/webcal=brave-browser.desktop
 x-scheme-handler/terminal=kitty.desktop
+x-scheme-handler/slack=slack.desktop
