@@ -5,7 +5,8 @@ IgnorePath '/opt/*' # system files
 IgnorePath '/.snapshots/*' # system files
 
 etc_white_list=(
-  'keyd/*'
+  'keyd/*',
+  'brave/*'
 )
 IgnorePathsExcept '/etc' "${etc_white_list[@]}"
 
