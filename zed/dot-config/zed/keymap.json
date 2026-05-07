@@ -1,0 +1,82 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-[": ["workspace::SendKeystrokes", ": n o h enter"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+      "alt-j": "editor::GoToDiagnostic",
+      "alt-k": "editor::GoToPreviousDiagnostic",
+      "j": "vim::Down",
+      "k": "vim::Up",
+      "ctrl-w o": "workspace::ToggleAllDocks",
+    },
+  },
+  {
+    "context": "menu || (Editor && vim_mode == normal)",
+    "bindings": {
+      "-": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space ,": "tab_switcher::Toggle",
+      "space /": "pane::DeploySearch",
+      "space e": "workspace::ToggleLeftDock",
+      "space f f": "file_finder::Toggle",
+      "space f g": "projects::OpenRecent",
+      "space f r": "projects::OpenRecent",
+      "space s d": "diagnostics::Deploy",
+      "space s s": "outline::Toggle",
+      "space s S": "project_symbols::Toggle",
+      "space s k": "command_palette::Toggle",
+      "space g g": "git_panel::ToggleFocus",
+      "space g d": "git::Diff",
+      "space g b": "git::Blame",
+      "space h s": "git::StageAndNext",
+      "space h r": "git::Restore",
+      "space h p": "git::ToggleStaged",
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "pane::CloseOtherItems",
+      "space b a": "pane::CloseAllItems",
+      "space q": "diagnostics::Deploy",
+      "g r n": "editor::Rename",
+      "g r a": "editor::ToggleCodeActions",
+      "g r r": "editor::FindAllReferences",
+      "g r i": "editor::GoToImplementation",
+      "g r d": "editor::GoToDefinition",
+      "g r t": "editor::GoToTypeDefinition",
+      "ctrl-n": "editor::SelectNext",
+      "ctrl-p": "editor::SelectPrevious",
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual)",
+    "bindings": {
+      "] c": "editor::GoToHunk",
+      "[ c": "editor::GoToPreviousHunk",
+    },
+  },
+  {
+    "context": "SettingsWindow",
+    "unbind": {
+      "ctrl-6": [
+        "settings_editor::FocusFile",
+        5
+      ]
+    }
+  }
+]

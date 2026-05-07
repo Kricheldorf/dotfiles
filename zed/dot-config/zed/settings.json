@@ -1,0 +1,62 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+
+{
+  "cli_default_open_behavior": "existing_window",
+  "text_rendering_mode": "platform_default",
+  "icon_theme": "Zed (Default)",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "auto_update": false,
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "base_keymap": "JetBrains",
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "buffer_font_family": "MonoLisa Meme",
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 500,
+  },
+  "cursor_blink": false,
+  "title_bar": { "show_sign_in": false, "show_user_menu": false },
+  "indent_guides": { "enabled": false },
+  "gutter": { "min_line_number_digits": 1 },
+  "collaboration_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "project_panel": { "button": false },
+  "git_panel": { "button": false },
+  "debugger": { "button": false },
+  "terminal": { "button": false },
+  "agent": { "button": false },
+  "search": { "button": false },
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "scrollbar": { "show": "never" },
+  "minimap": { "show": "never" },
+}
