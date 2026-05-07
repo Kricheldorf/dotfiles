@@ -78,5 +78,18 @@
         5
       ]
     }
+  },
+  {
+    "context": "Workspace || Pane",
+    "bindings": {
+      "ctrl-alt-r": [
+        "action::Sequence",
+        [
+          "workspace::CloseAllDocks",
+          "workspace::CloseAllItemsAndPanes",
+          "workspace::NewFile"
+        ]
+      ]
+    }
   }
 ]

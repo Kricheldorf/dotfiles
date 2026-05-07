@@ -202,6 +202,16 @@ function gwt
         echo "Symlinked node_modules from $repo_root"
     end
 
+    if test -d $repo_root/apps/shipix-app/.env.local
+        ln -s $repo_root/apps/shipix-app/.env.local $worktree_path/apps/shipix-app/.env.local
+        echo "Symlinked .env.local from $repo_root"
+    end
+
+    if test -d $repo_root/apps/shipix-api/.env
+        ln -s $repo_root/apps/shipix-api/.env $worktree_path/apps/shipix-api/.env
+        echo "Symlinked .env from $repo_root"
+    end
+
     echo "Worktree ready at $worktree_path"
 end
 
@@ -230,3 +240,6 @@ function pom
         || pom
 end
 
+if status is-login; and test (tty) = /dev/tty1; and not set -q HYPRLAND_INSTANCE_SIGNATURE
+    exec start-hyprland
+end

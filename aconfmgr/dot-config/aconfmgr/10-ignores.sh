@@ -203,3 +203,9 @@ IgnorePackage switcheroo-control # D-Bus service to check the availability of du
 IgnorePackage ufw-extras # Extra configuration files for UFW
 IgnorePackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
 IgnorePackage vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
+IgnorePackage qutebrowser # A keyboard-driven, vim-like browser based on Python and Qt
+
+
+IgnorePackage npm
+IgnorePackage openbsd-netcat
+IgnorePackage vulkan-tools

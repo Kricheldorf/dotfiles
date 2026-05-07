@@ -10,11 +10,15 @@
 {
   "cli_default_open_behavior": "existing_window",
   "text_rendering_mode": "platform_default",
-  "icon_theme": "Zed (Default)",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark",
+    "dark": "One Dark Pro",
   },
   "auto_update": false,
   "agent_servers": {
