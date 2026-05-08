@@ -8,59 +8,110 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 
 {
+  // Application
+  "auto_update": false,
   "cli_default_open_behavior": "existing_window",
-  "text_rendering_mode": "platform_default",
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)"
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
   },
+
+  // Appearance — theme & icons
   "theme": {
     "mode": "dark",
     "light": "One Light",
     "dark": "One Dark",
   },
-  "auto_update": false,
-  "agent_servers": {
-    "claude-acp": {
-      "type": "registry",
-    },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
   },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
-  },
-  "base_keymap": "JetBrains",
-  "vim_mode": true,
-  "relative_line_numbers": "enabled",
+  "text_rendering_mode": "platform_default",
+
+  // Editor — font & cursor
   "buffer_font_family": "MonoLisa Meme",
+  "cursor_blink": false,
+
+  // Editor — line numbers & gutter
+  "relative_line_numbers": "enabled",
+  "gutter": { "min_line_number_digits": 1 },
+  "indent_guides": { "enabled": false },
+
+  // Editor — behavior
+  "tab_size": 2,
+  "wrap_guides": [120],
+  "vertical_scroll_margin": 10,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "inline_code_actions": false,
+  "extend_comment_on_newline": false,
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true,
+  },
+
+  // Vim
+  "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
-    "use_smartcase_find": true,
     "toggle_relative_line_numbers": true,
   },
   "which_key": {
     "enabled": true,
-    "delay_ms": 500,
+    "delay_ms": 0,
   },
-  "cursor_blink": false,
-  "title_bar": { "show_sign_in": false, "show_user_menu": false },
-  "indent_guides": { "enabled": false },
-  "gutter": { "min_line_number_digits": 1 },
-  "collaboration_panel": { "button": false },
-  "outline_panel": { "button": false },
-  "project_panel": { "button": false },
-  "git_panel": { "button": false },
-  "debugger": { "button": false },
-  "terminal": { "button": false },
-  "agent": { "button": false },
-  "search": { "button": false },
-  "code_actions_on_format": {
-    "source.fixAll.eslint": true,
+
+  // UI — title bar
+  "title_bar": {
+    "show_sign_in": false,
+    "show_user_menu": false,
   },
+
+  // UI — tabs, scrollbar, minimap, toolbar
   "tab_bar": {
     "show": false,
   },
   "scrollbar": { "show": "never" },
   "minimap": { "show": "never" },
+  "toolbar": {
+    "quick_actions": false,
+  },
+  "status_bar": {
+    "show_active_file": true,
+  },
+
+  // UI — panels
+  "close_panel_on_toggle": true,
+  "project_panel": {
+    "button": false,
+    "scrollbar": null,
+    "default_width": 600,
+    "hide_root": true,
+    "starts_open": false,
+    "dock": "right",
+  },
+  "collaboration_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "git_panel": { "button": false },
+  "debugger": { "button": false },
+  "terminal": { "button": false },
+  "agent": { "button": false },
+  "search": { "button": false },
+
+  // UI — layout
+  "centered_layout": {
+    "left_padding": 0.15,
+    "right_padding": 0.15,
+  },
+  "file_finder": {
+    "modal_max_width": "medium",
+  },
+
+  // Agent
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
 }

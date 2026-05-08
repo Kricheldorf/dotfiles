@@ -1,19 +1,13 @@
 [
+  // === Vim: normal mode ===
   {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "ctrl-s": "workspace::Save",
-      "ctrl-[": ["workspace::SendKeystrokes", ": n o h enter"],
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
       "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
       "alt-j": "editor::GoToDiagnostic",
       "alt-k": "editor::GoToPreviousDiagnostic",
-      "j": "vim::Down",
-      "k": "vim::Up",
       "ctrl-w o": "workspace::ToggleAllDocks",
     },
   },
@@ -23,73 +17,131 @@
       "-": "workspace::ToggleRightDock",
     },
   },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      "ctrl-s": "workspace::Save",
-    },
-  },
+
+  // === Vim: shared (normal/visual/operator) — leader maps + extras ===
   {
     "context": "VimControl && !menu",
     "bindings": {
+      // Top-level leader
       "space space": "file_finder::Toggle",
       "space ,": "tab_switcher::Toggle",
       "space /": "pane::DeploySearch",
-      "space e": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleRightDock",
+      "space q": "diagnostics::Deploy",
+
+      // Buffers (<leader>b*)
+      "space b a": "pane::CloseAllItems",
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "pane::CloseOtherItems",
+
+      // Code (<leader>c*)
+      "space c a": "editor::ToggleCodeActions",
+      "space c f": "editor::Format",
+      "space c l": "editor::FindAllReferences",
+      "space c s": "outline::Toggle",
+
+      // Find / files (<leader>f*)
       "space f f": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle",
       "space f g": "projects::OpenRecent",
+      "space f p": "projects::OpenRecent",
       "space f r": "projects::OpenRecent",
-      "space s d": "diagnostics::Deploy",
-      "space s s": "outline::Toggle",
-      "space s S": "project_symbols::Toggle",
-      "space s k": "command_palette::Toggle",
+      "space f C": "zed::OpenSettings",
+
+      // Git (<leader>g*)
       "space g g": "git_panel::ToggleFocus",
+      "space g s": "git_panel::Toggle",
       "space g d": "git::Diff",
       "space g b": "git::Blame",
+
+      // Hunks (<leader>h*)
       "space h s": "git::StageAndNext",
       "space h r": "git::Restore",
       "space h p": "git::ToggleStaged",
-      "space b d": "pane::CloseActiveItem",
-      "space b o": "pane::CloseOtherItems",
-      "space b a": "pane::CloseAllItems",
-      "space q": "diagnostics::Deploy",
-      "g r n": "editor::Rename",
-      "g r a": "editor::ToggleCodeActions",
-      "g r r": "editor::FindAllReferences",
-      "g r i": "editor::GoToImplementation",
-      "g r d": "editor::GoToDefinition",
+      "space h S": "git::StageAll",
+      "space h R": "git::RestoreFile",
+      "space h i": "git::Diff",
+
+      // Run / tasks (<leader>r*)
+      "space r c": "task::Spawn",
+
+      // Search / symbols (<leader>s*)
+      "space s d": "diagnostics::Deploy",
+      "space s k": "command_palette::Toggle",
+      "space s s": "outline::Toggle",
+      "space s S": "project_symbols::Toggle",
+
+      // Toggle / relat (<leader>t*)
+      "space t b": "git::Blame",
+      "space t f": "task::Spawn",
+      "space t h": "editor::ToggleInlayHints",
+      "space t l": "task::Rerun",
+      "space t n": "task::Spawn",
+      "space t o": "task::Rerun",
+      "space t s": "task::Rerun",
+      "space t w": "editor::ToggleSoftWrap",
+
+      // Diagnostics / trouble (<leader>x*)
+      "space x x": "diagnostics::Deploy",
+      "space x X": "diagnostics::Deploy",
+      "space x L": "diagnostics::Deploy",
+      "space x Q": "diagnostics::Deploy",
+
+      // Goto extras (matches default g r n/r/i/a)
       "g r t": "editor::GoToTypeDefinition",
-      "ctrl-n": "editor::SelectNext",
-      "ctrl-p": "editor::SelectPrevious",
+
+      "ctrl-shift-\\": "agent::NewThread",
+
+      "ctrl-6": "pane::AlternateFile",
     },
   },
+
+  // === Agent panel quick toggles (any vim mode in Editor) ===
   {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual)",
+    "context": "Editor && (vim_mode == normal || vim_mode == visual || vim_mode == insert)",
     "bindings": {
-      "] c": "editor::GoToHunk",
-      "[ c": "editor::GoToPreviousHunk",
+      "ctrl-\\": "agent::ToggleFocus",
+      "ctrl-|": "agent::NewThread",
+      "ctrl-'": "agent::AddSelectionToThread",
     },
   },
-  {
-    "context": "SettingsWindow",
-    "unbind": {
-      "ctrl-6": [
-        "settings_editor::FocusFile",
-        5
-      ]
-    }
-  },
+
+  // === Global workspace ===
   {
     "context": "Workspace || Pane",
     "bindings": {
-      "ctrl-alt-r": [
+      "ctrl-alt-shift-n": [
         "action::Sequence",
         [
           "workspace::CloseAllDocks",
           "workspace::CloseAllItemsAndPanes",
-          "workspace::NewFile"
-        ]
-      ]
-    }
-  }
+          "workspace::NewFile",
+        ],
+      ],
+    },
+  },
+
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+    },
+  },
+
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": "vim::PushAddSurrounds",
+    },
+  },
 ]
