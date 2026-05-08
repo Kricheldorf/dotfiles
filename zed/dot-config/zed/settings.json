@@ -18,7 +18,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark Pro",
+    "dark": "One Dark",
   },
   "auto_update": false,
   "agent_servers": {
