@@ -12,6 +12,12 @@
     },
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-;": "vim::HelixJumpToWord",
+    },
+  },
+  {
     "context": "menu || (Editor && vim_mode == normal)",
     "bindings": {
       "-": "workspace::ToggleRightDock",
@@ -63,7 +69,7 @@
       "space h i": "git::Diff",
 
       // Run / tasks (<leader>r*)
-      "space r c": "task::Spawn",
+      "space r c": "editor::SpawnNearestTask",
 
       // Search / symbols (<leader>s*)
       "space s d": "diagnostics::Deploy",
@@ -110,6 +116,7 @@
   {
     "context": "Workspace || Pane",
     "bindings": {
+      "ctrl-w": null,
       "ctrl-alt-shift-n": [
         "action::Sequence",
         [
@@ -134,6 +141,7 @@
   {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
+      "space": null,
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
     },
@@ -142,6 +150,74 @@
     "context": "vim_mode == visual",
     "bindings": {
       "shift-s": "vim::PushAddSurrounds",
+    },
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      // Traditional Vim behavior
+      "Q": "vim::AnyQuotes",
+      "b": "vim::AnyBrackets",
+
+      // mini.ai plugin behavior
+      "q": "vim::MiniQuotes",
+      "B": "vim::MiniBrackets",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "space b p": "pane::TogglePinTab",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-k shift-enter": "pane::TogglePinTab",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "space b r": [
+        "pane::CloseItemsToTheRight",
+        {
+          "close_pinned": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-k t": [
+        "pane::CloseItemsToTheRight",
+        {
+          "close_pinned": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "space b l": [
+        "pane::CloseItemsToTheLeft",
+        {
+          "close_pinned": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-k e": [
+        "pane::CloseItemsToTheLeft",
+        {
+          "close_pinned": false,
+        },
+      ],
     },
   },
 ]

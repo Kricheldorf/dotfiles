@@ -59,6 +59,7 @@ AddPackage --foreign ttf-ms-fonts # Core TTF Fonts from Microsoft
 AddPackage dolphin # KDE File Manager
 AddPackage dunst # Customizable and lightweight notification-daemon
 AddPackage gnome-keyring # stores passwords and encryption keys
+AddPackage hypridle # hyprland’s idle daemon
 AddPackage hyprland # a highly customizable dynamic tiling Wayland compositor
 AddPackage hyprlock # hyprland’s GPU-accelerated screen locking utility
 AddPackage hyprpicker # A wlroots-compatible Wayland color picker that does not suck
@@ -102,11 +103,11 @@ AddPackage fnm # Fast and simple Node.js version manager, built with Rust
 AddPackage github-cli # The GitHub CLI
 AddPackage lazydocker # A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
 AddPackage lazygit # Simple terminal UI for git commands
-AddPackage neovide # No Nonsense Neovim Client in Rust
 AddPackage neovim # Fork of Vim aiming to improve user experience, plugins, and GUIs
 AddPackage postgresql # Sophisticated object-relational DBMS
 AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
 AddPackage typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+AddPackage zed # A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 AddPackage zellij # A terminal multiplexer
 
 # AUR packages
@@ -141,13 +142,14 @@ AddPackage --foreign vial-appimage # Vial is an open-source cross-platform (Wind
 
 # 90-remove.sh - Apps to remove
 
+RemovePackage --foreign timer-bin # Timer is like sleep, but reports progress.
 RemovePackage asciinema # Record and share terminal sessions
 RemovePackage code # The Open Source build of Visual Studio Code (vscode) editor
-RemovePackage --foreign timer-bin # Timer is like sleep, but reports progress.
 RemovePackage ghostty # Fast, native, feature-rich terminal emulator pushing modern features
 RemovePackage glances # CLI curses-based monitoring tool
 RemovePackage gradle # Powerful build system for the JVM
 RemovePackage gum # A tool for glamorous shell scripts
+RemovePackage neovide
 RemovePackage nushell # A new type of shell
 RemovePackage pnpm # Fast, disk space efficient package manager
 RemovePackage television # A general purpose fuzzy finder for your terminal

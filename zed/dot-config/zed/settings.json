@@ -9,6 +9,7 @@
 
 {
   // Application
+  "diff_view_style": "unified",
   "auto_update": false,
   "cli_default_open_behavior": "existing_window",
   "telemetry": {
@@ -20,7 +21,17 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark",
+    "dark": "Catppuccin Mocha",
+  },
+  "theme_overrides": {
+    "Catppuccin Mocha": {
+      "border": "#313244",
+      "border.variant": "#313244",
+      "title_bar.background": "#1e1e2e",
+      "status_bar.background": "#1e1e2e",
+      // "panel.background": "#232332",
+      // "panel.focused_border": "#232332",
+    },
   },
   "icon_theme": {
     "mode": "dark",
@@ -40,7 +51,7 @@
 
   // Editor — behavior
   "tab_size": 2,
-  "wrap_guides": [120],
+  // "wrap_guides": [120],
   "vertical_scroll_margin": 10,
   "sticky_scroll": {
     "enabled": true,
@@ -49,6 +60,11 @@
   "extend_comment_on_newline": false,
   "code_actions_on_format": {
     "source.fixAll.eslint": true,
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
   },
 
   // Vim
@@ -70,15 +86,12 @@
 
   // UI — tabs, scrollbar, minimap, toolbar
   "tab_bar": {
-    "show": false,
+    "show_nav_history_buttons": false,
   },
   "scrollbar": { "show": "never" },
   "minimap": { "show": "never" },
   "toolbar": {
     "quick_actions": false,
-  },
-  "status_bar": {
-    "show_active_file": true,
   },
 
   // UI — panels
@@ -113,5 +126,20 @@
     "claude-acp": {
       "type": "registry",
     },
+  },
+
+  "command_aliases": {
+    "zlog": "zed::OpenLog",
+    "newf": "workspace::NewFile",
+    "diffs": "editor::ToggleSelectedDiffHunks",
+    "crp": "workspace::CopyRelativePath",
+    "cpp": "workspace::CopyPath",
+    "reveal": "editor::RevealInFileManager",
+    "clank": "editor::CancelLanguageServerWork",
+    "bdiff": "git::BranchDiff",
+  },
+
+  "edit_predictions": {
+    "allow_data_collection": "no",
   },
 }
