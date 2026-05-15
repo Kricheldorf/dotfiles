@@ -1,0 +1,9 @@
+[
+  {
+    "label": "nvim current file",
+    "command": "kitty",
+    "args": ["--detach", "nvim", "$ZED_FILE"],
+    "allow_concurrent_runs": true,
+    "reveal": "never"
+  }
+]

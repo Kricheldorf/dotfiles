@@ -27,6 +27,10 @@
   // === Vim: shared (normal/visual/operator) — leader maps + extras ===
   {
     "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-t": "pane::GoToOlderTag",
+      // "ctrl-shift-t": "pane::ReopenClosedItem",
+    },
     "bindings": {
       // Top-level leader
       "space space": "file_finder::Toggle",
@@ -67,6 +71,9 @@
       "space h S": "git::StageAll",
       "space h R": "git::RestoreFile",
       "space h i": "git::Diff",
+
+      // Open (<leader>o*)
+      "space o n": ["task::Spawn", { "task_name": "nvim current file" }],
 
       // Run / tasks (<leader>r*)
       "space r c": "editor::SpawnNearestTask",
@@ -117,6 +124,7 @@
     "context": "Workspace || Pane",
     "bindings": {
       "ctrl-w": null,
+      "ctrl-t b": "editor::ToggleTabBar",
       "ctrl-alt-shift-n": [
         "action::Sequence",
         [
@@ -129,7 +137,7 @@
   },
 
   {
-    "context": "Dock",
+    "context": "Dock && !Editor",
     "bindings": {
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
@@ -218,6 +226,23 @@
           "close_pinned": false,
         },
       ],
+    },
+  },
+  {
+    "unbind": {
+      "ctrl-q": "zed::Quit",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-q": "vim::ToggleVisualBlock",
+    },
+  },
+  {
+    "context": "(VimControl && !menu) || (!Terminal)",
+    "bindings": {
+      "ctrl-q": "pane::CloseActiveItem",
     },
   },
 ]

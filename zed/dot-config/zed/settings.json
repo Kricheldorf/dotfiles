@@ -9,7 +9,7 @@
 
 {
   // Application
-  "diff_view_style": "unified",
+  "diff_view_style": "split",
   "auto_update": false,
   "cli_default_open_behavior": "existing_window",
   "telemetry": {
@@ -47,14 +47,22 @@
   // Editor — line numbers & gutter
   "relative_line_numbers": "enabled",
   "gutter": { "min_line_number_digits": 1 },
-  "indent_guides": { "enabled": false },
+  "indent_guides": { "enabled": true, "coloring": "indent_aware" },
 
   // Editor — behavior
   "tab_size": 2,
   // "wrap_guides": [120],
+  "preview_tabs": {
+    "enabled": true,
+    "enable_keep_preview_on_code_navigation": true,
+    "enable_preview_multibuffer_from_code_navigation": true,
+  },
   "vertical_scroll_margin": 10,
   "sticky_scroll": {
     "enabled": true,
+  },
+  "inlay_hints": {
+    "enabled": false,
   },
   "inline_code_actions": false,
   "extend_comment_on_newline": false,
@@ -86,6 +94,7 @@
 
   // UI — tabs, scrollbar, minimap, toolbar
   "tab_bar": {
+    "show": true,
     "show_nav_history_buttons": false,
   },
   "scrollbar": { "show": "never" },
