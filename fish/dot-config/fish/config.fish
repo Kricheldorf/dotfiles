@@ -67,6 +67,8 @@ abbr -a c "claude"
 abbr -a cr "claude /resume"
 abbr -a cu "claude /usage"
 
+abbr -a caffeinate 'systemd-inhibit --what=sleep:handle-lid-switch --who="caffeinate" --why="manual keep-awake activated by user" sleep infinity'
+
 # Functions
 function lg
     set -x LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
@@ -243,3 +245,4 @@ end
 if status is-login; and test (tty) = /dev/tty1; and not set -q HYPRLAND_INSTANCE_SIGNATURE
     exec start-hyprland
 end
+
