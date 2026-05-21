@@ -4,9 +4,9 @@
 
 [global]
     ### Display ###
-    monitor = 2
+    monitor = 0
 
-    follow = none
+    follow = mouse
 
     ### Geometry ###
     width = 350
@@ -71,8 +71,8 @@
     icon_path = /usr/share/icons/Qogir/16/status:/usr/share/icons/Qogir/16/devices/:/usr/share/icons/Qogir/24/panel/:/usr/share/icons/Qogir/16/apps/:/usr/share/pixmaps/:/usr/share/icons/Qogir/scalable/apps/
 
     ### History ###
-    sticky_history = false
-    history_length = 0
+    sticky_history = true
+    history_length = 30
 
     ### Misc/Advanced ###
     dmenu = /usr/bin/dmenu -p dunst:

@@ -8,6 +8,7 @@ local menu = 'vicinae toggle'
 local clipboard_manager = 'vicinae vicinae://launch/clipboard/history'
 local headphones_id = 'F8:4E:17:7D:27:31'
 local screenshot_region_cmd = 'hyprshot -r -z -m region | satty -f - -o png'
+local screenshot_window_cmd = 'hyprshot -r -z -m window -m active | wl-copy'
 
 -- Reload Hyprland config and vicinae server
 hl.bind(main_mod .. ' + CTRL + SHIFT + R', hl.dsp.exec_cmd 'hyprctl reload && killall vicinae; vicinae server &')
@@ -80,6 +81,7 @@ hl.bind('XF86AudioPrev', hl.dsp.exec_cmd 'playerctl previous', { locked = true }
 -- Screenshot
 hl.bind('PRINT', hl.dsp.exec_cmd(screenshot_region_cmd))
 hl.bind(main_mod .. ' + CTRL + 4', hl.dsp.exec_cmd(screenshot_region_cmd))
+hl.bind(main_mod .. ' + CTRL + 3', hl.dsp.exec_cmd(screenshot_window_cmd))
 
 -- Fullscreen / pin / cycle
 hl.bind(main_mod .. ' + F', hl.dsp.window.fullscreen(1))
@@ -131,9 +133,13 @@ hl.bind(main_mod .. ' + ALT + C', hl.dsp.exec_cmd(clipboard_manager))
 hl.bind(main_mod .. ' + V', hl.dsp.exec_cmd '~/scripts/edit-clipboard')
 
 hl.bind(main_mod .. ' + Escape', hl.dsp.exec_cmd(terminal .. " fish -c 'claude'"))
-hl.bind(main_mod .. ' + O', helpers.focus_or_launch('nvim-current', "kitty --class nvim-current fish -c 'nvim current.md'"))
+hl.bind(main_mod .. ' + O', helpers.focus_or_launch('nvim-notes', "kitty -d $HOME/GDrive-Personal/dev-notes --class nvim-notes fish -c 'nvim'"))
 hl.bind(main_mod .. ' + D', helpers.focus_or_launch('neovim-ide', 'kitty --class neovim-ide fish -c nvim'))
-hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd [[sh -c 'cd "$DEFAULT_WORK_DIR" && zeditor -e .']])
+hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd(terminal .. 'fish -c nvim'))
+-- hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd [[sh -c 'cd "$DEFAULT_WORK_DIR" && zeditor -e .']])
+
+hl.bind('SUPER + CTRL + tab', hl.dsp.exec_cmd '$HOME/.config/hypr/scripts/cycle-layout.sh') -- Set next layout
+hl.bind('SUPER + SHIFT + CTRL + tab', hl.dsp.exec_cmd '$HOME/.config/hypr/scripts/cycle-layout.sh --prev') -- Set previous layout
 
 -- Submaps
 hl.define_submap('resize', function()

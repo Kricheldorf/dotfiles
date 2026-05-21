@@ -15,5 +15,5 @@ hl.on('hyprland.start', function()
   -- Utils
   hl.exec_cmd 'nm-applet --indicator'
   hl.exec_cmd 'wl-clip-persist --clipboard regular'
-  -- hl.exec_cmd("insync start")
+  hl.exec_cmd 'insync start'
 end)

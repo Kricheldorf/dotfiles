@@ -26,6 +26,7 @@ hl.monitor {
   output = 'DP-2',
   mode = 'preferred',
   position = 'auto-center-left',
+  reserved_area = { right = 500 },
 }
 
 -- LAYER RULES
@@ -117,8 +118,6 @@ hl.workspace_rule { workspace = '9', monitor = 'DP-1' }
 hl.workspace_rule {
   workspace = '10',
   monitor = 'DP-2',
-  gaps_in = 2.5,
-  gaps_out = { top = 0, right = 540, bottom = 0, left = 0 },
   layout = 'dwindle',
   default = true,
 }

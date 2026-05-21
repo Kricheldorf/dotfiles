@@ -10,7 +10,12 @@ git:
   push:
     forcePushWithLease: true
 gui:
+  filterMode: fuzzy
+  commandLogSize: 18
   scrollHeight: 10
   commitAuthorLongLength: 2
   nerdFontsVersion: '3'
   showFileIcons: true
+  showPanelJumps: false
+  showCommandLog: true
+notARepository: 'skip'
