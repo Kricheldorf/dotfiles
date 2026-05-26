@@ -179,23 +179,21 @@ IgnorePackage xorg-xkill # Kill a client by its X resource
 IgnorePackage xorg-xrandr # Primitive command line interface to RandR extension
 IgnorePackage zsh-autocomplete # Real-time type-ahead completion for Zsh
 
-IgnorePackage --foreign gitflow-cjs # CJS Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model.
-
-# Notebook
-IgnorePackage cachyos-niri-noctalia # CachyOS Niri (+Noctalia) settings
-IgnorePackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
-IgnorePackage intel-ucode # Microcode update files for Intel CPUs
-IgnorePackage limine-snapper-sync # Automatically syncs Limine snapshot entries with Snapper snapshots.
-IgnorePackage limine-mkinitcpio-hook # Install kernels for the Limine bootloader.
-IgnorePackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
-IgnorePackage limine # An advanced, portable, multiprotocol bootloader
-IgnorePackage cachyos-snapper-support # CachyOS package that handles snapper configs.
-IgnorePackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities
-IgnorePackage switcheroo-control # D-Bus service to check the availability of dual-GPU
-IgnorePackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
-IgnorePackage vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
-IgnorePackage qutebrowser # A keyboard-driven, vim-like browser based on Python and Qt
-
+if [[ "$HOSTNAME" == *nb* ]]; then
+    IgnorePackage cachyos-niri-noctalia # CachyOS Niri (+Noctalia) settings
+    IgnorePackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
+    IgnorePackage intel-ucode # Microcode update files for Intel CPUs
+    IgnorePackage limine-snapper-sync # Automatically syncs Limine snapshot entries with Snapper snapshots.
+    IgnorePackage limine-mkinitcpio-hook # Install kernels for the Limine bootloader.
+    IgnorePackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
+    IgnorePackage limine # An advanced, portable, multiprotocol bootloader
+    IgnorePackage cachyos-snapper-support # CachyOS package that handles snapper configs.
+    IgnorePackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities
+    IgnorePackage switcheroo-control # D-Bus service to check the availability of dual-GPU
+    IgnorePackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
+    IgnorePackage vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
+    IgnorePackage qutebrowser # A keyboard-driven, vim-like browser based on Python and Qt
+fi
 
 IgnorePackage npm
 IgnorePackage openbsd-netcat

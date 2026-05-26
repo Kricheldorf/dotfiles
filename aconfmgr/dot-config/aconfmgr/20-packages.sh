@@ -117,6 +117,10 @@ AddPackage zed # A high-performance, multiplayer code editor from the creators o
 
 AddPackage --foreign slack-desktop # Slack Desktop (Beta) for Linux
 
+if [[ "$HOSTNAME" == *home* ]]; then
+    AddPackage --foreign gitflow-cjs # CJS Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model.
+fi
+
 
 # 40-apps.sh — Applications
 
