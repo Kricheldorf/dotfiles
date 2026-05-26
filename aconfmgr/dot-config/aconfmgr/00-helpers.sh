@@ -63,7 +63,10 @@ function IgnorePathsExcept() {
 
 function SystemdEnable() {
     local service=$1
-    if sudo systemctl enable --now ${service}; then
+    if systemctl is-enabled --quiet "${service}" 2>/dev/null; then
+        return 0
+    fi
+    if sudo systemctl enable --now "${service}"; then
         log_success "Systemd: ${service} service enabled and started"
     else
         log_error "Systemd: ${service} service failed to enable/start"

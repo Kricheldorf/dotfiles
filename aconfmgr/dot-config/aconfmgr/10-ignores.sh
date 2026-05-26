@@ -5,7 +5,7 @@ IgnorePath '/opt/*' # system files
 IgnorePath '/.snapshots/*' # system files
 
 etc_white_list=(
-  'keyd/*',
+  'keyd/*'
   'brave/*'
 )
 IgnorePathsExcept '/etc' "${etc_white_list[@]}"
@@ -45,7 +45,6 @@ IgnorePackage cantarell-fonts # Humanist sans serif font
 IgnorePackage catch2 # Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 IgnorePackage chwd # CachyOS Hardware Detection Tool
 IgnorePackage cmake # A cross-platform open-source make system
-IgnorePackage code # The Open Source build of Visual Studio Code (vscode) editor
 IgnorePackage cpupower # Linux kernel tool to examine and tune power saving related features of your processor
 IgnorePackage cryptsetup # Userspace setup tool for transparent encryption of block devices using dm-crypt
 IgnorePackage device-mapper # Device mapper userspace library and tools
@@ -82,7 +81,6 @@ IgnorePackage hwdetect # Hardware detection script with loading modules and mkin
 IgnorePackage hwinfo # Hardware detection tool from openSUSE
 IgnorePackage inetutils # A collection of common network programs
 IgnorePackage iptables # Linux kernel packet control tool (using nft interface)
-IgnorePackage iptables-nft # Linux kernel packet control tool (using nft interface)
 IgnorePackage iwd # Internet Wireless Daemon
 IgnorePackage jfsutils # JFS filesystem utilities
 IgnorePackage less # A terminal based program for viewing text files
@@ -181,7 +179,7 @@ IgnorePackage xorg-xkill # Kill a client by its X resource
 IgnorePackage xorg-xrandr # Primitive command line interface to RandR extension
 IgnorePackage zsh-autocomplete # Real-time type-ahead completion for Zsh
 
-IgnorePackage --foreign bolt-launcher # Free open-source third-party implementation of the Jagex Launcher
+IgnorePackage --foreign gitflow-cjs # CJS Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model.
 
 # Notebook
 IgnorePackage cachyos-niri-noctalia # CachyOS Niri (+Noctalia) settings
@@ -191,16 +189,9 @@ IgnorePackage limine-snapper-sync # Automatically syncs Limine snapshot entries 
 IgnorePackage limine-mkinitcpio-hook # Install kernels for the Limine bootloader.
 IgnorePackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
 IgnorePackage limine # An advanced, portable, multiprotocol bootloader
-IgnorePackage glances # CLI curses-based monitoring tool
-IgnorePackage gst-plugin-va # Multimedia graph framework - va plugin
-IgnorePackage cachyos-plymouth-theme # CachyOS plymouth theme
-IgnorePackage bluez-obex # Object Exchange daemon for sharing content
 IgnorePackage cachyos-snapper-support # CachyOS package that handles snapper configs.
-IgnorePackage cachyos-wallpapers # Wallpapers for CachyOS
 IgnorePackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities
-IgnorePackage shelly # Shelly: A Modern Arch Package Manager
 IgnorePackage switcheroo-control # D-Bus service to check the availability of dual-GPU
-IgnorePackage ufw-extras # Extra configuration files for UFW
 IgnorePackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
 IgnorePackage vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
 IgnorePackage qutebrowser # A keyboard-driven, vim-like browser based on Python and Qt

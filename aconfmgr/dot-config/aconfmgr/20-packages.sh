@@ -31,6 +31,7 @@ AddPackage playerctl # mpris media player controller and lib for spotify, vlc, a
 AddPackage python-pygments # Python syntax highlighter
 AddPackage resvg # SVG rendering library and CLI
 AddPackage ripgrep # A search tool that combines the usability of ag with the raw speed of grep
+AddPackage rustup  # rust-analyzer / cargo for helix + bat-extras prettybat
 AddPackage tmux # Terminal multiplexer
 AddPackage ttf-bitstream-vera # Bitstream Vera fonts.
 AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wider range of characters
@@ -43,6 +44,7 @@ AddPackage unzip # For extracting and viewing files in .zip archives
 AddPackage vim # Vi Improved, a highly configurable, improved version of the vi text editor
 AddPackage vlc # Free and open source cross-platform multimedia player and framework
 AddPackage vlc-plugins-all # Free and open source cross-platform multimedia player and framework - all plugins
+AddPackage wtype # xdotool type for wayland
 AddPackage yazi # Blazing fast terminal file manager written in Rust, based on async I/O
 AddPackage zip # Compressor/archiver for creating and modifying zipfiles
 AddPackage zoxide # A smarter cd command for your terminal
@@ -101,19 +103,19 @@ AddPackage docker # Pack, ship and run any application as a lightweight containe
 AddPackage docker-compose # Fast, isolated development environments using Docker
 AddPackage fnm # Fast and simple Node.js version manager, built with Rust
 AddPackage github-cli # The GitHub CLI
+AddPackage helix # A post-modern modal text editor
 AddPackage lazydocker # A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
 AddPackage lazygit # Simple terminal UI for git commands
 AddPackage neovim # Fork of Vim aiming to improve user experience, plugins, and GUIs
 AddPackage postgresql # Sophisticated object-relational DBMS
+AddPackage stylua # Deterministic code formatter for Lua
 AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
 AddPackage typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
 AddPackage zed # A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-AddPackage zellij # A terminal multiplexer
 
 # AUR packages
 
 AddPackage --foreign slack-desktop # Slack Desktop (Beta) for Linux
-IgnorePackage --foreign gitflow-cjs # CJS Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model.
 
 
 # 40-apps.sh — Applications
@@ -139,17 +141,3 @@ AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronizat
 AddPackage --foreign ente-auth-bin # Ente two-factor authenticator.
 AddPackage --foreign insync # An unofficial Dropbox, Google Drive, and OneDrive client that runs on Linux, with support for various desktops
 AddPackage --foreign vial-appimage # Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA.
-
-# 90-remove.sh - Apps to remove
-
-RemovePackage --foreign timer-bin # Timer is like sleep, but reports progress.
-RemovePackage asciinema # Record and share terminal sessions
-RemovePackage code # The Open Source build of Visual Studio Code (vscode) editor
-RemovePackage ghostty # Fast, native, feature-rich terminal emulator pushing modern features
-RemovePackage glances # CLI curses-based monitoring tool
-RemovePackage gradle # Powerful build system for the JVM
-RemovePackage gum # A tool for glamorous shell scripts
-RemovePackage neovide
-RemovePackage nushell # A new type of shell
-RemovePackage pnpm # Fast, disk space efficient package manager
-RemovePackage television # A general purpose fuzzy finder for your terminal
