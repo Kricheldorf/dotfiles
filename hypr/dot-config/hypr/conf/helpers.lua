@@ -76,6 +76,26 @@ function M.move_window(dir_a, dir_b)
   end
 end
 
+-- Toggle workspace layout between monocle and its previous layout.
+-- Falls back to 'master' if no previous layout is stored.
+local prev_layouts = {}
+
+function M.toggle_monocle()
+  return function()
+    local ws = hl.get_active_workspace()
+    if not ws then return end
+    local id = tostring(ws.id)
+    if ws.tiled_layout == 'monocle' then
+      local restore = prev_layouts[id] or 'master'
+      prev_layouts[id] = nil
+      hl.workspace_rule { workspace = id, layout = restore }
+    else
+      prev_layouts[id] = ws.tiled_layout
+      hl.workspace_rule { workspace = id, layout = 'monocle' }
+    end
+  end
+end
+
 -- Disconnect all connected bluetooth devices.
 function M.disconnect_bluetooth() hl.exec_cmd [[bluetoothctl devices Connected | awk '{print $2}' | xargs -rn1 bluetoothctl disconnect]] end
 

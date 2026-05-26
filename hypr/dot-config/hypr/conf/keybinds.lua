@@ -86,6 +86,7 @@ hl.bind(main_mod .. ' + CTRL + 3', hl.dsp.exec_cmd(screenshot_window_cmd))
 -- Fullscreen / pin / cycle
 hl.bind(main_mod .. ' + F', hl.dsp.window.fullscreen(1))
 hl.bind(main_mod .. ' + SHIFT + F', hl.dsp.window.fullscreen_state { internal = 0, client = 2 })
+hl.bind(main_mod .. ' + CTRL + F', helpers.toggle_monocle())
 hl.bind(main_mod .. ' + SHIFT + P', hl.dsp.window.pin())
 hl.bind(main_mod .. ' + N', hl.dsp.window.cycle_next())
 hl.bind(main_mod .. ' + TAB', hl.dsp.exec_cmd 'vicinae vicinae://launch/wm/switch-windows')

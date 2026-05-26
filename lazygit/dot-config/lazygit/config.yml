@@ -11,7 +11,7 @@ git:
     forcePushWithLease: true
 gui:
   filterMode: fuzzy
-  commandLogSize: 18
+  commandLogSize: 10
   scrollHeight: 10
   commitAuthorLongLength: 2
   nerdFontsVersion: '3'

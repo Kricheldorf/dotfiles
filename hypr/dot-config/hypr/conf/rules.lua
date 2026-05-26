@@ -1,6 +1,8 @@
 -- MONITORS, LAYER RULES, WINDOW RULES, WORKSPACE RULES
 
 -- MONITORS
+
+-- main monitor
 hl.monitor {
   output = 'DP-1',
   mode = '2560x1440@180.00Hz',
@@ -8,6 +10,7 @@ hl.monitor {
   scale = '1',
 }
 
+-- notebook monitor
 hl.monitor {
   output = 'eDP-1',
   mode = 'preferred',
@@ -15,6 +18,7 @@ hl.monitor {
   scale = '1.333',
 }
 
+-- notebook monitor
 hl.monitor {
   output = 'eDP-2',
   mode = 'preferred',
@@ -22,11 +26,13 @@ hl.monitor {
   scale = '1',
 }
 
+-- 4k secondary monitor
 hl.monitor {
   output = 'DP-2',
   mode = 'preferred',
   position = 'auto-center-left',
-  reserved_area = { right = 500 },
+  scale = 1.67,
+  reserved_area = { right = 550 },
 }
 
 -- LAYER RULES

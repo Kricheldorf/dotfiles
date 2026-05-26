@@ -8,8 +8,8 @@ hl.on('hyprland.start', function()
   hl.exec_cmd 'waybar'
   hl.exec_cmd 'hypridle'
   hl.exec_cmd 'systemctl --user start hyprpolkitagent'
-  hl.exec_cmd 'swaybg -o eDP-2 -m fill -i ~/Pictures/luzern.jpg'
-  hl.exec_cmd 'swaybg -m fill -i ~/Pictures/luzern.jpg'
+  -- hl.exec_cmd 'swaybg -o eDP-1 -m fill -i ~/Pictures/luzern.jpg'
+  hl.exec_cmd 'swaybg -o DP-1 -m fill -i ~/Pictures/luzern.jpg'
   hl.exec_cmd 'vicinae server'
 
   -- Utils
