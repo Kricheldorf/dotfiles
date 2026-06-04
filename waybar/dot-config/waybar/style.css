@@ -13,7 +13,7 @@
 
 *{
    font-size: 15px;
-   font-family: Adwaita Mono;
+   font-family: "Adwaita Mono", "MesloLGS Nerd Font";
    font-weight: 600;
    min-height: 0;
    padding-top: 0px;
@@ -90,7 +90,7 @@ window#waybar {
    color: @first_right_color;
 }
 
-#pulseaudio, #bluetooth {
+#pulseaudio, #bluetooth, #network {
    color: @middle_right_color;
 }
 

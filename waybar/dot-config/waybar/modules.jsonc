@@ -22,7 +22,8 @@
    "cpu": {
       "interval": 10,
       "format": "  {}% ",
-      "max-length": 10
+      "max-length": 10,
+      "on-click": "kitty -e htop --sort-key=PERCENT_CPU"
    },
    "bluetooth": {
       "format-on": " ",
@@ -35,7 +36,7 @@
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
       "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-      "on-click": "blueberry"
+      "on-click": "kitty -e bluetui"
    },
    "clock#calendar": {
       "format": "{:%b %d ~ %R %Z}",
@@ -105,24 +106,39 @@
       "tooltip": false
    },
    "network": {
-      "format-wifi": "󰤨",
-      "format-ethernet": "󰈀",
-      "format-disconnected": "󰤭",
-      "tooltip": false
+      "format-wifi": "{icon} {signalStrength}%",
+      "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+      "format-ethernet": "󰈀 ",
+      "format-disconnected": "󰤭 ",
+      "tooltip": true,
+      "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+      "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+      "tooltip-format-disconnected": "Disconnected",
+      "on-click": "kitty -e nmtui"
+   },
+   "systemd-failed-units": {
+      "format": " 󰅙 {nr_failed}",
+      "hide-on-ok": true,
+      "system": true,
+      "user": true,
+      "on-click": "kitty -e systemctl --failed"
    },
    "pulseaudio": {
       "format": " {icon} {volume}%",
-      "format-muted": "",
+      "format-muted": "󰝟",
       "format-icons": {
-         "headphones": "",
-         "headset": "",
+         "headphones": "󰋋",
+         "headset": "󰋋",
          "default": [
-            "",
-            "",
-            ""
+            "󰕿",
+            "󰖀",
+            "󰕾"
          ]
       },
-      "tooltip": false,
+      "format-source": "{volume}%",
+      "format-source-muted": "muted",
+      "tooltip": true,
+      "tooltip-format": "Output: {desc}",
       "on-click": "pavucontrol"
    },
    "privacy": {
@@ -149,10 +165,7 @@
    },
    "tray": {
       "icon-size": 15,
-      "spacing": 8,
-      "icons": {
-         "blueberry": "bluetooth"
-      }
+      "spacing": 8
    },
    "idle_inhibitor": {
       "format": "{icon}",
@@ -198,12 +211,21 @@
    },
    "memory": {
       "interval": 2,
-      "format": "  {used:0.1f}G "
+      "format": "  {used:0.1f}G ",
+      "on-click": "kitty -e htop --sort-key=PERCENT_MEM"
+   },
+   "custom/gpu": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '{ printf \"{\\\"text\\\":\\\"%s%% \\\",\\\"tooltip\\\":\\\"GPU %s%%\\\\nTemp %s°C\\\\nVRAM %sMiB\\\"}\", $1, $1, $2, $3 }'",
+      "return-type": "json",
+      "interval": 30,
+      "format": " 󰢮 {}",
+      "on-click": "kitty -e nvtop"
    },
    "disk": {
       "interval": 30,
       "format": "  {free} ",
-      "path": "/"
+      "path": "/",
+      "on-click": "kitty -e ncdu -t8 /"
    },
    "temperature": {
       "interval": 30,

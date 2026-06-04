@@ -67,50 +67,39 @@ hl.window_rule { name = 'windowrule-10', match = { title = '^(File Operation Pro
 
 hl.window_rule {
   name = 'windowrule-11',
-  match = { class = '^(google-chrome)$', title = '^(Open Files)$' },
+  match = { class = '^(brave)$', title = '^(Open Files)$' },
   float = true,
 }
 hl.window_rule {
   name = 'windowrule-12',
-  match = { class = '^(google-chrome)$', title = '^(Open File)$' },
+  match = { class = '^(brave)$', title = '^(Open File)$' },
   float = true,
 }
-hl.window_rule {
-  name = 'windowrule-13',
-  match = { class = '^(microsoft-edge)$', title = '^(Open Files)$' },
-  float = true,
-}
-hl.window_rule {
-  name = 'windowrule-14',
-  match = { class = '^(microsoft-edge)$', title = '^(Open File)$' },
-  float = true,
-}
+-- hl.window_rule {
+--   name = 'windowrule-15',
+--   match = { class = 'pavucontrol' },
+--   center = true,
+--   float = true,
+-- }
+-- hl.window_rule {
+--   name = 'windowrule-16',
+--   match = { title = '^(Volume Control)$' },
+--   center = true,
+--   float = true,
+-- }
+-- hl.window_rule {
+--   name = 'windowrule-17',
+--   match = { title = '^(Bluetooth)$' },
+--   center = true,
+--   float = true,
+-- }
 
-hl.window_rule {
-  name = 'windowrule-15',
-  match = { class = 'pavucontrol' },
-  center = true,
-  float = true,
-}
-hl.window_rule {
-  name = 'windowrule-16',
-  match = { title = '^(Volume Control)$' },
-  center = true,
-  float = true,
-}
-hl.window_rule {
-  name = 'windowrule-17',
-  match = { title = '^(Bluetooth)$' },
-  center = true,
-  float = true,
-}
-
-hl.window_rule {
-  name = 'windowrule-size-webstorm-windows',
-  match = { class = '^(jetbrains-webstorm)$', float = true },
-  min_size = '1200 800',
-  center = true,
-}
+-- hl.window_rule {
+--   name = 'windowrule-size-webstorm-windows',
+--   match = { class = '^(jetbrains-webstorm)$', float = true },
+--   min_size = '1200 800',
+--   center = true,
+-- }
 
 -- WORKSPACE RULES
 hl.workspace_rule { workspace = '1', monitor = 'DP-1', default = true }

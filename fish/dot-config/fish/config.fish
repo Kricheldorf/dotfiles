@@ -89,14 +89,6 @@ function n
     end
 end
 
-function review
-    if string match -qr '^\d+$' -- $argv[1]
-        nvim -c ":silent Octo pr edit $argv[1]"
-    else
-        nvim -c ":silent Octo $argv[1]"
-    end
-end
-
 function zsl
     cd ~/Code/shipix/shipix-platform && lazygit
 end
@@ -215,34 +207,5 @@ function gwt
     end
 
     echo "Worktree ready at $worktree_path"
-end
-
-function pom
-    set split $POMO_SPLIT
-    if ! test -n "$split"
-        set split $(gum choose "25/5" "50/10" "all done" --header "Choose a pomodoro split.")
-    end
-
-    switch $split
-        case 25/5
-            set work 25m
-            set break 5m
-        case 50/10
-            set work 50m
-            set break 10m
-        case 'all done'
-            return
-    end
-
-    timer $work && notify-send 'Work Timer is up! Take a Break 😊' 'Pomodoro' --icon=dialog-information
-
-    gum confirm "Ready for a break?" && timer $break && terminal-notifier -message Pomodoro \
-            -title 'Break is over! Get back to work 😬' \
-        -sound Crystal \
-        || pom
-end
-
-if status is-login; and test (tty) = /dev/tty1; and not set -q HYPRLAND_INSTANCE_SIGNATURE
-    exec start-hyprland
 end
 
