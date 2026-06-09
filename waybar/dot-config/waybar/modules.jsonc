@@ -106,13 +106,14 @@
       "tooltip": false
    },
    "network": {
+      "interval": 2,
       "format-wifi": "{icon} {signalStrength}%",
       "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
       "format-ethernet": "󰈀 ",
       "format-disconnected": "󰤭 ",
       "tooltip": true,
-      "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
-      "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}\n 󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}",
+      "tooltip-format-ethernet": "{ifname}\n{ipaddr}\n 󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}",
       "tooltip-format-disconnected": "Disconnected",
       "on-click": "kitty -e nmtui"
    },

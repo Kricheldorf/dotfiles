@@ -124,6 +124,16 @@ window#waybar {
    padding: 0px;
 }
 
+#custom-fullscreen {
+   font-size: 20px;
+   padding: 0 6px;
+   text-shadow: 0 0 1px currentColor, 0 0 1px currentColor;
+}
+
+#custom-fullscreen.fullscreen {
+   color: @caution_color;
+}
+
 #window {
    padding-left: 20px;
  }

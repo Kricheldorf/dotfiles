@@ -96,6 +96,36 @@ function M.toggle_monocle()
   end
 end
 
+-- Toggle window maximize (fills workspace, waybar stays) without inner
+-- (client) fullscreen. fullscreenstate sets explicit state, so toggle by hand.
+function M.toggle_maximize()
+  return function()
+    local w = hl.get_active_window()
+    if not w then return end
+    -- Already maximized: un-maximize.
+    if w.fullscreen ~= 0 then
+      hl.dispatch(hl.dsp.window.fullscreen_state { internal = 0, client = 0 })
+      return
+    end
+    -- Sole window already fills the workspace: nothing to maximize.
+    local ws = hl.get_active_workspace()
+    if ws and ws.windows <= 1 then return end
+    hl.dispatch(hl.dsp.window.fullscreen_state { internal = 1, client = 0 })
+  end
+end
+
+-- Toggle inner (client) fullscreen while keeping the window's current format.
+-- Pass the current internal mode back explicitly (instead of -1) so a maximized
+-- window stays maximized when the client state flips.
+function M.toggle_inner_fullscreen()
+  return function()
+    local w = hl.get_active_window()
+    if not w then return end
+    local client = (w.fullscreen_client ~= 0) and 0 or 2
+    hl.dispatch(hl.dsp.window.fullscreen_state { internal = w.fullscreen, client = client })
+  end
+end
+
 -- Disconnect all connected bluetooth devices.
 function M.disconnect_bluetooth() hl.exec_cmd [[bluetoothctl devices Connected | awk '{print $2}' | xargs -rn1 bluetoothctl disconnect]] end
 
