@@ -7,8 +7,9 @@ local terminal = 'kitty'
 local menu = 'vicinae toggle'
 local clipboard_manager = 'vicinae vicinae://launch/clipboard/history'
 local headphones_id = 'F8:4E:17:7D:27:31'
-local screenshot_region_cmd = 'hyprshot -r -z -m region | satty -f - -o png'
+local screenshot_output_cmd = 'hyprshot -r -z -m output -m active | wl-copy'
 local screenshot_window_cmd = 'hyprshot -r -z -m window -m active | wl-copy'
+local screenshot_region_cmd = 'hyprshot -r -z -m region | wl-copy'
 
 -- Reload Hyprland config and vicinae server
 hl.bind(main_mod .. ' + CTRL + SHIFT + R', hl.dsp.exec_cmd 'hyprctl reload && killall vicinae; vicinae server &')
@@ -78,10 +79,11 @@ hl.bind('XF86AudioPause', hl.dsp.exec_cmd 'playerctl play-pause', { locked = tru
 hl.bind('XF86AudioPlay', hl.dsp.exec_cmd 'playerctl play-pause', { locked = true })
 hl.bind('XF86AudioPrev', hl.dsp.exec_cmd 'playerctl previous', { locked = true })
 
--- Screenshot
+-- Screenshot (all → clipboard; annotate later with SUPER + V)
 hl.bind('PRINT', hl.dsp.exec_cmd(screenshot_region_cmd))
-hl.bind(main_mod .. ' + CTRL + 4', hl.dsp.exec_cmd(screenshot_region_cmd))
+hl.bind(main_mod .. ' + CTRL + 2', hl.dsp.exec_cmd(screenshot_output_cmd))
 hl.bind(main_mod .. ' + CTRL + 3', hl.dsp.exec_cmd(screenshot_window_cmd))
+hl.bind(main_mod .. ' + CTRL + 4', hl.dsp.exec_cmd(screenshot_region_cmd))
 
 -- Fullscreen / pin / cycle
 hl.bind(main_mod .. ' + F', helpers.toggle_maximize())
@@ -111,8 +113,6 @@ hl.bind(main_mod .. ' + SHIFT + M', hl.dsp.cursor.move_to_corner { corner = 2 })
 hl.bind(main_mod .. ' + T', hl.dsp.group.toggle())
 hl.bind(main_mod .. ' + bracketright', hl.dsp.group.next())
 hl.bind(main_mod .. ' + bracketleft', hl.dsp.group.prev())
-hl.bind(main_mod .. ' + P', hl.dsp.group.prev())
-hl.bind(main_mod .. ' + N', hl.dsp.group.next())
 
 -- Move to monitor (no-op if no monitor in that direction, avoids warning)
 hl.bind(main_mod .. ' + CTRL + H', helpers.move_to_monitor 'l')
@@ -125,7 +125,7 @@ hl.bind(main_mod .. ' + SHIFT + H', helpers.move_window('left', 'down'))
 hl.bind(main_mod .. ' + SHIFT + L', helpers.move_window('right', 'up'))
 hl.bind(main_mod .. ' + SHIFT + K', hl.dsp.window.swap { direction = 'u' })
 hl.bind(main_mod .. ' + SHIFT + J', hl.dsp.window.swap { direction = 'd' })
-hl.bind(main_mod .. ' + SHIFT + P', hl.dsp.layout 'promote')
+hl.bind(main_mod .. ' + ALT + P', hl.dsp.layout 'promote')
 
 hl.bind('CTRL + ALT + Q', helpers.lock_screen())
 hl.bind(main_mod .. ' + CTRL + B', hl.dsp.exec_cmd('bluetoothctl connect ' .. headphones_id .. ' && notify-send "Bluetooth" "Device connected"'))
@@ -136,7 +136,7 @@ hl.bind(main_mod .. ' + V', hl.dsp.exec_cmd '~/scripts/edit-clipboard')
 hl.bind(main_mod .. ' + Escape', hl.dsp.exec_cmd(terminal .. " fish -c 'claude'"))
 hl.bind(main_mod .. ' + O', helpers.focus_or_launch('nvim-notes', "kitty -d $HOME/GDrive-Personal/dev-notes --class nvim-notes fish -c 'nvim'"))
 hl.bind(main_mod .. ' + D', helpers.focus_or_launch('neovim-ide', 'kitty --class neovim-ide fish -c nvim'))
-hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd(terminal .. 'fish -c nvim'))
+hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd(terminal .. ' fish -c nvim'))
 -- hl.bind(main_mod .. ' + SHIFT + D', hl.dsp.exec_cmd [[sh -c 'cd "$DEFAULT_WORK_DIR" && zeditor -e .']])
 
 hl.bind('SUPER + CTRL + tab', hl.dsp.exec_cmd '$HOME/.config/hypr/scripts/cycle-layout.sh') -- Set next layout

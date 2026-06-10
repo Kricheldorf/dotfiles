@@ -22,6 +22,11 @@ hl.config {
       drag_lock = true,
     },
   },
+
+  -- Nvidia: HW cursor not captured by screencopy → invisible in screen share
+  cursor = {
+    no_hardware_cursors = true,
+  },
 }
 
 hl.gesture {
