@@ -43,7 +43,7 @@ AddPackage unrar # The RAR uncompression program
 AddPackage unzip # For extracting and viewing files in .zip archives
 AddPackage vim # Vi Improved, a highly configurable, improved version of the vi text editor
 AddPackage vlc # Free and open source cross-platform multimedia player and framework
-AddPackage vlc-plugins-all # Free and open source cross-platform multimedia player and framework - all plugins
+AddPackage vlc-plugins-extra # Free and open source cross-platform multimedia player and framework - extra plugins
 AddPackage wtype # xdotool type for wayland
 AddPackage yazi # Blazing fast terminal file manager written in Rust, based on async I/O
 AddPackage zip # Compressor/archiver for creating and modifying zipfiles
@@ -61,6 +61,7 @@ AddPackage --foreign ttf-ms-fonts # Core TTF Fonts from Microsoft
 AddPackage dolphin # KDE File Manager
 AddPackage dunst # Customizable and lightweight notification-daemon
 AddPackage gnome-keyring # stores passwords and encryption keys
+AddPackage htop # Interactive process viewer
 AddPackage hypridle # hyprland’s idle daemon
 AddPackage hyprland # a highly customizable dynamic tiling Wayland compositor
 AddPackage hyprlock # hyprland’s GPU-accelerated screen locking utility
@@ -69,7 +70,7 @@ AddPackage hyprpolkitagent # Simple polkit authentication agent for Hyprland, wr
 AddPackage hyprshot # Hyprland screenshot utility
 AddPackage libappindicator # Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
 AddPackage ly # TUI display manager
-AddPackage network-manager-applet # Applet for managing network connections
+AddPackage nvtop # GPUs process monitoring for AMD, Intel and NVIDIA
 AddPackage nwg-look # GTK settings editor adapted to work on wlroots-based compositors
 AddPackage pavucontrol # PulseAudio Volume Control
 AddPackage polkit-kde-agent # Daemon providing a polkit authentication UI for KDE
@@ -106,7 +107,9 @@ AddPackage github-cli # The GitHub CLI
 AddPackage helix # A post-modern modal text editor
 AddPackage lazydocker # A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
 AddPackage lazygit # Simple terminal UI for git commands
+AddPackage mermaid-cli # Generate images from Mermaid files
 AddPackage neovim # Fork of Vim aiming to improve user experience, plugins, and GUIs
+AddPackage pgformatter # A PostgreSQL SQL syntax beautifier
 AddPackage postgresql # Sophisticated object-relational DBMS
 AddPackage stylua # Deterministic code formatter for Lua
 AddPackage tree-sitter-cli # CLI tool for developing, testing, and using Tree-sitter parsers
