@@ -215,6 +215,14 @@
       "format": "  {used:0.1f}G ",
       "on-click": "kitty -e htop --sort-key=PERCENT_MEM"
    },
+   "custom/next-server-mem": {
+      "exec": "ps -eo rss=,comm= | awk '$2 ~ /^next-server/ { sum += $1 } END { printf \"{\\\"text\\\":\\\"%.0f MB\\\",\\\"tooltip\\\":\\\"next-server: %.1f MB\\\"}\", sum/1024, sum/1024 }'",
+      "exec-if": "pgrep -f '^next-server'",
+      "return-type": "json",
+      "interval": 5,
+      "format": "  {}",
+      "on-click": "kitty -e htop -F next-server"
+   },
    "custom/gpu": {
       "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '{ printf \"{\\\"text\\\":\\\"%s%% \\\",\\\"tooltip\\\":\\\"GPU %s%%\\\\nTemp %s°C\\\\nVRAM %sMiB\\\"}\", $1, $1, $2, $3 }'",
       "return-type": "json",

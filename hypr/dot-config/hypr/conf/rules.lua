@@ -15,15 +15,7 @@ hl.monitor {
   output = 'eDP-1',
   mode = 'preferred',
   position = 'auto-center-right',
-  scale = '1.333',
-}
-
--- notebook monitor
-hl.monitor {
-  output = 'eDP-2',
-  mode = 'preferred',
-  position = 'auto-center-right',
-  scale = '1',
+  scale = '1.25',
 }
 
 -- 4k secondary monitor
